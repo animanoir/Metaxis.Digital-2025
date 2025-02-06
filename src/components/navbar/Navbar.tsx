@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import * as navbarStyles from '../css/Navbar.module.css'
+'use client'
+
+import { useState, useEffect, useCallback } from 'react'
+import * as styles from './Navbar.module.css'
 import Link from "next/link";
-import boletinSVG from '../images/svg/BoletinSVG.svg'
+// import boletinSvg from '@/assets/svg/boletinSvg.svg'
 import { throttle } from 'lodash'
+import dynamic from 'next/dynamic';
 
 const Navbar = () => {
   const tesisWords = [
@@ -132,7 +135,7 @@ const Navbar = () => {
     '1',
   ]
 
-  const getRandomWord = (words) => {
+  const getRandomWord = (words: string) => {
     return words[Math.floor(Math.random() * words.length)]
   }
 
@@ -168,52 +171,50 @@ const Navbar = () => {
   }, [scrollY])
 
   return (
-    <nav className={navbarStyles.container}>
+    <nav className={styles.container}>
       <div>
-        <Link to="/">
-          <h1 className={navbarStyles.title}>
-            <Link fade to="/">
-              <span className={navbarStyles.antitesis} style={{ fontWeight: 'normal' }}>
-                {' '}
-                {tesisAntitesis.tesis} — {tesisAntitesis.antitesis} |{' '}
-              </span>
-              <span>
-                <b>metaxis.digital</b>
-              </span>{' '}
-            </Link>{' '}
+        <Link href="/">
+          <h1 className={styles.title}>
+            <span className={styles.antitesis} style={{ fontWeight: 'normal' }}>
+              {' '}
+              {tesisAntitesis.tesis} — {tesisAntitesis.antitesis} |{' '}
+            </span>
+            <span>
+              <b>metaxis.digital</b>
+            </span>{' '}
           </h1>
         </Link>
       </div>
-      <ul className={navbarStyles.menulist}>
+      <ul className={styles.menulist}>
         <li>
-          <Link fade to="/Acerca">
+          <Link href="/Acerca">
             Acerca
           </Link>
         </li>
         <li>
-          <Link fade to="/Colabora">
+          <Link href="/Colabora">
             <b>¡Colabora!</b>
           </Link>
         </li>
         <li>
-          <Link fade to="/Biblioteca">
+          <Link href="/Biblioteca">
             <b>Biblioteca</b>
           </Link>
         </li>
         <li>
-          <Link fade to="/Conceptos">
+          <Link href="/Conceptos">
             Conceptos
           </Link>
         </li>
         <li>
-          <Link fade to="/Eventos">
+          <Link href="/Eventos">
             Eventos
           </Link>
         </li>
-        <li id={navbarStyles.suscribirseBoletin}>
-          <Link fade to="/SuscribirseBoletin">
-            <img src={boletinSVG} alt="Suscríbete a nuestro boletín." />
-            <span className={navbarStyles.glowText}>¡Suscríbete al boletín!</span>
+        <li id={styles.suscribirseBoletin}>
+          <Link href="/SuscribirseBoletin">
+            {/* <img src={boletinSvg} alt="Suscríbete a nuestro boletín." /> */}
+            <span className={styles.glowText}>¡Suscríbete al boletín!</span>
           </Link>
         </li>
       </ul>
@@ -221,4 +222,5 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
+
