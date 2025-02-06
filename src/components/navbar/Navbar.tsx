@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import * as styles from './Navbar.module.css'
+import styles from './Navbar.module.css'
 import Link from "next/link";
 // import boletinSvg from '@/assets/svg/boletinSvg.svg'
 import { throttle } from 'lodash'
