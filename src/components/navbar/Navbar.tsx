@@ -8,7 +8,7 @@ import { throttle } from 'lodash'
 import dynamic from 'next/dynamic';
 
 const Navbar = () => {
-  const tesisWords = [
+  const tesisWords: string[] = [
     'filosofía',
     'arte',
     'fantasmas',
@@ -76,7 +76,7 @@ const Navbar = () => {
     'horizonte',
     '0',
   ]
-  const antitesisWords = [
+  const antitesisWords: string[] = [
     'computación',
     'psicología',
     'matemáticas',
@@ -135,7 +135,7 @@ const Navbar = () => {
     '1',
   ]
 
-  const getRandomWord = (words: string) => {
+  const getRandomWord = (words: string[]) => {
     return words[Math.floor(Math.random() * words.length)]
   }
 
@@ -160,15 +160,19 @@ const Navbar = () => {
   }, [updateScrollPosition])
 
   useEffect(() => {
-    let selectedTesis = getRandomWord(tesisWords)
-    let selectedAntitesis = getRandomWord(antitesisWords)
+    const generateUniqueAntitesis = (tesis: string) => {
+      let antitesis = getRandomWord(antitesisWords);
+      while (antitesis === tesis) {
+        antitesis = getRandomWord(antitesisWords);
+      }
+      return antitesis;
+    };
 
-    while (selectedTesis === selectedAntitesis) {
-      selectedAntitesis = getRandomWord(antitesisWords)
-    }
+    const selectedTesis = getRandomWord(tesisWords);
+    const selectedAntitesis = generateUniqueAntitesis(selectedTesis);
 
-    setTesisAntitesis({ tesis: selectedTesis, antitesis: selectedAntitesis })
-  }, [scrollY])
+    setTesisAntitesis({ tesis: selectedTesis, antitesis: selectedAntitesis });
+  }, [scrollY]);
 
   return (
     <nav className={styles.container}>
