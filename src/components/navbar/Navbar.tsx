@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
 import Link from "next/link";
 // import boletinSvg from '@/assets/svg/boletinSvg.svg'
@@ -144,6 +144,9 @@ const Navbar = () => {
     antitesis: getRandomWord(antitesisWords),
   })
   const [scrollY, setScrollY] = useState(0)
+  const [isDispersed, setIsDispersed] = useState(false) // New state variable
+  const navRef = useRef(null);
+  const dispartionRadius = 50;
 
   const updateScrollPosition = useCallback(
     throttle(() => {
@@ -152,12 +155,20 @@ const Navbar = () => {
     []
   )
 
+  const handleKeydown = useCallback((event: KeyboardEvent) => {
+    if (event.key === 'p') {
+      setIsDispersed((prev) => !prev)
+    }
+  }, [])
+
   useEffect(() => {
     window.addEventListener('scroll', updateScrollPosition)
+    window.addEventListener('keydown', handleKeydown) // Add event listener
     return () => {
       window.removeEventListener('scroll', updateScrollPosition)
+      window.removeEventListener('keydown', handleKeydown) // Remove event listener
     }
-  }, [updateScrollPosition])
+  }, [updateScrollPosition, handleKeydown])
 
   useEffect(() => {
     const generateUniqueAntitesis = (tesis: string) => {
@@ -175,8 +186,24 @@ const Navbar = () => {
   }, [scrollY]);
 
   return (
-    <nav className={styles.container}>
-      <div>
+    <nav className={styles.container} ref={navRef} style={isDispersed ? {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'space-around',
+      height: '100vh',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      padding: '2rem',
+    } : {}}>
+      <div style={isDispersed ? {
+        position: 'absolute',
+        top: `${Math.random() * dispartionRadius}vh`,
+        left: `${Math.random() * dispartionRadius}vw`,
+        transform: `rotate(${Math.random() * 360}deg)`,
+      } : {}}>
         <Link href="/">
           <h1 className={styles.title}>
             <span className={styles.antitesis} style={{ fontWeight: 'normal' }}>
@@ -189,33 +216,69 @@ const Navbar = () => {
           </h1>
         </Link>
       </div>
-      <ul className={styles.menulist}>
-        <li>
+      <ul className={styles.menulist} style={isDispersed ? {
+        position: 'absolute',
+        top: `${Math.random() * dispartionRadius}vh`,
+        left: `${Math.random() * dispartionRadius}vw`,
+        transform: `rotate(${Math.random() * 360}deg)`,
+        flexDirection: 'column',
+      } : {}}>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
           <Link href="/Acerca">
             Acerca
           </Link>
         </li>
-        <li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
           <Link href="/Colabora">
             <b>¡Colabora!</b>
           </Link>
         </li>
-        <li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
           <Link href="/Biblioteca">
             <b>Biblioteca</b>
           </Link>
         </li>
-        <li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
           <Link href="/Conceptos">
             Conceptos
           </Link>
         </li>
-        <li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
           <Link href="/Eventos">
             Eventos
           </Link>
         </li>
-        <li id={styles.suscribirseBoletin}>
+        <li id={styles.suscribirseBoletin} style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
           <Link href="/SuscribirseBoletin">
             {/* <img src={boletinSvg} alt="Suscríbete a nuestro boletín." /> */}
             <span className={styles.glowText}>¡Suscríbete al boletín!</span>
@@ -227,4 +290,3 @@ const Navbar = () => {
 }
 
 export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
-
