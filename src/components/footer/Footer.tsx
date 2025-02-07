@@ -1,29 +1,34 @@
-import React from 'react'
-import * as footerStyles from '../css/Footer.module.css'
-import telegramSvg from '../images/svg/Telegram.svg'
-import youtubeSvg from '../images/svg/Youtube.svg'
+import styles from './Footer.module.css'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <footer className={footerStyles.footer}>
-      <div className={footerStyles.container}>
-        <div className={footerStyles.footerLinks}>
-          <span className={footerStyles.svgIcon}>
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.footerLinks}>
+          <span className={styles.svgIcon}>
             <a target="_blank" rel="noreferrer" href="https://t.me/+u0btF1H3XaZkNGIx">
-              <img src={telegramSvg} alt="Únete a nuestro canal de Telegram." />
+              <Image
+                width={24}
+                height={24}
+                src="/telegram.svg"
+                alt="Únete a nuestro canal de Telegram." />
             </a>
           </span>
-          <span className={footerStyles.svgIcon}>
+          <span className={styles.svgIcon}>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.youtube.com/@metaxisdigital/videos"
             >
-              <img src={youtubeSvg} alt="Suscríbete a nuestro canal en YouTube." />
+              <Image
+                width={24}
+                height={24}
+                src="/youtube.svg" alt="Suscríbete a nuestro canal en YouTube." />
             </a>
           </span>
         </div>
-        <div className={footerStyles.ccommons}>
+        <div className={styles.ccommons}>
           <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
             <img
               alt="Creative Commons License"
@@ -31,10 +36,10 @@ const Footer = () => {
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
             />
           </a>
-          <div className={footerStyles.fantasmacontainer}>
+          <div className={styles.fantasmacontainer}>
             <p>
               Un proyecto de{' '}
-              <a className={footerStyles.fantasma} href="https://fantasma.rip/">
+              <a className={styles.fantasma} href="https://fantasma.rip/">
                 <b>fantasma</b>
               </a>
             </p>

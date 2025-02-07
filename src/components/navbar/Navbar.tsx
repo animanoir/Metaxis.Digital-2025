@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
 import Link from "next/link";
-// import boletinSvg from '@/assets/svg/boletinSvg.svg'
 import { throttle } from 'lodash'
 import dynamic from 'next/dynamic';
 
