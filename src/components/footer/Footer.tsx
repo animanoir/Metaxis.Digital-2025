@@ -7,10 +7,10 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.footerLinks}>
           <span className={styles.svgIcon}>
-            <a target="_blank" rel="noreferrer" href="https://t.me/+u0btF1H3XaZkNGIx">
+            <a target="_blank" rel="noreferrer" href="https://t.me/+DULTIj9jMLgzNTUx">
               <Image
-                width={24}
-                height={24}
+                width={18}
+                height={18}
                 src="/telegram.svg"
                 alt="Únete a nuestro canal de Telegram." />
             </a>
@@ -22,8 +22,8 @@ const Footer = () => {
               href="https://www.youtube.com/@metaxisdigital/videos"
             >
               <Image
-                width={24}
-                height={24}
+                width={18}
+                height={18}
                 src="/youtube.svg" alt="Suscríbete a nuestro canal en YouTube." />
             </a>
           </span>
