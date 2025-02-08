@@ -1,8 +1,6 @@
 import * as React from 'react';
 // import Layout from '../components/Layout';
 // import Seo from '../components/SEO';
-import amalgalmas from '../images/amalgalmas.jpg';
-import amalgalmasTw from '../images/amalgalmas-tw.jpg';
 // import NewsletterForm from '../components/NewsletterForm';
 
 const ColaboraPage = () => {
