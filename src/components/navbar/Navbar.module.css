@@ -1,8 +1,3 @@
-:global(:root) {
-  --glow-color: #dc143c;
-  --text-color: black;
-}
-
 .container {
   display: flex;
   flex-direction: row-reverse;
