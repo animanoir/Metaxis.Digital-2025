@@ -1,4 +1,4 @@
-:global (:root) {
+:global(:root) {
   --glow-color: #dc143c;
   --text-color: black;
 }
