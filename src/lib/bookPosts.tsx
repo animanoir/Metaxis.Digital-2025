@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 interface BookPost {
   id: string;
@@ -10,19 +12,20 @@ interface BookPost {
   publishedYear: number;
   description: string;
   concepts: string[];
-  mainImage: string;      // Changed from images array to single main image
-  twitterImage: string;   // Added Twitter image
+  mainImage: string;
+  twitterImage: string;
   content: string;
+  slug: string
 }
 
-const postsDirectory = path.join(process.cwd(), 'public', 'bookposts');
+const bookPostsDirectory = path.join(process.cwd(), 'public', 'bookposts');
 
-export function getSortedPostData(): BookPost[] {
+export function getSortedBookPostData(): BookPost[] {
   // Get directories under /bookposts
-  const directories = fs.readdirSync(postsDirectory);
+  const directories = fs.readdirSync(bookPostsDirectory);
 
   const allPostsData = directories.map(directory => {
-    const directoryPath = path.join(postsDirectory, directory);
+    const directoryPath = path.join(bookPostsDirectory, directory);
 
     // Skip if not a directory
     if (!fs.statSync(directoryPath).isDirectory()) return null;
@@ -66,7 +69,8 @@ export function getSortedPostData(): BookPost[] {
       concepts: matterResult.data.conceptos,
       mainImage: mainImage ? getImagePath(directory, mainImage) : '',
       twitterImage: twitterImage ? getImagePath(directory, twitterImage) : '',
-      content: matterResult.content
+      content: matterResult.content,
+      slug: matterResult.data.slug
     }
 
     return bookPost;
@@ -78,4 +82,35 @@ export function getSortedPostData(): BookPost[] {
     const dateB = new Date(b.date).getTime();
     return dateB - dateA;  // Sort in descending order (newest first)
   });
+}
+
+export async function getBookPostData(slug: string) {
+  const fullPath = path.join(bookPostsDirectory, slug, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents);
+
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
+
+  const contentHtml = processedContent.toString();
+
+  const bookPostWithHtml: BookPost & { contentHtml: string } = {
+    id: slug,
+    title: matterResult.data.title,
+    author: matterResult.data.author,
+    date: new Date(matterResult.data.date).toISOString().split('T')[0],
+    publishedYear: matterResult.data.publishedYear,
+    description: matterResult.data.description,
+    concepts: matterResult.data.concepts,
+    mainImage: matterResult.data.mainImage,
+    twitterImage: matterResult.data.twitterImage,
+    content: matterResult.content,
+    slug: matterResult.data.slug,
+    contentHtml
+  }
+
+  return bookPostWithHtml;
 }
