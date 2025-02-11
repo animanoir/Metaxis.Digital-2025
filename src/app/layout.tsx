@@ -15,9 +15,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "metaxis.digital",
-  description: "Un espacio abierto a la comunidad para difundir futurismos metamodernos, ya existentes o por imaginar. 〇º°•.",
-};
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
+  title: {
+    default: 'metaxis.digital',
+    template: '%s | metaxis.digital',
+  },
+  description: 'Biblioteca digital de libros',
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    url: '/',
+    siteName: 'metaxis.digital',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@metaxis_digital',
+  },
+}
 
 export default function RootLayout({
   children,

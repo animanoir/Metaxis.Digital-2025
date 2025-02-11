@@ -12,10 +12,40 @@ interface BookPost {
   publishedYear: number;
   description: string;
   concepts: string[];
-  mainImage: string;
+  image: string;
   twitterImage: string;
   content: string;
   slug: string
+}
+
+let slugToPathMap: Map<string, string> | null = null;
+
+function buildSlugPathMap() {
+  if (slugToPathMap) return slugToPathMap;
+
+  slugToPathMap = new Map();
+  const directories = fs.readdirSync(bookPostsDirectory);
+
+  directories.forEach(dir => {
+    const dirPath = path.join(bookPostsDirectory, dir);
+    if (!fs.statSync(dirPath).isDirectory()) return;
+
+    const files = fs.readdirSync(dirPath);
+    const mdxFile = files.find(file => file.endsWith('.mdx'));
+    if (!mdxFile) return;
+
+    const fullPath = path.join(dirPath, mdxFile);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+
+    if (data.slug) {
+      if (slugToPathMap) {
+        slugToPathMap.set(data.slug, fullPath);
+      }
+    }
+  });
+
+  return slugToPathMap;
 }
 
 const bookPostsDirectory = path.join(process.cwd(), 'public', 'bookposts');
@@ -42,7 +72,7 @@ export function getSortedBookPostData(): BookPost[] {
     };
 
     // Find specific images
-    const mainImage = files.find(file =>
+    const image = files.find(file =>
       file.toLowerCase().endsWith('.jpg') &&
       !file.toLowerCase().includes('-tw.')
     ) || '';
@@ -67,7 +97,7 @@ export function getSortedBookPostData(): BookPost[] {
       publishedYear: matterResult.data.publishedYear,
       description: matterResult.data.description,
       concepts: matterResult.data.conceptos,
-      mainImage: mainImage ? getImagePath(directory, mainImage) : '',
+      image: image ? getImagePath(directory, image) : '',
       twitterImage: twitterImage ? getImagePath(directory, twitterImage) : '',
       content: matterResult.content,
       slug: matterResult.data.slug
@@ -85,32 +115,40 @@ export function getSortedBookPostData(): BookPost[] {
 }
 
 export async function getBookPostData(slug: string) {
-  const fullPath = path.join(bookPostsDirectory, slug, `${slug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const pathMap = buildSlugPathMap();
+  const fullPath = pathMap.get(slug);
 
-  // Use gray-matter to parse the post metadata section
+  if (!fullPath) {
+    throw new Error(`No post found for slug: ${slug}`);
+  }
+
+  // Get the directory name from the full path
+  const directoryPath = path.dirname(fullPath);
+  const dirName = path.basename(directoryPath);
+
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
+
+  // Process the image paths
+  let { image, imageTwitter, ...otherData } = matterResult.data;
+
+  // Convert relative paths to absolute
+  if (image && image.startsWith('./')) {
+    image = `/bookposts/${dirName}/${image.slice(2)}`;
+  }
+  if (imageTwitter && imageTwitter.startsWith('./')) {
+    imageTwitter = `/bookposts/${dirName}/${imageTwitter.slice(2)}`;
+  }
 
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content);
 
-  const contentHtml = processedContent.toString();
-
-  const bookPostWithHtml: BookPost & { contentHtml: string } = {
-    id: slug,
-    title: matterResult.data.title,
-    author: matterResult.data.author,
-    date: new Date(matterResult.data.date).toISOString().split('T')[0],
-    publishedYear: matterResult.data.publishedYear,
-    description: matterResult.data.description,
-    concepts: matterResult.data.concepts,
-    mainImage: matterResult.data.mainImage,
-    twitterImage: matterResult.data.twitterImage,
-    content: matterResult.content,
-    slug: matterResult.data.slug,
-    contentHtml
-  }
-
-  return bookPostWithHtml;
+  return {
+    ...otherData,
+    image,
+    imageTwitter,
+    contentHtml: processedContent.toString(),
+    slug
+  };
 }

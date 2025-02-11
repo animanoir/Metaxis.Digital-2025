@@ -20,9 +20,9 @@ const BookList = () => {
               className="group relative overflow-hidden rounded-lg bg-800/50 p-4 backdrop-blur-sm transition-all duration-300 hover:bg-800/70 hover:translate-y-[-4px] shadow-md cursor-pointer hover:shadow-xl"
             >
               <div className="aspect-[2/3] overflow-hidden rounded-lg mb-4">
-                {bookPost.mainImage && (
+                {bookPost.image && (
                   <Image
-                    src={bookPost.mainImage}
+                    src={bookPost.image}
                     alt={`Libro: ${bookPost.title} escrito por ${bookPost.author}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"  // Responsive sizing
                     width={600}
