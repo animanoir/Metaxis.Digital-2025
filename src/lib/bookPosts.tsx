@@ -17,7 +17,7 @@ interface BookPost {
 
 const postsDirectory = path.join(process.cwd(), 'public', 'bookposts');
 
-export function getSortedPostData() {
+export function getSortedPostData(): BookPost[] {
   // Get directories under /bookposts
   const directories = fs.readdirSync(postsDirectory);
 
@@ -70,14 +70,12 @@ export function getSortedPostData() {
     }
 
     return bookPost;
-  }).filter(Boolean); // Remove null entries
+  }).filter((post): post is BookPost => Boolean(post)); // Remove null entries
 
-  // Sort posts by date
+  // Sort posts by date with non-null assertion
   return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;  // Sort in descending order (newest first)
   });
 }
