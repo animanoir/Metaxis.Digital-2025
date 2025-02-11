@@ -1,5 +1,11 @@
 import { getBookPostData, getSortedBookPostData } from "@/lib/bookPosts";
 
+interface BibliotecaPageProps {
+  params: {
+    slug: string;
+  };
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
 
   const bookPosts = getSortedBookPostData();
@@ -25,7 +31,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 
-export default async function BookPost({ params }: { params: { slug: string } }) {
+export default async function BookPost({ params }: BibliotecaPageProps) {
 
   // const bookPost = getSortedPostData();
   const { slug } = params;
