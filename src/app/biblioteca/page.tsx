@@ -1,3 +1,10 @@
+import BookList from "@/components/bookPosts/BookList";
+
+
 export default function Library() {
-  return <h1>Biblioteca de metaxis.digital</h1>
+  return (
+    <>
+      <BookList />
+    </>
+  )
 }

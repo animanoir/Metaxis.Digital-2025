@@ -248,7 +248,7 @@ const Navbar = () => {
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/Biblioteca">
+          <Link href="/biblioteca">
             <b>Biblioteca</b>
           </Link>
         </li>

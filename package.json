@@ -10,6 +10,7 @@
     "clean": "rm -rf .next .turbo node_modules"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
     "motion": "^12.4.0",
     "next": "15.1.6",
