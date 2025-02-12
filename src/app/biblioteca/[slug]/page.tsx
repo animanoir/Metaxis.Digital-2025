@@ -6,14 +6,15 @@ import { Metadata } from 'next';
 
 // Update the Props type to match Next.js App Router requirements
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const bookPost = await getBookPostData(params.slug);
 
   if (!bookPost) {
@@ -37,7 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 
-export default async function BookPost({ params }: Props) {
+export default async function BookPost(props: Props) {
+  const params = await props.params;
   try {
     const { slug } = params;
     const bookPost = await getBookPostData(params.slug);

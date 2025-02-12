@@ -1,4 +1,5 @@
-export default function BlogPostPage({ params }) {
+export default async function BlogPostPage(props) {
+  const params = await props.params;
   return (
     <div>
       <h2>Blog Post</h2>
