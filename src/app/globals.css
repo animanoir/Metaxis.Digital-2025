@@ -22,31 +22,31 @@ body {
 
 @layer components {
   .vertical-line-base {
-    @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50;
+    @apply fixed border-l-[5px] border-black dark:border-white h-[40%] top-[30%] z-50;
   }
 
   .vertical-line-left {
-    @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50 left-[1.5%];
+    @apply fixed border-l-[5px] border-black dark:border-white h-[40%] top-[30%] z-50 left-[1.5%];
   }
 
   .vertical-line-right {
-    @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50 right-[1.5%];
+    @apply fixed border-l-[5px] border-black dark:border-white h-[40%] top-[30%] z-50 right-[1.5%];
   }
 }
 
 /* Markdown styling */
 /* MDX Content Styling */
 .mdx-prose {
-  @apply max-w-4xl mx-auto text-zinc-300 leading-relaxed;
+  @apply max-w-4xl mx-auto leading-relaxed;
 }
 
 /* Headings */
 .mdx-prose h1 {
-  @apply text-4xl md:text-5xl font-bold mb-8 mt-12 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent;
+  @apply text-4xl md:text-5xl font-bold mb-8 mt-12 bg-gradient-to-r to-gray-400 bg-clip-text text-transparent;
 }
 
 .mdx-prose h2 {
-  @apply text-3xl md:text-4xl font-semibold mb-6 mt-10 text-zinc-200;
+  @apply text-3xl md:text-4xl font-semibold mb-6 mt-10;
 }
 
 .mdx-prose h3 {
@@ -65,49 +65,49 @@ body {
 }
 
 .mdx-prose li {
-  @apply text-lg text-zinc-300;
+  @apply text-lg;
 }
 
 /* Blockquotes */
 .mdx-prose blockquote {
-  @apply pl-6 my-8 border-l-4 border-zinc-700 italic;
+  @apply pl-6 my-8 border-l-4 border-gray-700 italic;
 }
 
 .mdx-prose blockquote p {
   /* transform: scale3d(5, 5, 5); */
-  @apply text-xl text-zinc-400;
+  @apply text-xl text-gray-400;
 }
 
 /* Code Blocks */
 .mdx-prose pre {
-  @apply p-4 my-6 rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50;
+  @apply p-4 my-6 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50;
   @apply overflow-x-auto
 }
 
 .mdx-prose code {
-  @apply font-mono text-sm text-zinc-300;
+  @apply font-mono text-sm;
 }
 
 /* Inline Code */
 .mdx-prose :not(pre)>code {
-  @apply px-1.5 py-0.5 rounded-md bg-zinc-800/50 text-zinc-300 text-sm;
+  @apply px-1.5 py-0.5 rounded-md bg-gray-800/50 text-sm;
 }
 
 /* Links */
 .mdx-prose a {
-  @apply text-zinc-400 underline decoration-zinc-700 underline-offset-2 transition-all duration-300;
-  @apply hover:text-zinc-200 hover:decoration-zinc-500;
+  @apply text-gray-400 underline decoration-gray-700 underline-offset-2 transition-all duration-300;
+  @apply hover:text-gray-200 hover:decoration-gray-500;
 }
 
 /* Images */
 .mdx-prose img {
-  @apply rounded-xl shadow-2xl my-8 border border-zinc-800/50;
+  @apply rounded-xl shadow-2xl my-8 border border-gray-800/50;
   @apply transition-all duration-500 hover:scale-[1.02];
 }
 
 /* Horizontal Rule */
 .mdx-prose hr {
-  @apply mx-auto my-12 border-zinc-800;
+  @apply mx-auto my-12 border-gray-800;
   width: 50%;
 }
 
@@ -117,22 +117,22 @@ body {
 }
 
 .mdx-prose th {
-  @apply px-4 py-2 text-left border-b border-zinc-800 text-zinc-300 font-semibold;
+  @apply px-4 py-2 text-left border-b border-gray-800 font-semibold;
 }
 
 .mdx-prose td {
-  @apply px-4 py-2 border-b border-zinc-800/50 text-zinc-400;
+  @apply px-4 py-2 border-b border-gray-800/50 text-gray-400;
 }
 
 /* Custom selection color */
 .mdx-prose ::selection {
-  @apply bg-zinc-700/50 text-zinc-200;
+  @apply bg-gray-700/50 text-gray-200;
 
 }
 
 /* Footnotes */
 .mdx-prose .footnotes {
-  @apply mt-16 pt-8 border-t border-zinc-800;
+  @apply mt-16 pt-8 border-t border-gray-800;
 }
 
 /* Add smooth transitions */
@@ -175,6 +175,6 @@ body {
 /* MDX styling ends here */
 
 .book-title {
-  transform: skew(180deg, 10deg);
+  transform: skew(180deg, 5deg);
   line-height: 1;
 }
