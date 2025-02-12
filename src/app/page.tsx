@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import amalgalmasImg from '@/app/assets/images/amalgalmas.jpg';
+import ArenaContent from '@/components/arenaContent/ArenaContent';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
           height={300}
         />
       </div>
+      <ArenaContent />
     </>
   );
 }
