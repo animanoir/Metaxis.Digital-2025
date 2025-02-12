@@ -17,9 +17,9 @@ const BookList = () => {
           <Link href={`/biblioteca/${bookPost.slug}`} key={bookPost.slug}>
             <article
               key={bookPost.slug}
-              className="group relative overflow-hidden rounded-lg bg-800/50 p-4 backdrop-blur-sm transition-all duration-300 hover:bg-800/70 hover:translate-y-[-4px] shadow-md cursor-pointer hover:shadow-xl"
+              className="group relative overflow-hidden rounded-lg bg-800/50 p-4 backdrop-blur-xs transition-all duration-300 hover:bg-800/70 hover:translate-y-[-4px] shadow-md cursor-pointer hover:shadow-xl"
             >
-              <div className="aspect-[2/3] overflow-hidden rounded-lg mb-4">
+              <div className="aspect-2/3 overflow-hidden rounded-lg mb-4">
                 {bookPost.image && (
                   <Image
                     src={bookPost.image}

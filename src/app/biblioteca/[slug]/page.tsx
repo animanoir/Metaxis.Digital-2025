@@ -76,8 +76,8 @@ export default async function BookPost({ params }: Props) {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Meta Sidebar */}
             <aside className="md:col-span-3 space-y-8 md:sticky md:top-8 h-fit">
-              <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10 shadow-xl">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-zinc-200 to-white bg-clip-text text-transparent">
+              <div className="backdrop-blur-xs bg-white/5 rounded-2xl p-6 border border-white/10 shadow-xl">
+                <h2 className="text-2xl font-bold bg-linear-to-r from-zinc-200 to-white bg-clip-text text-transparent">
                   {bookPost.author}
                 </h2>
                 <p className="text-zinc-400 mt-2">{bookPost.publishedYear}</p>
@@ -96,7 +96,7 @@ export default async function BookPost({ params }: Props) {
 
             {/* Main Content */}
             <main className="md:col-span-9">
-              <h1 className={`text-5xl md:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-zinc-900 via-black to-zinc-800 bg-clip-text text-transparent`}>
+              <h1 className={`text-5xl md:text-7xl font-black mb-8 leading-tight bg-linear-to-r from-zinc-900 via-black to-zinc-800 bg-clip-text text-transparent`}>
                 {bookPost.title}
               </h1>
               <div className={`
@@ -122,7 +122,7 @@ export default async function BookPost({ params }: Props) {
     console.error('Error loading book post:', err);
 
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-900 to-black">
+      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-zinc-900 to-black">
         <div className="backdrop-blur-lg bg-white/5 rounded-2xl p-8 border border-white/10 shadow-2xl max-w-md w-full mx-4">
           <h1 className="text-3xl font-bold text-white mb-4">Post not found</h1>
           <p className="text-zinc-400">

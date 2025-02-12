@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -18,57 +16,24 @@
 
 body {
   color: var(--background);
-  /* background: var(--background); */
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.vertical-line {
-  border-left: 5px solid black;
-  height: 40%;
-  position: fixed;
-  top: 30%;
-  z-index: 100;
+@layer components {
+  .vertical-line-base {
+    @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50;
+  }
+
+  .vertical-line-left {
+    @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50 left-[1.5%];
+  }
+
+  .vertical-line-right {
+    @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50 right-[1.5%];
+  }
 }
 
-.vertical-line-left {
-  @apply vertical-line;
-  left: 1.5%;
-}
-
-.vertical-lline-right {
-  @apply vertical-line;
-  right: 1.5%;
-}
-
-/* Add this to your existing globals.css */
-
-blockquote p {
-  font-family: 'Karla', serif !important;
-  font-size: 1.8rem;
-  color: rgb(161 161 170);
-  /* zinc-400 */
-  background-color: rgb(24 24 27 / 0.5);
-  /* zinc-900/50 */
-  border-left: 5px solid rgb(113 113 122);
-  /* zinc-500 */
-  padding: 2rem;
-  margin: 20px 0;
-  line-height: 1.6;
-  text-align: justify;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
-  font-weight: bold;
-}
-
-blockquote:hover {
-  cursor: url('/butterfly32.gif'), auto;
-}
-
-blockquote p:hover {
-  filter: invert(100%);
-}
-
+/* Markdown styling */
 /* MDX Content Styling */
 .mdx-prose {
   @apply max-w-4xl mx-auto text-zinc-300 leading-relaxed;
@@ -113,7 +78,7 @@ blockquote p:hover {
 /* Code Blocks */
 .mdx-prose pre {
   @apply p-4 my-6 rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50;
-  @apply overflow-x-auto scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-700;
+  @apply overflow-x-auto
 }
 
 .mdx-prose code {
