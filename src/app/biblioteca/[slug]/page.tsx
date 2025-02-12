@@ -1,22 +1,20 @@
-import { getBookPostData, getSortedBookPostData, BookPostData } from "@/lib/bookPosts";
+import { getBookPostData, getSortedBookPostData } from "@/lib/bookPosts";
 import Image from 'next/image';
 import styles from './BookPost.module.css';
 import { Metadata } from 'next';
 
-// Type for the params
+
+// Update the Props type to match Next.js App Router requirements
 type Props = {
-  params: { slug: string }
-}
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // Await the params
-  const { slug } = await params;
-  const bookPosts = getSortedBookPostData();
-
-  const bookPost = bookPosts.find(post => post.slug === slug);
-
-  // console.info('Book Post:', bookPost);
+  const bookPost = await getBookPostData(params.slug);
 
   if (!bookPost) {
     return {
@@ -29,11 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: bookPost.title,
     description: bookPost.description,
     openGraph: {
-      images: [bookPost.image],
+      images: [{ url: bookPost.image }],
     },
     twitter: {
       card: 'summary_large_image',
-      images: [bookPost.twitterImage],
+      images: [{ url: bookPost.twitterImage }],
     },
   };
 }
@@ -42,18 +40,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BookPost({ params }: Props) {
   try {
     const { slug } = await params;
-    const bookPost: BookPostData = await getBookPostData(slug);
+    const bookPost = await getBookPostData(params.slug);
 
     // Convert relative image path to absolute path
     const imageUrl = bookPost.image.startsWith('./')
-      ? `/bookposts/${slug}/${bookPost.image.slice(2)}`
+      ? `/bookposts/${params.slug}/${bookPost.image.slice(2)}`
       : bookPost.image;
 
     console.info(imageUrl);
 
     return (
       <div className="min-h-screen">
-        <article className={`relative max-w-6xl mx-auto px-4 py-16 overflow-hidden ${styles.container}`}>
+        <article className={`relative max-w-6xl mx-auto px-4 py-16 overflow-hidden`}>
           {/* Rhizomatic Background */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-zinc-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -65,7 +63,7 @@ export default async function BookPost({ params }: Props) {
             <div className={styles.bookCover}>
               <Image
                 src={imageUrl}
-                alt={`Cover of ${bookPost.title}`}
+                alt={`Portada del libro ${bookPost.title}`}
                 width={600}
                 height={900}
                 priority
@@ -98,14 +96,13 @@ export default async function BookPost({ params }: Props) {
 
             {/* Main Content */}
             <main className="md:col-span-9">
-              <h1 className={`${styles.title} text-5xl md:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-zinc-100 via-white to-zinc-200 bg-clip-text text-transparent`}>
+              <h1 className={`text-5xl md:text-7xl font-black mb-8 leading-tight bg-gradient-to-r from-zinc-900 via-black to-zinc-800 bg-clip-text text-transparent`}>
                 {bookPost.title}
               </h1>
-
               <div className={`
                 prose prose-invert prose-lg max-w-none
                 prose-headings:font-bold prose-headings:text-zinc-100
-                prose-p:text-zinc-300 prose-p:leading-relaxed ${styles.description}
+                prose-p:text-zinc-300 prose-p:leading-relaxed mdx-prose
                 prose-a:text-zinc-400 prose-a:no-underline hover:prose-a:text-zinc-300
                 prose-blockquote:border-l-zinc-500 
                 prose-blockquote:rounded-lg
@@ -120,12 +117,19 @@ export default async function BookPost({ params }: Props) {
         </article>
       </div>
     );
-  } catch (error) {
+  } catch (err: unknown) {
+    // Log the error for debugging
+    console.error('Error loading book post:', err);
+
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-900 to-black">
         <div className="backdrop-blur-lg bg-white/5 rounded-2xl p-8 border border-white/10 shadow-2xl max-w-md w-full mx-4">
           <h1 className="text-3xl font-bold text-white mb-4">Post not found</h1>
-          <p className="text-zinc-400">The requested post could not be found in the rhizome of knowledge.</p>
+          <p className="text-zinc-400">
+            {err instanceof Error
+              ? err.message
+              : 'The requested post could not be found in the rhizome of knowledge.'}
+          </p>
         </div>
       </div>
     );

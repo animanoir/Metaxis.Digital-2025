@@ -30,8 +30,10 @@ const Footer = () => {
         </div>
         <div className={styles.ccommons}>
           <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img
+            <Image
               alt="Creative Commons License"
+              width={88}
+              height={31}
               style={{ borderWidth: 0, marginRight: '10px' }}
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
             />

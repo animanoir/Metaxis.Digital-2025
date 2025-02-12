@@ -68,3 +68,104 @@ blockquote:hover {
 blockquote p:hover {
   filter: invert(100%);
 }
+
+/* MDX Content Styling */
+.mdx-prose {
+  @apply max-w-4xl mx-auto text-zinc-300 leading-relaxed;
+}
+
+/* Headings */
+.mdx-prose h1 {
+  @apply text-4xl md:text-5xl font-bold mb-8 mt-12 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text text-transparent;
+}
+
+.mdx-prose h2 {
+  @apply text-3xl md:text-4xl font-semibold mb-6 mt-10 text-zinc-200;
+}
+
+.mdx-prose h3 {
+  @apply text-2xl md:text-3xl font-medium mb-4 mt-8 text-zinc-300;
+}
+
+/* Paragraphs and Lists */
+.mdx-prose p {
+  @apply mb-6 text-lg leading-relaxed text-zinc-300;
+}
+
+.mdx-prose ul,
+.mdx-prose ol {
+  @apply mb-6 ml-6 space-y-2;
+}
+
+.mdx-prose li {
+  @apply text-lg text-zinc-300;
+}
+
+/* Blockquotes */
+.mdx-prose blockquote {
+  @apply pl-6 my-8 border-l-4 border-zinc-700 italic;
+}
+
+.mdx-prose blockquote p {
+  @apply text-xl text-zinc-400;
+}
+
+/* Code Blocks */
+.mdx-prose pre {
+  @apply p-4 my-6 rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50;
+  @apply overflow-x-auto scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-700;
+}
+
+.mdx-prose code {
+  @apply font-mono text-sm text-zinc-300;
+}
+
+/* Inline Code */
+.mdx-prose :not(pre)>code {
+  @apply px-1.5 py-0.5 rounded-md bg-zinc-800/50 text-zinc-300 text-sm;
+}
+
+/* Links */
+.mdx-prose a {
+  @apply text-zinc-400 underline decoration-zinc-700 underline-offset-2 transition-all duration-300;
+  @apply hover:text-zinc-200 hover:decoration-zinc-500;
+}
+
+/* Images */
+.mdx-prose img {
+  @apply rounded-xl shadow-2xl my-8 border border-zinc-800/50;
+  @apply transition-all duration-500 hover:scale-[1.02];
+}
+
+/* Horizontal Rule */
+.mdx-prose hr {
+  @apply my-12 border-zinc-800;
+}
+
+/* Tables */
+.mdx-prose table {
+  @apply w-full my-8 border-collapse;
+}
+
+.mdx-prose th {
+  @apply px-4 py-2 text-left border-b border-zinc-800 text-zinc-300 font-semibold;
+}
+
+.mdx-prose td {
+  @apply px-4 py-2 border-b border-zinc-800/50 text-zinc-400;
+}
+
+/* Custom selection color */
+.mdx-prose ::selection {
+  @apply bg-zinc-700/50 text-zinc-200;
+}
+
+/* Footnotes */
+.mdx-prose .footnotes {
+  @apply mt-16 pt-8 border-t border-zinc-800;
+}
+
+/* Add smooth transitions */
+.mdx-prose * {
+  @apply transition-colors duration-200;
+}
