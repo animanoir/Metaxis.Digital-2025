@@ -114,6 +114,8 @@ export function getSortedBookPostData(): BookPost[] {
   });
 }
 
+// ...existing code...
+
 export async function getBookPostData(slug: string) {
   const pathMap = buildSlugPathMap();
   const fullPath = pathMap.get(slug);
@@ -130,15 +132,11 @@ export async function getBookPostData(slug: string) {
   const matterResult = matter(fileContents);
 
   // Process the image paths
-  let { image, imageTwitter, ...otherData } = matterResult.data;
+  const { image, imageTwitter, title, description, author, date, publishedYear, concepts, ...otherData } = matterResult.data;
 
   // Convert relative paths to absolute
-  if (image && image.startsWith('./')) {
-    image = `/bookposts/${dirName}/${image.slice(2)}`;
-  }
-  if (imageTwitter && imageTwitter.startsWith('./')) {
-    imageTwitter = `/bookposts/${dirName}/${imageTwitter.slice(2)}`;
-  }
+  const processedImage = image && image.startsWith('./') ? `/bookposts/${dirName}/${image.slice(2)}` : image;
+  const processedImageTwitter = imageTwitter && imageTwitter.startsWith('./') ? `/bookposts/${dirName}/${imageTwitter.slice(2)}` : imageTwitter;
 
   const processedContent = await remark()
     .use(html)
@@ -146,9 +144,15 @@ export async function getBookPostData(slug: string) {
 
   return {
     ...otherData,
-    image,
-    imageTwitter,
+    image: processedImage,
+    imageTwitter: processedImageTwitter,
     contentHtml: processedContent.toString(),
-    slug
+    slug,
+    title,
+    description,
+    author,
+    date,
+    publishedYear,
+    concepts
   };
 }
