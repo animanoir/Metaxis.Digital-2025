@@ -19,6 +19,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
 @layer components {
   .vertical-line-base {
     @apply fixed border-l-[5px] border-zinc-950 dark:border-zinc-50 h-[40%] top-[30%] z-50;
@@ -49,12 +50,13 @@ body {
 }
 
 .mdx-prose h3 {
-  @apply text-2xl md:text-3xl font-medium mb-4 mt-8 text-zinc-300;
+  @apply text-2xl md:text-3xl font-medium mb-4 mt-8;
 }
 
 /* Paragraphs and Lists */
 .mdx-prose p {
-  @apply mb-6 text-lg leading-relaxed text-zinc-300;
+  @apply mb-6 text-lg leading-relaxed;
+  color: black !important;
 }
 
 .mdx-prose ul,
@@ -72,6 +74,7 @@ body {
 }
 
 .mdx-prose blockquote p {
+  /* transform: scale3d(5, 5, 5); */
   @apply text-xl text-zinc-400;
 }
 
@@ -104,7 +107,8 @@ body {
 
 /* Horizontal Rule */
 .mdx-prose hr {
-  @apply my-12 border-zinc-800;
+  @apply mx-auto my-12 border-zinc-800;
+  width: 50%;
 }
 
 /* Tables */
@@ -123,6 +127,7 @@ body {
 /* Custom selection color */
 .mdx-prose ::selection {
   @apply bg-zinc-700/50 text-zinc-200;
+
 }
 
 /* Footnotes */
@@ -133,4 +138,43 @@ body {
 /* Add smooth transitions */
 .mdx-prose * {
   @apply transition-colors duration-200;
+}
+
+@keyframes etherealRainbow {
+  0% {
+    transform: scale(1);
+    color: #ff0000;
+  }
+
+  25% {
+    transform: scale(1.05);
+    color: #ffa500;
+  }
+
+  50% {
+    transform: scale(1);
+    color: #00ff00;
+  }
+
+  75% {
+    transform: scale(1.05);
+    color: #0000ff;
+  }
+
+  100% {
+    transform: scale(1);
+    color: #ff00ff;
+  }
+}
+
+.mdx-prose strong {
+  @apply inline-block;
+  animation: etherealRainbow 1s infinite ease-in-out;
+}
+
+/* MDX styling ends here */
+
+.book-title {
+  transform: skew(180deg, 10deg);
+  line-height: 1;
 }

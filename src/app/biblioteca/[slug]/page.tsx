@@ -1,4 +1,4 @@
-import { getBookPostData, getSortedBookPostData } from "@/lib/bookPosts";
+import { getBookPostData } from "@/lib/bookPosts";
 import Image from 'next/image';
 import styles from './BookPost.module.css';
 import { Metadata } from 'next';
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BookPost({ params }: Props) {
   try {
-    const { slug } = await params;
+    const { slug } = params;
     const bookPost = await getBookPostData(params.slug);
 
     // Convert relative image path to absolute path
@@ -96,7 +96,20 @@ export default async function BookPost({ params }: Props) {
 
             {/* Main Content */}
             <main className="md:col-span-9">
-              <h1 className={`text-5xl md:text-7xl font-black mb-8 leading-tight bg-linear-to-r from-zinc-900 via-black to-zinc-800 bg-clip-text text-transparent`}>
+              <h1 className={`
+                      book-title
+                      text-5xl md:text-7xl 
+                      font-black mb-8 
+                      leading-tight 
+                      bg-gradient-to-r from-zinc-900 via-black to-zinc-800 
+                      bg-clip-text text-transparent
+                      transform 
+
+                      transition-transform
+                      duration-300
+                      mt-20
+                      [text-shadow:_2px_2px_2px_rgb(0_0_0_/_20%),_4px_4px_4px_rgb(0_0_0_/_10%)]
+                    `}>
                 {bookPost.title}
               </h1>
               <div className={`
