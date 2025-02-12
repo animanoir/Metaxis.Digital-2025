@@ -41,7 +41,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function BookPost(props: Props) {
   const params = await props.params;
   try {
-    const { slug } = params;
     const bookPost = await getBookPostData(params.slug);
 
     // Convert relative image path to absolute path
