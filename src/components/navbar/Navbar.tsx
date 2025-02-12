@@ -51,6 +51,7 @@ const Navbar = () => {
     'pasión',
     'claridad',
     'pluralidad',
+    'devenir',
     'sublimación',
     'catalizador',
     'espíritu',

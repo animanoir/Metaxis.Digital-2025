@@ -1,6 +1,6 @@
 import { getSortedBookPostData } from '@/lib/bookPosts';
 import Image from 'next/image';
-import styles from "./BookList.module.css";
+// import styles from "./BookList.module.css";
 import Link from 'next/link';
 
 const BookList = () => {
@@ -8,10 +8,6 @@ const BookList = () => {
 
   return (
     <div className="mt-4 min-h-screen bg-900 text-100 p-8 max-w-6xl mx-auto">
-      <h1 className={styles.title}>
-        Biblioteca de metaxis.digital
-      </h1>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
         {bookPosts.map((bookPost) => bookPost && (
           <Link href={`/biblioteca/${bookPost.slug}`} key={bookPost.slug}>

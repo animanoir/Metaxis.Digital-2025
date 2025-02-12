@@ -1,7 +1,17 @@
-import { getBookPostData } from "@/lib/bookPosts";
+import { getBookPostData, getSortedBookPostData } from "@/lib/bookPosts";
 import Image from 'next/image';
 import styles from './BookPost.module.css';
 import { Metadata } from 'next';
+
+export function generateStaticParams() {
+  const bookPosts = getSortedBookPostData();
+
+  return bookPosts.map((bookPost) => ({
+    params: {
+      slug: bookPost.slug,
+    },
+  }));
+}
 
 
 // Update the Props type to match Next.js App Router requirements
