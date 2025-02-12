@@ -130,7 +130,7 @@ export async function getBookPostData(slug: string) {
   const matterResult = matter(fileContents);
 
   // Process the image paths
-  const { image, imageTwitter, ...otherData } = matterResult.data;
+  let { image, imageTwitter, ...otherData } = matterResult.data;
 
   // Convert relative paths to absolute
   if (image && image.startsWith('./')) {
