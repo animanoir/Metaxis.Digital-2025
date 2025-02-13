@@ -13,9 +13,9 @@ export default function Template({
   return (
     <motion.div
       key={pathname} // Add key prop to force remount
-      initial={{ opacity: 0, y: 20 }} // Add subtle y movement
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, y: -20 }}
       transition={{
         type: "tween",
         ease: [0.4, 0, 0.2, 1],

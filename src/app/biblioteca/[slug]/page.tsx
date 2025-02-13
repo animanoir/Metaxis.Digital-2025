@@ -61,8 +61,8 @@ export default async function BookPost(props: Props) {
     console.info(imageUrl);
 
     return (
-      <div className="min-h-screen">
-        <article className={`relative max-w-6xl mx-auto px-4 py-16 overflow-hidden`}>
+      <div>
+        <article className={`relative max-w-5xl mx-auto px-4`}>
           {/* Rhizomatic Background */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -81,9 +81,8 @@ export default async function BookPost(props: Props) {
             </div>
           </div>
           {/* Main Content Grid */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
-            {/* Meta Sidebar */}
-            <aside className="md:col-span-3 space-y-8 md:sticky md:top-8 h-fit">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 min-h-screen">
+            <aside className="md:col-span-3 space-y-8 sticky md:top-20 self-start h-fit">
               <div className="backdrop-blur-xs rounded-2xl p-6 border border-white/10 shadow-xl">
                 <h2 className="text-2xl font-bold bg-linear-to-r to-white bg-clip-text text-gray-800">
                   {bookPost.author}
@@ -92,12 +91,15 @@ export default async function BookPost(props: Props) {
                 <div className={styles.downloadWrapper}>
                   <a
                     href="https://metaxis.digital"
-                    className="mt-4 px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg  transition-all duration-300"
+                    className="px-4 py-2 hover:scale-150 rounded-lg transition-all duration-200 text-lg"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Descargar
+                    <span className={styles.downloadIcon}>📥</span>
                   </a>
+                </div>
+                <div>
+                  {bookPost.description}
                 </div>
               </div>
             </aside>
@@ -115,7 +117,7 @@ export default async function BookPost(props: Props) {
                       transform 
                       transition-transform
                       duration-300
-                      mt-20
+                      mt-8
                       [text-shadow:_2px_2px_2px_rgb(0_0_0_/_20%),_4px_4px_4px_rgb(0_0_0_/_10%)]
                     `}>
                 {bookPost.title}

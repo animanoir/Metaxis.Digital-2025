@@ -1,8 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Courier_Prime, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const courierPrime = Courier_Prime({
+  variable: "--font-courier-prime",
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased cursor-crosshair bg-gray-50`}
+        className={`${geistSans.variable} ${geistMono.variable} ${courierPrime.variable} ${spaceGrotesk.variable} antialiased  bg-gray-50`}
       >
         <Navbar />
         <main className="mt-8 mb-48" >

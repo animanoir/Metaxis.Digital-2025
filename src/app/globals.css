@@ -15,7 +15,7 @@
 }
 
 body {
-  color: var(--background);
+  /* color: var(--background); */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -41,6 +41,13 @@ body {
 }
 
 /* Headings */
+
+.mdx-prose h1,
+.mdx-prose h2,
+.mdx-prose h3 {
+  font-family: var(--font-space-grotesk);
+}
+
 .mdx-prose h1 {
   @apply text-4xl md:text-5xl font-bold mb-8 mt-12 bg-gradient-to-r to-gray-400 bg-clip-text text-transparent;
 }
@@ -55,7 +62,8 @@ body {
 
 /* Paragraphs and Lists */
 .mdx-prose p {
-  @apply mb-6 text-lg leading-relaxed;
+  @apply mb-6 text-base leading-relaxed;
+  font-family: var(--font-courier-prime);
   color: black !important;
 }
 
@@ -70,12 +78,12 @@ body {
 
 /* Blockquotes */
 .mdx-prose blockquote {
-  @apply pl-6 my-8 border-l-4 border-gray-700 italic;
+  @apply pl-6 my-8 border-l-4 border-gray-700;
 }
 
 .mdx-prose blockquote p {
   /* transform: scale3d(5, 5, 5); */
-  @apply text-3xl text-gray-400;
+  @apply text-2xl/8 text-gray-400;
 }
 
 /* Code Blocks */
