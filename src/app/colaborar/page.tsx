@@ -15,7 +15,7 @@ const ColaboraPage = () => {
         type="website"
         author="Óscar A. Montiel"
       /> */}
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="max-w-2xl container mx-auto px-4 py-8 text-center">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Colabora con nosotr∞s</h1>
           <h3 className="text-xl text-gray-800 mb-2">Expresiones Artísticas y Literarias:</h3>

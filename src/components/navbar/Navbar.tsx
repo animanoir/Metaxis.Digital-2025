@@ -205,7 +205,7 @@ const Navbar = () => {
         transform: `rotate(${Math.random() * 360}deg)`,
       } : {}}>
         <Link href="/">
-          <h1 className={styles.title}>
+          <h1 className={`${styles.title} text-gray-800`}>
             <span className={styles.antitesis} style={{ fontWeight: 'normal' }}>
               {' '}
               {tesisAntitesis.tesis} — {tesisAntitesis.antitesis} |{' '}

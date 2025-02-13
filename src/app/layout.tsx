@@ -43,12 +43,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased cursor-crosshair`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased cursor-crosshair bg-gray-50`}
       >
         <Navbar />
-        <main>
+        <main className="mt-8 mb-48" >
           <div className="vertical-line-left" />
-
           {children}
           <div className="vertical-lline-right" />
 
