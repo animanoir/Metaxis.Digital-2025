@@ -30,12 +30,12 @@ const BookList = () => {
                 )}
               </div>
               <div className="space-y-2">
-                <h2 className="text-xl font-semibold tracking-tight line-clamp-2">
+                <h2 className="text-xl text-gray-800  font-semibold tracking-tight line-clamp-2">
                   {bookPost.title}
                 </h2>
 
-                <p className="text-sm text-zinc-400  min-h-[3rem]">
-                  {bookPost.description || 'No description available'}
+                <p className="text-sm text-gray-500  min-h-[3rem]">
+                  {bookPost.description || 'No hay una discrepción disponible.'}
                 </p>
               </div>
             </article>

@@ -1,15 +1,19 @@
 'use client'
 
 import { motion } from 'motion/react';
+import { usePathname } from 'next/navigation';
 
 export default function Template({
   children
 }: {
   children: React.ReactNode
 }) {
+
+  const pathname = usePathname();
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      key={pathname} // Add key prop to force remount
+      initial={{ opacity: 0, y: 20 }} // Add subtle y movement
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{

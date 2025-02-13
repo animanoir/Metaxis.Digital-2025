@@ -68,27 +68,24 @@ export default async function BookPost(props: Props) {
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
             <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-gray-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000"></div>
           </div>
-
-          {/* Book Info Container */}
-          <div className={`${styles.infoContainer} mb-16`}>
-            <div className={styles.bookCover}>
+          <div className='mb-16'>
+            <div className={`flex justify-center items-center h-screen`}>
               <Image
                 src={imageUrl}
                 alt={`Portada del libro ${bookPost.title}`}
                 width={600}
                 height={900}
                 priority
-                className="rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
+                className="rounded-lg shadow-2xl max-h-full object-cover"
               />
             </div>
           </div>
-
           {/* Main Content Grid */}
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
             {/* Meta Sidebar */}
             <aside className="md:col-span-3 space-y-8 md:sticky md:top-8 h-fit">
               <div className="backdrop-blur-xs rounded-2xl p-6 border border-white/10 shadow-xl">
-                <h2 className="text-2xl font-bold bg-linear-to-r to-white bg-clip-text text-black">
+                <h2 className="text-2xl font-bold bg-linear-to-r to-white bg-clip-text text-gray-800">
                   {bookPost.author}
                 </h2>
                 <p className="text-gray-400 mt-2">{bookPost.publishedYear}</p>
@@ -110,12 +107,12 @@ export default async function BookPost(props: Props) {
               <h1 className={`
                       book-title
                       text-5xl md:text-7xl 
-                      font-black mb-8 
+                      font-black 
+                      mb-8 
                       leading-tight 
                       bg-gradient-to-r via-black to-gray-800 
                       bg-clip-text text-transparent
                       transform 
-
                       transition-transform
                       duration-300
                       mt-20
