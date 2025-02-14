@@ -9,7 +9,7 @@ export default function NewsletterForm() {
     return (
       <div className="p-6 bg-green-50 rounded-xl border border-green-200">
         <p className="text-green-800 text-center font-medium">
-          Thanks for your submission! We'll be in touch soon.
+          Thanks for your submission! We&apos;ll be in touch soon.
         </p>
       </div>
     );
