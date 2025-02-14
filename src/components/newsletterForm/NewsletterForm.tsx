@@ -5,7 +5,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import { useState } from 'react';
 import FloatingText from '@/components/FloatingText/FloatingText';
 
-const FLOATING_TEXTS_COUNT = 10;
+const FLOATING_TEXTS_COUNT = 20;
 
 export default function NewsletterForm() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM || '');
@@ -22,7 +22,7 @@ export default function NewsletterForm() {
       // Remove floating texts after 3 seconds (increased from 1.5s)
       setTimeout(() => {
         setFloatingTexts([]);
-      }, 10000); // Increased timeout to allow for smooth fade out
+      }, 15000); // Increased timeout to allow for smooth fade out
     }
   };
 
