@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Courier_Prime, Space_Grotesk } from "next/font/googl
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import NewsletterForm from "@/components/newsletterForm/NewsetterForm";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -66,6 +67,7 @@ export default function RootLayout({
           <div className="vertical-lline-right" />
 
         </main>
+        <NewsletterForm />
         <Footer />
       </body>
     </html>
