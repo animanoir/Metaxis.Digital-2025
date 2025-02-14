@@ -1,10 +1,30 @@
 'use client'
 
 import { useForm, ValidationError } from "@formspree/react";
-import styles from './NewsletterForm.module.css';
+// import styles from './NewsletterForm.module.css';
+import { useState } from 'react';
+import FloatingText from '@/components/FloatingText/FloatingText';
+
+const FLOATING_TEXTS_COUNT = 10;
 
 export default function NewsletterForm() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM || '');
+  const [inputValue, setInputValue] = useState('');
+  const [floatingTexts, setFloatingTexts] = useState<string[]>([]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    // Create new floating texts
+    if (value) {
+      setFloatingTexts(Array(FLOATING_TEXTS_COUNT).fill(value));
+      // Remove floating texts after 3 seconds (increased from 1.5s)
+      setTimeout(() => {
+        setFloatingTexts([]);
+      }, 10000); // Increased timeout to allow for smooth fade out
+    }
+  };
 
   if (state.succeeded) {
     return (
@@ -18,9 +38,11 @@ export default function NewsletterForm() {
 
   return (
     <div className="py-40 text-end md:p-20 sm:p-2 sm:pb-12 sm:flex sm:flex-col sm:text-left">
-
+      {floatingTexts.map((text, index) => (
+        <FloatingText key={`${text}-${index}`} text={text} />
+      ))}
       <form onSubmit={handleSubmit} className="space-y-4 max-w-lg p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
-        <h2 className={`${styles.skewFloat} font-karla text-2xl text-gray-800 mb-4 font-bold text-shadow`}>
+        <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
           Suscríbete al boletín:
         </h2>
         <div className="space-y-2">
@@ -34,7 +56,9 @@ export default function NewsletterForm() {
             id="email"
             type="email"
             name="email"
-            className="w-full md:max-w-[300px] sm:w-full text-gray-800 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-white placeholder-gray-400 transition-all duration-200 font-lora"
+            value={inputValue}
+            onChange={handleInputChange}
+            className="w-full md:max-w-[300px] sm:w-full text-gray-800 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none placeholder-gray-400 transition-all duration-200 font-lora"
             placeholder="Tu correo electrónico"
           />
           <ValidationError
