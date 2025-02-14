@@ -7,12 +7,6 @@ import FloatingText from '@/components/FloatingText/FloatingText';
 
 const FLOATING_TEXTS_COUNT = 10;
 
-// Add this near the top of your file, after the imports
-const placeholderKeyframes = `@keyframes flashPlaceholder {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}`;
-
 export default function NewsletterForm() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM || '');
   const [inputValue, setInputValue] = useState('');

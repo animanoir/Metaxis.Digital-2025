@@ -186,15 +186,3 @@ body {
   transform: skew(180deg, 5deg);
   line-height: 1;
 }
-
-@keyframes flashPlaceholder {
-
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-
-  50% {
-    opacity: 0.8;
-  }
-}
