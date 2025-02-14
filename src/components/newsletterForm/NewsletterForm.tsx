@@ -22,7 +22,7 @@ export default function NewsletterForm() {
       // Remove floating texts after 3 seconds (increased from 1.5s)
       setTimeout(() => {
         setFloatingTexts([]);
-      }, 15000); // Increased timeout to allow for smooth fade out
+      }, 50000); // Increased timeout to allow for smooth fade out
     }
   };
 

@@ -156,7 +156,7 @@ const Navbar = () => {
   )
 
   const handleKeydown = useCallback((event: KeyboardEvent) => {
-    if (event.key === 'p') {
+    if (event.key === 'º') {
       setIsDispersed((prev) => !prev)
     }
   }, [])
