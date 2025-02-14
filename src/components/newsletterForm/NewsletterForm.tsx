@@ -7,6 +7,12 @@ import FloatingText from '@/components/FloatingText/FloatingText';
 
 const FLOATING_TEXTS_COUNT = 10;
 
+// Add this near the top of your file, after the imports
+const placeholderKeyframes = `@keyframes flashPlaceholder {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}`;
+
 export default function NewsletterForm() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM || '');
   const [inputValue, setInputValue] = useState('');
@@ -41,7 +47,7 @@ export default function NewsletterForm() {
       {floatingTexts.map((text, index) => (
         <FloatingText key={`${text}-${index}`} text={text} />
       ))}
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-lg p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
+      <form onSubmit={handleSubmit} className="space-y-4 max-w-sm p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
         <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
           Suscríbete al boletín:
         </h2>
@@ -58,7 +64,26 @@ export default function NewsletterForm() {
             name="email"
             value={inputValue}
             onChange={handleInputChange}
-            className="w-full md:max-w-[300px] sm:w-full text-gray-800 px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none placeholder-gray-400 transition-all duration-200 font-lora"
+            className="
+                w-full 
+                md:max-w-[300px] 
+                sm:w-full 
+                text-gray-800
+                px-4 
+                py-3 
+                bg-white/10 
+                border-2 
+                border-gray-800/40 
+                rounded-lg 
+                focus:ring-2 
+                focus:ring-blue-500 
+                focus:border-transparent 
+                outline-none 
+                placeholder-gray-400 
+                transition-all 
+                duration-200 
+                font-lora
+              "
             placeholder="Tu correo electrónico"
           />
           <ValidationError

@@ -11,6 +11,12 @@ export default function FloatingText({ text }: FloatingTextProps) {
   const [opacity, setOpacity] = useState(0);
   const [duration, setDuration] = useState(1);
   const [mounted, setMounted] = useState(false);
+  const [styles, setStyles] = useState({
+    fontSize: '1.5rem',
+    fontWeight: '400',
+    transform: 'rotate(0deg)',
+    color: 'rgba(0, 0, 0, 0.7)',
+  });
 
   useEffect(() => {
     // Random position within viewport
@@ -18,8 +24,18 @@ export default function FloatingText({ text }: FloatingTextProps) {
     const y = Math.random() * (window.innerHeight - 50);
     setPosition({ x, y });
 
-    const randomDuration = 0.1 + Math.random() * 0.5;
+    // Random duration for animation
+    const randomDuration = 0.1 + Math.random() * 0.3;
     setDuration(randomDuration);
+
+    // Generate random styles
+    const randomStyles = {
+      fontSize: `${Math.random() * 2 + 0.8}rem`, // Between 0.8rem and 2.8rem
+      fontWeight: `${Math.floor(Math.random() * 4 + 3) * 100}`, // 300-700
+      transform: `rotate(${Math.random() * 40 - 20}deg)`, // -20deg to +20deg
+      color: `rgba(0, 0, 0, ${Math.random() * 0.5 + 0.3})`, // Random opacity
+    };
+    setStyles(randomStyles);
 
     // Trigger fade in after component mounts
     const fadeInTimer = setTimeout(() => {
@@ -27,7 +43,7 @@ export default function FloatingText({ text }: FloatingTextProps) {
       setOpacity(1);
     }, 50);
 
-    // Random fade out timing between 1000ms and 2500ms
+    // Random fade out timing
     const fadeOutTimer = setTimeout(() => {
       setOpacity(0);
     }, Math.random() * 1500 + 1000);
@@ -46,11 +62,11 @@ export default function FloatingText({ text }: FloatingTextProps) {
         left: position.x,
         top: position.y,
         opacity: mounted ? opacity : 0,
-        transition: `opacity ${duration}s cubic-bezier(0.4, 0, 0.2, 1)`,
+        transition: `opacity ${duration}s cubic-bezier(0.4, 0, 0.2, 1), transform ${duration}s cubic-bezier(0.4, 0, 0.2, 1), font-size ${duration}s cubic-bezier(0.4, 0, 0.2, 1)`,
         pointerEvents: 'none',
         zIndex: 50,
-        fontSize: '1.5rem',
         fontFamily: 'karla',
+        ...styles,
       }}
     >
       {text}
