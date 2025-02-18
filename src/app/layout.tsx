@@ -62,9 +62,9 @@ export default function RootLayout({
       >
         <Navbar />
         <main className="mt-8 mb-48" >
-          <div className="vertical-line-left" />
+          <div className="vertical-line-left border-black" />
           {children}
-          <div className="vertical-lline-right" />
+          <div className="vertical-line-right border-black" />
 
         </main>
         <NewsletterForm />

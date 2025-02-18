@@ -43,9 +43,14 @@ const ArenaContent = () => {
   }, []);
 
   const fetchUrl = useMemo(() =>
-    'https://api.are.na/v2/channels/metaxis-digital/contents?per=19&sort=position&direction=desc',
+    'https://api.are.na/v2/channels/metaxis-digital/contents?per=20&sort=position&direction=desc',
     []
   );
+
+  const getRandomOffset = () => {
+    const offsets = ['0rem', '1rem', '-1rem', '2rem', '-2rem'];
+    return offsets[Math.floor(Math.random() * offsets.length)];
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -86,7 +91,6 @@ const ArenaContent = () => {
   if (error) {
     return <p>Hubo un error al cargar la inspiración: {error}</p>;
   }
-
   return (
     <div id="inspiración" className={styles.container}>
       <h2 className={styles.title}>
@@ -104,8 +108,12 @@ const ArenaContent = () => {
         <p className={styles.time}>{time}</p>
       </h2>
       {arenaContent.map((content) => {
+        const randomStyle = {
+          transform: `translateX(${getRandomOffset()}) translateY(${getRandomOffset()}))`,
+        };
+
         return (
-          <div key={content.id}>
+          <div key={content.id} className={styles.imageContainer} style={randomStyle}>
             {content.image ? (
               <a
                 href={content.source?.url ? content.source.url : content.image.original.url}
@@ -117,6 +125,7 @@ const ArenaContent = () => {
                   className={styles.image}
                   src={content.image.square.url}
                   alt={content.title}
+                  loading="lazy"
                 />
               </a>
             ) : (
