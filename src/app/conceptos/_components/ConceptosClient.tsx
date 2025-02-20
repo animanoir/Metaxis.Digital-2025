@@ -13,10 +13,23 @@ interface ConceptosClientProps {
   group: Concept[];
 }
 
-// Define a stable color palette
+// Define a stable color palette with ethereal and mystical tones
 const COLORS = [
-  '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD',
-  '#D4A5A5', '#9B6B6B', '#77A1D3', '#79CBCA', '#E684AE'
+  '#7B6B9D', // Mystic purple
+  '#9B8EA9', // Dusty lavender
+  '#88A6B5', // Ethereal blue
+  '#B4C5E4', // Celestial periwinkle
+  '#C3DFE0', // Misty aqua
+  '#A2B9BC', // Foggy sage
+  '#D6E3F8', // Dream blue
+  '#C8A2C8', // Soft lilac
+  '#B4A0CD', // Twilight purple
+  '#9CB4CC', // Ocean mist
+  '#A5BECC', // Crystal blue
+  '#B8B8D1', // Moonstone
+  '#C5BAE0', // Evening haze
+  '#B0C4DE', // Light steel blue
+  '#A9C1D9'  // Morning fog
 ];
 
 export default function ConceptosClient({ group }: ConceptosClientProps) {

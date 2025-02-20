@@ -13,17 +13,17 @@ interface BookPost {
   concepts: string[];
 }
 
-// Update Props interface to remove Promise
-interface Props {
-  params: {
-    concept: string;
-  };
-}
+type Props = {
+  params: Promise<{ concept: string }>;
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { concept } = await params;
+  const decodedConcept = decodeURIComponent(concept);
   return {
-    title: `${params.concept} | Conceptos | Metaxis Digital`,
-    description: `Libros relacionados con el concepto de ${params.concept}`,
+    title: `${decodedConcept} | Conceptos | Metaxis Digital`,
+    description: `Libros relacionados con el concepto de ${decodedConcept}`,
   };
 }
 
@@ -62,7 +62,8 @@ export async function generateStaticParams() {
 export default async function ConceptPage({ params }: Props) {
   const postsDirectory = path.join(process.cwd(), 'public', 'bookposts');
   const relatedPosts: BookPost[] = [];
-  const decodedConcept = decodeURIComponent(params.concept);
+  const { concept } = await params;
+  const decodedConcept = decodeURIComponent(concept);
 
   async function getAllFiles(dirPath: string) {
     const files = await fs.readdir(dirPath);
