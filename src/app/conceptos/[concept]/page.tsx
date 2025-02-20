@@ -15,7 +15,6 @@ interface BookPost {
 
 type Props = {
   params: Promise<{ concept: string }>;
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
