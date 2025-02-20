@@ -30,7 +30,7 @@ export default function NewsletterForm() {
     return (
       <div className="p-6 bg-green-50 rounded-xl border border-green-200">
         <p className="text-green-800 text-center font-medium">
-          Thanks for your submission! We&apos;ll be in touch soon.
+          ¡Gracias por tu suscripción! Estaremos en contacto pronto.
         </p>
       </div>
     );
@@ -41,7 +41,8 @@ export default function NewsletterForm() {
       {floatingTexts.map((text, index) => (
         <FloatingText key={`${text}-${index}`} text={text} />
       ))}
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-sm p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
+      <form
+        onSubmit={handleSubmit} className="space-y-4 max-w-sm p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
         <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
           Suscríbete al boletín:
         </h2>
