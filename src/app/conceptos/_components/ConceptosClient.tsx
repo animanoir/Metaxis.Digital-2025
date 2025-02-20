@@ -13,6 +13,12 @@ interface ConceptosClientProps {
   group: Concept[];
 }
 
+// Define a stable color palette
+const COLORS = [
+  '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD',
+  '#D4A5A5', '#9B6B6B', '#77A1D3', '#79CBCA', '#E684AE'
+];
+
 export default function ConceptosClient({ group }: ConceptosClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -31,8 +37,13 @@ export default function ConceptosClient({ group }: ConceptosClientProps) {
     searchInputRef.current?.focus();
   }, []);
 
-  const getRandomColor = () =>
-    `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  // Get a stable color based on the concept name
+  const getStableColor = (conceptName: string) => {
+    const index = conceptName.split('').reduce(
+      (acc, char) => acc + char.charCodeAt(0), 0
+    );
+    return COLORS[index % COLORS.length];
+  };
 
   return (
     <main className={styles.maincontainer}>
@@ -50,7 +61,7 @@ export default function ConceptosClient({ group }: ConceptosClientProps) {
             key={conceptName}
             href={`/conceptos/${conceptName.toLowerCase()}`}
             className={styles.conceptcard}
-            style={{ backgroundColor: getRandomColor() }}
+            style={{ backgroundColor: getStableColor(conceptName) }}
           >
             <li className={styles.conceptTitle}>
               <span className={styles.conceptName}>{conceptName}</span> ({totalCount})
