@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import NewsletterForm from "@/components/newsletterForm/NewsletterForm";
+import { ReactLenis, useLenis } from "lenis/react";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -60,16 +61,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${courierPrime.variable} ${spaceGrotesk.variable} antialiased  bg-gray-50`}
       >
-        <Navbar />
-        <main className="mt-8 mb-48" >
-          <div className="vertical-line-left border-black" />
-          {children}
-          <div className="vertical-line-right border-black" />
+        <ReactLenis root>
+          <Navbar />
 
-        </main>
-        <NewsletterForm />
-        <Footer />
+          <main className="mt-8 mb-48" >
+            <div className="vertical-line-left border-black" />
+            {children}
+            <div className="vertical-line-right border-black" />
+
+          </main>
+          <NewsletterForm />
+          <Footer />
+        </ReactLenis>
       </body>
-    </html>
+    </html >
   );
 }
