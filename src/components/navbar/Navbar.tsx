@@ -273,20 +273,21 @@ const Navbar = () => {
             Eventos
           </Link>
         </li>
-        <li id={styles.suscribirseBoletin} style={isDispersed ? {
-          position: 'absolute',
-          top: `${Math.random() * dispartionRadius}vh`,
-          left: `${Math.random() * dispartionRadius}vw`,
-          transform: `rotate(${Math.random() * 360}deg)`,
-        } : {}}>
-          <Link href="/SuscribirseBoletin">
-            {/* <img src={boletinSvg} alt="Suscríbete a nuestro boletín." /> */}
-            <span className={styles.glowText}>¡Suscríbete al boletín!</span>
-          </Link>
-        </li>
       </ul>
     </nav>
   )
 }
 
 export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
+
+/* <li id={styles.suscribirseBoletin} style={isDispersed ? {
+  position: 'absolute',
+  top: `${Math.random() * dispartionRadius}vh`,
+  left: `${Math.random() * dispartionRadius}vw`,
+  transform: `rotate(${Math.random() * 360}deg)`,
+} : {}}>
+  <Link href="/SuscribirseBoletin">
+    {/* <img src={boletinSvg} alt="Suscríbete a nuestro boletín." /> 
+    <span className={styles.glowText}>¡Suscríbete al boletín!</span>
+  </Link>
+</li> */
