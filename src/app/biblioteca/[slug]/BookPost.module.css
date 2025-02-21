@@ -20,9 +20,11 @@
   transform: scale(1.2);
 }
 
+.container {
+  width: 90%;
+}
+
 .infoContainer {
-  width: 70%;
-  margin: 3vh auto 5vh;
   display: flex;
   align-items: center;
 }
@@ -32,26 +34,19 @@
   padding-left: 5%;
 }
 
-.bookContainer {
-  width: 70%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-}
-
-/* .title {
+.title {
   font-size: 3rem;
-  font-family: 'Karla', sans-serif;
+  font-family: var(--font-karla), sans-serif;
   margin: 0;
   word-break: break-word;
   letter-spacing: -0.1rem;
   line-height: 1;
   margin-bottom: 2rem;
-} */
+}
 
 .bookCover {
-  width: 50%;
+  width: 40%;
+  max-width: 50%;
   object-fit: cover;
   margin: 0 auto;
   object-position: center;
@@ -61,16 +56,9 @@
 }
 
 .description {
-  font-family: 'Karla', 'sans-serif';
+  font-family: var(--font-karla), sans-serif;
   font-weight: normal;
   line-height: 2;
-}
-
-.downloadWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -79,32 +67,23 @@
     margin-bottom: 10vh;
   }
 
-  .bookContainer {
+  .infoContainer {
+    width: 90%;
+    margin: 2vh auto 5vh;
     flex-direction: column;
-    padding-right: 0;
   }
 
   .metaInfo {
     width: 100%;
-    padding-left: initial;
-    padding-bottom: 2rem;
-  }
-
-  .description {
-    font-size: 1.2rem;
-  }
-
-  .infoContainer {
-    width: 90%;
-    margin: 2vh auto 5vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 5rem;
+    padding-left: 0;
+    padding-top: 2rem;
   }
 
   .bookCover {
     width: 100%;
-    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
   }
 }

@@ -273,6 +273,16 @@ const Navbar = () => {
             Eventos
           </Link>
         </li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
+          <Link href="/blog">
+            <b>Blog</b>
+          </Link>
+        </li>
       </ul>
     </nav>
   )

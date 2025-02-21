@@ -19,6 +19,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+aside {
+  /* font-family: var(--font-courier-prime) */
+}
 
 @layer components {
   .vertical-line-base {
@@ -63,7 +66,7 @@ body {
 /* Paragraphs and Lists */
 .mdx-prose p {
   @apply mb-6 text-base leading-relaxed;
-  font-family: var(--font-courier-prime);
+  font-family: var(--font-montserrat);
   color: black !important;
 }
 
@@ -78,7 +81,7 @@ body {
 
 /* Blockquotes */
 .mdx-prose blockquote {
-  @apply pl-6 my-8 border-l-4 border-gray-700;
+  @apply pl-6 my-20 py-20 border-l-4 border-gray-700;
 }
 
 .mdx-prose blockquote p {

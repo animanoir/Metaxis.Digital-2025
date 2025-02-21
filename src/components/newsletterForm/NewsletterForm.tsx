@@ -42,17 +42,11 @@ export default function NewsletterForm() {
         <FloatingText key={`${text}-${index}`} text={text} />
       ))}
       <form
-        onSubmit={handleSubmit} className="space-y-4 max-w-sm p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
+        onSubmit={handleSubmit} className="space-y-4 mx-auto w-90 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
         <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
           Suscríbete al boletín:
         </h2>
         <div className="space-y-2">
-          {/* <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-200 font-karla text-2xl mb-4"
-          >
-            Correo Electrónico
-          </label> */}
           <input
             id="email"
             type="email"

@@ -10,8 +10,7 @@ module.exports = {
         'geist-mono': ['var(--font-geist-mono)'],
         'courier-prime': ['var(--font-courier-prime)'],
         'space-grotesk': ['var(--font-space-grotesk)'],
-        karla: ['Karla', 'sans-serif'],
-        lora: ['Lora', 'serif'],
+        'montserrat': ['var(--font-montserrat)'],
       },
       textShadow: {
         'default': '2px 2px 4px rgba(0, 0, 0, 0.25)',
