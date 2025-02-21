@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import styles from './ArenaContent.module.css';
 
-const getTime = () => {
-  const date = new Date();
-  const currentTime = [date.getHours(), date.getMinutes(), date.getSeconds()].map((a) =>
-    a < 10 ? '0' + a : a
-  );
-  return currentTime.join(' : ');
-};
+// const getTime = () => {
+//   const date = new Date();
+//   const currentTime = [date.getHours(), date.getMinutes(), date.getSeconds()].map((a) =>
+//     a < 10 ? '0' + a : a
+//   );
+//   return currentTime.join(' : ');
+// };
 
 const ArenaContent = () => {
   interface Content {
@@ -32,7 +32,7 @@ const ArenaContent = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   // const [hovering, setHovering] = useState(false);
-  const [time, setTime] = useState(getTime());
+  // const [time, setTime] = useState(getTime());
 
   // const handleMouseOver = useCallback(() => {
   //   setHovering(true);
@@ -77,12 +77,12 @@ const ArenaContent = () => {
     fetchData();
   }, [fetchUrl]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(getTime());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTime(getTime());
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   if (isLoading) {
     return <p className="flex justify-center items-center min-h-screen font-mono text-lg text-gray-600 animate-pulse">
