@@ -43,7 +43,7 @@ const ArenaContent = () => {
   }, []);
 
   const fetchUrl = useMemo(() =>
-    'https://api.are.na/v2/channels/metaxis-digital/contents?per=20&sort=position&direction=desc',
+    'https://api.are.na/v2/channels/metaxis-digital/contents?per=19&sort=position&direction=desc',
     []
   );
 
