@@ -31,16 +31,16 @@ const ArenaContent = () => {
   const [arenaContent, setArenaContent] = useState<Content[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [hovering, setHovering] = useState(false);
+  // const [hovering, setHovering] = useState(false);
   const [time, setTime] = useState(getTime());
 
-  const handleMouseOver = useCallback(() => {
-    setHovering(true);
-  }, []);
+  // const handleMouseOver = useCallback(() => {
+  //   setHovering(true);
+  // }, []);
 
-  const handleMouseOut = useCallback(() => {
-    setHovering(false);
-  }, []);
+  // const handleMouseOut = useCallback(() => {
+  //   setHovering(false);
+  // }, []);
 
   const fetchUrl = useMemo(() =>
     'https://api.are.na/v2/channels/metaxis-digital/contents?per=19&sort=position&direction=desc',
@@ -85,15 +85,19 @@ const ArenaContent = () => {
   }, []);
 
   if (isLoading) {
-    return <p className={styles.loading}>~·:| ⡷⠂ cargando inspiración ⠐⢾ |:·~</p>;
+    return <p className="flex justify-center items-center min-h-screen font-mono text-lg text-gray-600 animate-pulse">
+      ~·:| ⡷⠂ cargando inspiración ⠐⢾ |:·~
+    </p>;
   }
 
   if (error) {
-    return <p>Hubo un error al cargar la inspiración: {error}</p>;
+    return <p className="flex justify-center items-center min-h-screen font-mono text-lg text-gray-600 animate-pulse">
+      Hubo un error al cargar la inspiración: {error}
+    </p>;
   }
   return (
     <div id="inspiración" className={styles.container}>
-      <h2 className={styles.title}>
+      {/* <h2 className={styles.title}>
         <a
           href="https://www.are.na/degrees-degrees-bullet-period/metaxis-digital"
           target="_blank"
@@ -106,7 +110,7 @@ const ArenaContent = () => {
           {hovering ? '++++++++++' : '( are.na)'}
         </a>
         <p className={styles.time}>{time}</p>
-      </h2>
+      </h2> */}
       {arenaContent.map((content) => {
         const randomStyle = {
           transform: `translateX(${getRandomOffset()}) translateY(${getRandomOffset()}))`,

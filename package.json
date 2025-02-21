@@ -11,6 +11,11 @@
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.7",
+    "@types/mdx": "^2.0.13",
+    "disqus-react": "^1.1.6",
     "gray-matter": "^4.0.3",
     "lenis": "^1.1.20",
     "lodash": "^4.17.21",

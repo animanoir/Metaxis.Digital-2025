@@ -148,6 +148,21 @@ body {
   @apply transition-colors duration-200;
 }
 
+/* iframes */
+.mdx-prose iframe {
+  @apply w-full aspect-video rounded-xl shadow-lg my-8;
+  @apply border border-gray-800/50;
+  @apply transition-all duration-500;
+  @apply hover:scale-[1.02];
+  @apply backdrop-blur-sm;
+}
+
+/* Optional: Add specific styling for YouTube iframes */
+.mdx-prose iframe[src*="youtube.com"] {
+  @apply bg-gray-900/50;
+}
+
+
 @keyframes etherealRainbow {
   0% {
     transform: scale(1);

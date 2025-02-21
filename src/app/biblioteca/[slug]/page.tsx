@@ -13,13 +13,10 @@ export function generateStaticParams() {
   }));
 }
 
-
-// Update the Props type to match Next.js App Router requirements
 type Props = {
   params: Promise<{
     slug: string;
   }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 
