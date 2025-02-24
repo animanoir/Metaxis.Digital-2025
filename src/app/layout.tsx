@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Courier_Prime, Montserrat, Karla } from "next/font/google";
+import { Geist, Geist_Mono, Courier_Prime, Montserrat, Karla, Lora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -7,6 +7,11 @@ import NewsletterForm from "@/components/newsletterForm/NewsletterForm";
 import { ReactLenis } from "lenis/react";
 
 
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+});
 
 const karla = Karla({
   variable: "--font-karla",
@@ -64,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${courierPrime.variable} ${karla.variable}  antialiased  bg-gray-50`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${courierPrime.variable} ${lora.variable}  antialiased  bg-gray-50`}
       >
         <ReactLenis root>
           <Navbar />

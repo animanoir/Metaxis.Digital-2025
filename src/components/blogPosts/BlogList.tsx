@@ -30,7 +30,7 @@ const BlogList = () => {
                   {post.title}
                 </h2>
                 <p className="text-sm text-gray-500 min-h-[3rem]">
-                  {post.description || 'No description available.'}
+                  {post.author || 'No description available.'}
                 </p>
               </div>
             </article>

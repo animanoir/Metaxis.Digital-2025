@@ -11,6 +11,7 @@ module.exports = {
         'courier-prime': ['var(--font-courier-prime)'],
         'space-grotesk': ['var(--font-space-grotesk)'],
         'montserrat': ['var(--font-montserrat)'],
+        'lora': ['var(--font-lora)'],
       },
       textShadow: {
         'default': '2px 2px 4px rgba(0, 0, 0, 0.25)',

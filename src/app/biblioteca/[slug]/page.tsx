@@ -55,42 +55,41 @@ export default async function BookPost(props: Props) {
       : bookPost.image;
 
     return (
-      <div>
-        <article className="mx-auto max-w-5xl">
-          <div className="min-h-screen flex items-center justify-center flex-col md:flex-row">
-            <Image
-              src={imageUrl}
-              alt={`Portada del libro ${bookPost.title}`}
-              width={500}
-              height={750}
-              priority
-              className={styles.bookCover}
-            />
-            <div className={styles.metaInfo}>
-              <h1 className={styles.title}>
-                <b>{bookPost.title}</b>
-                <span style={{ fontWeight: 'normal' }}>, {bookPost.author}</span>
-              </h1>
-              {bookPost.publishedYear && (
-                <h3 className={styles.title} style={{ fontSize: '2rem' }}>
-                  <b>{bookPost.publishedYear}</b>
-                </h3>
-              )}
-              <h4 className={styles.description}>{bookPost.description}</h4>
-              <div className={styles.downloadWrapper}>
-                <a
-                  href="https://t.me/+DULTIj9jMLgzNTUx"
-                  className="px-4 py-2 hover:scale-150 transition-all duration-200 text-lg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className={styles.downloadIcon}>📥</span>
-                </a>
-              </div>
+      <article className="mx-auto w-3xl max-w-2xl">
+        <div className="min-h-screen flex items-center justify-center flex-col md:flex-row">
+          <Image
+            src={imageUrl}
+            alt={`Portada del libro ${bookPost.title}`}
+            width={500}
+            height={750}
+            priority
+            className={styles.bookCover}
+          />
+          <div className={styles.metaInfo}>
+            <h1 className={styles.title}>
+              <b>{bookPost.title}</b>
+              <span style={{ fontWeight: 'normal' }}>, {bookPost.author}</span>
+            </h1>
+            {bookPost.publishedYear && (
+              <h3 className={styles.title} style={{ fontSize: '2rem' }}>
+                <b>{bookPost.publishedYear}</b>
+              </h3>
+            )}
+            <h4 className={styles.description}>{bookPost.description}</h4>
+            <div className={styles.downloadWrapper}>
+              <a
+                href="https://t.me/+DULTIj9jMLgzNTUx"
+                className="px-4 py-2 hover:scale-150 transition-all duration-200 text-lg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className={styles.downloadIcon}>📥</span>
+              </a>
             </div>
           </div>
+        </div>
 
-          <div className={`
+        <div className={`
                 w-3xl
                 prose prose-invert prose-lg max-w-none
                 prose-headings:font-bold prose-headings:text-gray-100
@@ -102,10 +101,9 @@ export default async function BookPost(props: Props) {
                 prose-code:text-gray-300 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded
                 [&>*:first-child]:mt-0
               `}
-            dangerouslySetInnerHTML={{ __html: bookPost.contentHtml }}
-          />
-        </article>
-      </div>
+          dangerouslySetInnerHTML={{ __html: bookPost.contentHtml }}
+        />
+      </article>
     );
   } catch (err: unknown) {
     // Log the error for debugging

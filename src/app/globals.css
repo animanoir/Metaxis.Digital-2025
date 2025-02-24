@@ -65,9 +65,8 @@ aside {
 
 /* Paragraphs and Lists */
 .mdx-prose p {
-  @apply mb-6 text-base leading-relaxed;
-  font-family: var(--font-montserrat);
-  color: black !important;
+  @apply mb-6 leading-relaxed text-xl text-justify;
+  font-family: var(--font-lora);
 }
 
 .mdx-prose ul,

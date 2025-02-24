@@ -52,29 +52,28 @@ export default async function BlogPost(props: Props) {
       : post.image;
 
     return (
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <article>
-          {post.image && (
-            <div className="mb-8">
-              <Image
-                src={imageUrl}
-                alt={post.title}
-                width={800}
-                height={400}
-                className="rounded-lg shadow-lg"
-                priority
-              />
-            </div>
-          )}
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <div className="flex items-center space-x-4 mb-8 text-gray-600">
-            <span>{post.author}</span>
-            <span>•</span>
-            <time>{new Date(post.date).toLocaleDateString()}</time>
+      <article className="max-w-4xl w-3xl mx-auto px-4 py-12">
+        {post.image && (
+          <div className="mb-8">
+            <Image
+              src={imageUrl}
+              alt={post.title}
+              width={800}
+              height={400}
+              className="rounded-lg shadow-lg"
+              priority
+            />
           </div>
-          <div
-            className="
-                prose prose-invert prose-lg max-w-none
+        )}
+        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+        <div className="flex items-center space-x-4 mb-8 text-gray-600">
+          <span>{post.author}</span>
+          <span>•</span>
+          <time>{new Date(post.date).toLocaleDateString()}</time>
+        </div>
+        <div
+          className="
+                prose prose-invert prose-lg max-w-none text-gray-800 text-sm
                 prose-headings:font-bold prose-headings:text-gray-100
                 prose-p:prose-p:leading-relaxed mdx-prose
                 prose-a:text-gray-400 prose-a:no-underline hover:prose-a
@@ -83,12 +82,11 @@ export default async function BlogPost(props: Props) {
                 prose-strong:text-gray-200
                 prose-code:text-gray-300 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded
                 [&>*:first-child]:mt-0
-            
             "
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
-        </article>
-      </div>
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
+      </article>
+
     );
   } catch (err: unknown) {
     console.error('Error loading blog post:', err);
