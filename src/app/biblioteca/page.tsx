@@ -1,4 +1,6 @@
 import BookList from "@/components/bookPosts/BookList";
+import { Metadata } from 'next';
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(
