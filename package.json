@@ -15,6 +15,7 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.7",
     "@types/mdx": "^2.0.13",
+    "@types/react-modal": "^3.16.3",
     "disqus-react": "^1.1.6",
     "gray-matter": "^4.0.3",
     "lenis": "^1.1.20",
@@ -23,6 +24,7 @@
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-modal": "^3.16.3",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1"
   },

@@ -4,6 +4,7 @@ import { useForm, ValidationError } from "@formspree/react";
 // import styles from './NewsletterForm.module.css';
 import { useState } from 'react';
 import FloatingText from '@/components/FloatingText/FloatingText';
+import NewsletterModal from '@/components/newsletterModal/NewsletterModal';
 
 const FLOATING_TEXTS_COUNT = 20;
 
@@ -11,6 +12,7 @@ export default function NewsletterForm() {
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM || '');
   const [inputValue, setInputValue] = useState('');
   const [floatingTexts, setFloatingTexts] = useState<string[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -129,6 +131,7 @@ export default function NewsletterForm() {
           className="text-red-400 text-sm mt-2 font-karla"
         />
       </form>
+      <NewsletterModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} />
     </div >
   );
 }

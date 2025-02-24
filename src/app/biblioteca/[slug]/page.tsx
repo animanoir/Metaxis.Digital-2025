@@ -20,9 +20,14 @@ type Props = {
 };
 
 
+// Dynamic metadata generator
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const bookPost = await getBookPostData(params.slug);
+
+  const imageUrl = bookPost.image.startsWith('./')
+    ? `/bookposts/${params.slug}/${bookPost.image.slice(2)}`
+    : bookPost.image;
 
   if (!bookPost) {
     return {
@@ -35,7 +40,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title: bookPost.title,
     description: bookPost.description,
     openGraph: {
-      images: [{ url: bookPost.image }],
+      images: [{ url: imageUrl }],
     },
     twitter: {
       card: 'summary_large_image',
