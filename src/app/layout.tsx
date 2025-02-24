@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Courier_Prime, Montserrat, Karla, Lora } from "next/font/google";
+import { Geist, Geist_Mono, Courier_Prime, Montserrat, Lora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -10,11 +10,6 @@ import { ReactLenis } from "lenis/react";
 
 const lora = Lora({
   variable: "--font-lora",
-  subsets: ["latin"],
-});
-
-const karla = Karla({
-  variable: "--font-karla",
   subsets: ["latin"],
 });
 
