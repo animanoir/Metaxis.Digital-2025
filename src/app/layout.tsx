@@ -5,8 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import NewsletterForm from "@/components/newsletterForm/NewsletterForm";
 import { ReactLenis } from "lenis/react";
-
-
+import amalgalmasImg from '@/app/assets/images/amalgalmas.jpg';
 
 const karla = Karla({
   variable: "--font-karla",
@@ -48,16 +47,19 @@ export const metadata: Metadata = {
     default: 'metaxis.digital',
     template: '%s | metaxis.digital',
   },
-  description: 'Biblioteca digital de libros',
+  description: 'Biblioteca de pdfs/epubs sobre artes, ciencias y filosofías y blog enfocado en lo meta(moderno), futurista y el qualiadigma.',
   openGraph: {
     type: 'website',
     locale: 'es_ES',
     url: '/',
     siteName: 'metaxis.digital',
+    images: [{ url: amalgalmasImg.src }]
+
   },
   twitter: {
     card: 'summary_large_image',
     site: '@metaxis_digital',
+    images: [{ url: amalgalmasImg.src }],
   },
 }
 
