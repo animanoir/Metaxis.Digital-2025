@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import styles from './ArenaContent.module.css';
+import Image from 'next/image';
 
 // const getTime = () => {
 //   const date = new Date();
@@ -125,7 +126,9 @@ const ArenaContent = () => {
                 rel="noreferrer"
                 aria-label="Enlace a inspiración"
               >
-                <img
+                <Image
+                  width={100}
+                  height={100}
                   className={styles.image}
                   src={content.image.square.url}
                   alt={content.title}
