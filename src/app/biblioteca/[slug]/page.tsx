@@ -60,7 +60,7 @@ export default async function BookPost(props: Props) {
       : bookPost.image;
 
     return (
-      <article className="mx-auto w-3xl max-w-2xl">
+      <article className="mx-auto w-4xl ">
         <div className="min-h-screen flex items-center justify-center flex-col md:flex-row">
           <Image
             src={imageUrl}
@@ -80,7 +80,7 @@ export default async function BookPost(props: Props) {
                 <b>{bookPost.publishedYear}</b>
               </h3>
             )}
-            <h4 className={styles.description}>{bookPost.description}</h4>
+            <h4 className={`${styles.description} font-karla`}>{bookPost.description}</h4>
             <div className={styles.downloadWrapper}>
               <a
                 href="https://t.me/+DULTIj9jMLgzNTUx"

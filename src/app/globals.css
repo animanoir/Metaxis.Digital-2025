@@ -52,7 +52,7 @@ aside {
 }
 
 .mdx-prose h1 {
-  @apply text-4xl md:text-5xl font-bold mb-8 mt-12 bg-gradient-to-r to-gray-400 bg-clip-text text-transparent;
+  @apply text-4xl md:text-5xl font-bold mb-8 mt-12 text-gray-900 bg-clip-text;
 }
 
 .mdx-prose h2 {
@@ -194,7 +194,6 @@ aside {
 
 .mdx-prose strong {
   @apply inline-block;
-  animation: etherealRainbow 1s infinite ease-in-out;
 }
 
 /* MDX styling ends here */
