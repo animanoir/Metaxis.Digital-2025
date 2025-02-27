@@ -15,7 +15,7 @@ const BlogListing = () => {
   // });
 
   return (
-    <div className={styles.blogListingContainer}>
+    <div>
       {
         blogPosts.map((post) => (
           <IndividualBlogPost
