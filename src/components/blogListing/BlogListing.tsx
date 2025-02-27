@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './BlogListing.module.css';
 import { getSortedBlogPostsData } from '@/lib/blogPosts';
 import IndividualBlogPost from './IndividualBlogPost';
 
