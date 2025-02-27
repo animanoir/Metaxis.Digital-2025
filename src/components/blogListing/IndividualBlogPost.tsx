@@ -17,37 +17,70 @@ const IndividualBlogPost = ({
 }: IndividualBlogPost) => {
   return (
     <div className={`${featuredArticle
-      ? "w-full mx-auto pb-10 font-[Karla] border-b-2 border-gray-200 mb-16"
-      : "w-2/5 mx-auto pb-20 font-[Karla] md:w-3/5 sm:w-full sm:pb-0"}`}>
-      <div className={`${featuredArticle ? "flex flex-col md:flex-row gap-8" : ""}`}>
-        <Link href={`/blog/${slug}`} className={`${featuredArticle ? "block md:w-3/5" : "block"}`}>
-          <Image
-            style={{ objectFit: "cover" }}
-            alt={title}
-            src={image}
-            width={featuredArticle ? 800 : 500}
-            height={featuredArticle ? 500 : 300}
-            className={`w-full mb-4 hover:opacity-90 transition-opacity ${featuredArticle ? "h-[400px]" : ""}`}
-          />
-        </Link>
-        <Link href={`/blog/${slug}`}>
-          <div className={`${featuredArticle ? "md:w-2/5 flex flex-col justify-center" : ""}`}>
-            <p className={`font-[Karla] ${featuredArticle ? "text-xl" : "text-lg"} m-0 text-black`}>
-              {date}
-            </p>
-            <h2 className={`text-black ${featuredArticle ? "text-5xl md:text-6xl my-4" : "text-3xl"} hover:text-[#dc143c] transition-colors`}>
-              {title}
-            </h2>
-            <h4 className={`my-2 font-[Lora] font-normal ${featuredArticle ? "text-xl" : "text-base"} text-black p-0 w-fit`}>
-              {description}
-            </h4>
-            <h5 className={`${featuredArticle ? "text-2xl mt-6" : "text-xl"} text-right`}>
-              <span className="font-normal">por </span>
-              {author}
-            </h5>
+      ? `relative h-screen w-screen overflow-hidden`
+      : "w-2/5 mx-auto pb-20 md:w-3/5 sm:w-full sm:pb-0"}`}>
+
+      {featuredArticle ? (
+        // Featured article - full viewport with centered content
+        <>
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              priority
+              style={{ objectFit: "cover" }}
+            />
           </div>
-        </Link>
-      </div>
+
+          {/* Centered content */}
+          <Link href={`/blog/${slug}`} className="block">
+            <div className="absolute inset-0 flex items-center justify-center text-center p-8">
+              <div className="max-w-3xl bg-black p-8 rounded-lg">
+                <p className=" text-xl m-0 text-white">{date}</p>
+                <h2 className="text-white text-5xl md:text-6xl my-4 hover:text-[#dc143c] transition-colors">
+                  {title}
+                </h2>
+                <h4 className="my-2 font-[Lora] font-normal text-xl text-white p-0 mx-auto">
+                  {description}
+                </h4>
+                <h5 className="text-2xl mt-6 text-white">
+                  <span className="font-normal">por </span>
+                  {author}
+                </h5>
+              </div>
+            </div>
+          </Link>
+        </>
+      ) : (
+        // Regular article layout
+        <div className="font-[Karla] py-25">
+          <div>
+            <Link href={`/blog/${slug}`} className="block">
+              <Image
+                style={{ objectFit: "cover" }}
+                alt={title}
+                src={image}
+                width={500}
+                height={300}
+                className="w-full mb-4 hover:opacity-90 transition-opacity"
+              />
+            </Link>
+            <Link href={`/ blog /${slug}`}>
+              <div>
+                <p className="font-[Karla] text-lg m-0 text-black">{date}</p>
+                <h2 className="text-black text-3xl hover:text-[#dc143c] transition-colors">{title}</h2>
+                <h4 className="my-2 font-[Lora] font-normal text-base text-black p-0 w-fit">{description}</h4>
+                <h5 className="text-xl text-right">
+                  <span className="font-normal">por </span>
+                  {author}
+                </h5>
+              </div>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
