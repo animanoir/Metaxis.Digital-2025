@@ -17,6 +17,7 @@
     "@types/mdx": "^2.0.13",
     "@types/react-modal": "^3.16.3",
     "disqus-react": "^1.1.6",
+    "fs": "0.0.1-security",
     "gray-matter": "^4.0.3",
     "lenis": "^1.1.20",
     "lodash": "^4.17.21",
