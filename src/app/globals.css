@@ -35,11 +35,10 @@ body {
 /* Markdown styling */
 /* MDX Content Styling */
 .mdx-prose {
-  @apply max-w-4xl mx-auto leading-relaxed;
+  @apply max-w-4xl mx-auto leading-relaxed px-4 sm:px-6;
 }
 
 /* Headings */
-
 .mdx-prose h1,
 .mdx-prose h2,
 .mdx-prose h3 {
@@ -47,64 +46,40 @@ body {
 }
 
 .mdx-prose h1 {
-  @apply text-4xl md:text-5xl font-bold mb-8 mt-12 text-gray-900 bg-clip-text;
+  @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 mt-6 sm:mt-8 md:mt-12 text-gray-900 bg-clip-text;
 }
 
 .mdx-prose h2 {
-  @apply text-3xl md:text-4xl font-semibold mb-6 mt-10;
+  @apply text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-5 md:mb-6 mt-6 sm:mt-8 md:mt-10;
 }
 
 .mdx-prose h3 {
-  @apply text-2xl md:text-3xl font-medium mb-4 mt-8;
+  @apply text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-3 md:mb-4 mt-5 sm:mt-6 md:mt-8;
 }
 
 /* Paragraphs and Lists */
 .mdx-prose p {
-  @apply mb-6 leading-relaxed text-xl text-justify;
+  @apply mb-4 sm:mb-5 md:mb-6 leading-relaxed text-base sm:text-lg md:text-xl text-justify;
   font-family: var(--font-lora);
 }
 
 .mdx-prose ul,
 .mdx-prose ol {
-  @apply mb-6 ml-6 space-y-2;
+  @apply mb-4 sm:mb-5 md:mb-6 ml-4 sm:ml-5 md:ml-6 space-y-1 sm:space-y-1.5 md:space-y-2;
 }
 
 .mdx-prose li {
-  @apply text-lg;
+  @apply text-base sm:text-lg md:text-lg;
 }
 
 /* Blockquotes */
 .mdx-prose blockquote {
-  @apply pl-6 my-10 py-10 border-gray-700;
+  @apply pl-4 sm:pl-5 md:pl-6 my-6 sm:my-8 md:my-10 py-6 sm:py-8 md:py-10 border-gray-700 overflow-hidden;
 }
 
 .mdx-prose blockquote p {
-  /* transform: scale3d(5, 5, 5); */
-  /* @apply text-2xl/8 text-gray-400;
-    font-family: 'Karla', serif !important;
-  font-size: 1.8rem; /* Tamaño grande para destacar */
-  color: #0dba7e;
-  /* A color taken from the image for the text */
-  background-color: #0db97e;
-  /* A slightly different color from the image for the background */
-  border-left: 5px solid #0eb97f;
-  /* A contrasting color for the border */
-  padding: 2rem;
-  /* Espaciado interno para una mejor lectura */
-  margin: 20px 0;
-  /* Margen para separar del texto circundante */
-  line-height: 1.6;
-  /* Espaciado de línea para mejorar la legibilidad */
-  text-align: justify;
-  /* Alineación justificada para un aspecto elegante */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sombra sutil para dar profundidad */
-  border-radius: 4px;
-  /* Bordes redondeados para suavizar el aspecto */
+  @apply bg-[#0db97e] text-lg sm:text-xl md:text-2xl p-3 sm:p-4 md:p-6 font-bold rounded border-l-4 border-[#0eb97f] shadow-md;
   transition: all 0.3s ease-in-out;
-  /* Transición suave para efectos de hover */
-  font-weight: bold;
-
 }
 
 .mdx-prose blockquote p:hover {
@@ -113,82 +88,77 @@ body {
 
 /* Code Blocks */
 .mdx-prose pre {
-  @apply p-4 my-6 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50;
-  @apply overflow-x-auto
+  @apply p-3 sm:p-3 md:p-4 my-4 sm:my-5 md:my-6 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 overflow-x-auto text-sm sm:text-base;
 }
 
 .mdx-prose code {
-  @apply font-mono text-sm;
+  @apply font-mono text-xs sm:text-sm;
 }
 
 /* Inline Code */
 .mdx-prose :not(pre)>code {
-  @apply px-1.5 py-0.5 rounded-md bg-gray-800/50 text-sm;
+  @apply px-1 py-0.5 rounded-md bg-gray-800/50 text-xs sm:text-sm;
 }
 
 /* Links */
 .mdx-prose a {
-  @apply text-gray-400 underline decoration-gray-700 underline-offset-2 transition-all duration-300;
+  @apply text-gray-400 underline decoration-gray-700 underline-offset-2 transition-all duration-300 break-words;
   @apply hover:text-gray-200 hover:decoration-gray-500;
 }
 
 /* Images */
 .mdx-prose img {
-  @apply rounded-xl shadow-2xl my-8 border border-gray-800/50;
+  @apply rounded-xl shadow-xl my-6 sm:my-7 md:my-8 border border-gray-800/50 max-w-full h-auto;
   @apply transition-all duration-500 hover:scale-[1.02];
 }
 
-/* Horizontal Rule */
+/* Horizontal Rule - Fix the invalid utility classes */
 .mdx-prose hr {
-  @apply mx-auto my-12 border-gray-800;
-  width: 50%;
+  @apply mx-auto my-8 sm:my-10 md:my-12 border-gray-800;
+  width: 80%;
+  /* Base width */
 }
 
-/* Tables */
+/* Apply responsive widths using media queries instead of invalid utilities */
+@media (min-width: 640px) {
+  .mdx-prose hr {
+    width: 70%;
+  }
+}
+
+@media (min-width: 768px) {
+  .mdx-prose hr {
+    width: 50%;
+  }
+}
+
+/* Tables - make them responsive */
 .mdx-prose table {
-  @apply w-full my-8 border-collapse;
+  @apply w-full my-6 sm:my-7 md:my-8 border-collapse overflow-x-auto block sm:table;
 }
 
 .mdx-prose th {
-  @apply px-4 py-2 text-left border-b border-gray-800 font-semibold;
+  @apply px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-left border-b border-gray-800 font-semibold;
 }
 
 .mdx-prose td {
-  @apply px-4 py-2 border-b border-gray-800/50 text-gray-400;
+  @apply px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 border-b border-gray-800/50 text-gray-400;
 }
 
-/* Custom selection color */
-.mdx-prose ::selection {
-  @apply bg-gray-700/50 text-gray-200;
-
-}
-
-/* Footnotes */
-.mdx-prose .footnotes {
-  @apply mt-16 pt-8 border-t border-gray-800;
-}
-
-/* Add smooth transitions */
-.mdx-prose * {
-  @apply transition-colors duration-200;
-}
-
-/* iframes */
+/* iframes - make them responsive */
 .mdx-prose iframe {
-  @apply w-full aspect-video rounded-xl shadow-lg my-8;
+  @apply w-full aspect-video rounded-xl shadow-lg my-6 sm:my-7 md:my-8;
   @apply border border-gray-800/50;
   @apply transition-all duration-500;
   @apply hover:scale-[1.02];
   @apply backdrop-blur-sm;
 }
 
-/* Optional: Add specific styling for YouTube iframes */
-.mdx-prose iframe[src*="youtube.com"] {
-  @apply bg-gray-900/50;
+.mdx-prose strong {
+  @apply inline-block;
 }
 
-
-@keyframes etherealRainbow {
+/* @keyframes etherealRainbow {
   0% {
     transform: scale(1);
     color: #ff0000;
@@ -213,11 +183,8 @@ body {
     transform: scale(1);
     color: #ff00ff;
   }
-}
+} */
 
-.mdx-prose strong {
-  @apply inline-block;
-}
 
 /* MDX styling ends here */
 

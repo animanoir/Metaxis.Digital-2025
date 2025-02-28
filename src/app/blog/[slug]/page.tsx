@@ -54,53 +54,53 @@ export default async function BlogPost(props: Props) {
       : post.image;
 
     return (
-      <div className="max-w-4xl w-3xl mx-auto px-4 py-12">
-        <article >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <article>
           {post.image && (
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <Image
                 src={imageUrl}
                 alt={post.title}
                 width={800}
                 height={400}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-lg w-full h-auto object-cover max-h-[500px]"
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
               />
             </div>
           )}
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <div className="flex items-center space-x-4 mb-8 text-gray-600">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 leading-tight">{post.title}</h1>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 md:mb-8 text-gray-600 text-sm sm:text-base">
             <span>{post.author}</span>
-            <span>•</span>
+            <span className="hidden sm:inline">•</span>
             <time>{new Date(post.date).toLocaleDateString()}</time>
           </div>
           <div
             className="
-                prose prose-invert prose-lg max-w-none text-gray-800 text-sm
-                prose-headings:font-bold prose-headings:text-gray-100
-                prose-p:prose-p:leading-relaxed mdx-prose
-                prose-a:text-gray-400 prose-a:no-underline hover:prose-a
-                prose-blockquote:border-l-gray-500 
-                prose-blockquote:rounded-lg
+                prose prose-invert prose-sm sm:prose-base lg:prose-lg max-w-none text-gray-800
+                prose-headings:font-bold prose-headings:text-gray-100 prose-headings:mb-4 prose-headings:mt-8
+                prose-h1:text-2xl sm:prose-h1:text-3xl prose-h2:text-xl sm:prose-h2:text-2xl
+                prose-p:leading-relaxed prose-p:my-4 mdx-prose
+                prose-a:text-gray-400 prose-a:no-underline hover:prose-a:text-gray-300
+                prose-blockquote:border-l-gray-500 prose-blockquote:pl-4 
+                prose-blockquote:rounded-lg prose-blockquote:py-1
                 prose-strong:text-gray-200
-                prose-code:text-gray-300 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded
+                prose-code:text-gray-300 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded prose-code:text-sm
+                prose-img:rounded-lg prose-img:mx-auto prose-img:my-6
+                prose-ul:pl-5 prose-ol:pl-5
                 [&>*:first-child]:mt-0
             "
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
         </article>
-        {/* <DisqusComments
-          slug={post.slug}
-          title={post.title}
-        /> */}
       </div>
     );
   } catch (err: unknown) {
     console.error('Error loading blog post:', err);
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="max-w-md p-8 bg-white rounded-lg shadow-lg">
-          <h1 className="text-3xl font-bold mb-4">Post not found</h1>
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="max-w-md w-full p-6 sm:p-8 bg-white rounded-lg shadow-lg">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-4">Post not found</h1>
           <p className="text-gray-600">
             {err instanceof Error
               ? err.message
