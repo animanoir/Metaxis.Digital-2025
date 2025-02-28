@@ -35,23 +35,23 @@ const IndividualBlogPost = ({
           </div>
 
           {/* Centered content */}
-          <Link href={`/blog/${slug}`}>
-            <div className="absolute inset-0 flex items-center justify-center text-center p-8">
-              <div className="max-w-3xl bg-black p-8 rounded-lg">
-                <p className=" text-xl m-0 text-white">{date}</p>
-                <h2 className="text-white text-5xl md:text-6xl my-4 hover:text-[#dc143c] transition-colors">
+          <div className="absolute inset-0 flex items-center justify-center p-8">
+            <div className="max-w-4xl p-8 rounded-lg text-left">
+              <Link href={`/blog/${slug}`}>
+                <p className="text-xl m-0 mb-2 text-white bg-black px-4 py-2 rounded inline-block">{date}</p>
+                <h2 className="text-white font-bold text-5xl md:text-7xl my-4 bg-black px-4 py-2 rounded hover:text-[#dc143c] transition-colors text-left w-fit">
                   {title}
                 </h2>
-                <h4 className="my-2 font-[Lora] font-normal text-xl text-white p-0 mx-auto">
+                <h4 className="my-2 font-[Lora] font-normal text-xl text-white p-0 bg-black px-4 py-2 rounded text-left w-fit">
                   {description}
                 </h4>
-                <h5 className="text-2xl mt-6 text-white">
+                <h5 className="font-[Lora] text-5 mt-6 text-white bg-black px-4 py-2 rounded inline-block">
                   <span className="font-normal">por </span>
                   {author}
                 </h5>
-              </div>
+              </Link>
             </div>
-          </Link>
+          </div>
         </>
       ) : (
         // Regular article layout
