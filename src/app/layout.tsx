@@ -66,7 +66,7 @@ export default function RootLayout({
         <ReactLenis root >
           <div className="vertical-line-left border-black" />
           <div className="vertical-line-right border-black" />
-          <main className="mb-48" style={{
+          <main style={{
             transform: "translateY(-20px)"
           }}>
             {children}
