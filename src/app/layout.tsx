@@ -61,13 +61,14 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${montserrat.variable} ${courierPrime.variable} ${lora.variable} ${karla.variable}  antialiased  bg-gray-50`}
-      >
+        className={`${montserrat.variable} ${courierPrime.variable} ${lora.variable} ${karla.variable}  antialiased  bg-gray-50`}>
         <Navbar />
-        <ReactLenis root>
+        <ReactLenis root >
           <div className="vertical-line-left border-black" />
           <div className="vertical-line-right border-black" />
-          <main className="mb-48">
+          <main className="mb-48" style={{
+            transform: "translateY(-20px)"
+          }}>
             {children}
             <NewsletterForm />
             <Footer />

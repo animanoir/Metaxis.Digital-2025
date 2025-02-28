@@ -38,7 +38,7 @@ const IndividualBlogPost = ({
           <div className="absolute inset-0 flex items-center justify-center p-8">
             <div className="max-w-4xl p-8 rounded-lg text-left">
               <Link href={`/blog/${slug}`}>
-                <p className="text-xl m-0 mb-2 text-white bg-black px-4 py-2 rounded inline-block">{date}</p>
+                <p className="font-[Karla] text-xl m-0 mb-2 text-white bg-black px-4 py-2 rounded inline-block">{date}</p>
                 <h2 className="text-white font-bold text-5xl md:text-7xl my-4 bg-black px-4 py-2 rounded hover:text-[#dc143c] transition-colors text-left w-fit">
                   {title}
                 </h2>
