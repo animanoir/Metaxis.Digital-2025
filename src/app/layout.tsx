@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Courier_Prime, Montserrat, Lora, Karla } from "next/font/google";
+import { Courier_Prime, Montserrat, Lora, Karla } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -22,16 +22,6 @@ const courierPrime = Courier_Prime({
   weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 const montserrat = Montserrat({
@@ -71,19 +61,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${courierPrime.variable} ${lora.variable} ${karla.variable}  antialiased  bg-gray-50`}
+        className={`${montserrat.variable} ${courierPrime.variable} ${lora.variable} ${karla.variable}  antialiased  bg-gray-50`}
       >
+        <Navbar />
         <ReactLenis root>
-          <Navbar />
-
-          <main className="mb-48" >
-            <div className="vertical-line-left border-black" />
+          <div className="vertical-line-left border-black" />
+          <div className="vertical-line-right border-black" />
+          <main className="mb-48">
             {children}
-            <div className="vertical-line-right border-black" />
-
+            <NewsletterForm />
+            <Footer />
           </main>
-          <NewsletterForm />
-          <Footer />
         </ReactLenis>
       </body>
     </html >

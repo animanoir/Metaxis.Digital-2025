@@ -17,7 +17,7 @@ const IndividualBlogPost = ({
 }: IndividualBlogPost) => {
   return (
     <div className={`${featuredArticle
-      ? `relative h-screen w-screen overflow-hidden`
+      ? `relative h-screen transform-none  `
       : "w-2/5 mx-auto pb-20 md:w-3/5 sm:w-full sm:pb-0"}`}>
 
       {featuredArticle ? (
@@ -35,7 +35,7 @@ const IndividualBlogPost = ({
           </div>
 
           {/* Centered content */}
-          <Link href={`/blog/${slug}`} className="block">
+          <Link href={`/blog/${slug}`}>
             <div className="absolute inset-0 flex items-center justify-center text-center p-8">
               <div className="max-w-3xl bg-black p-8 rounded-lg">
                 <p className=" text-xl m-0 text-white">{date}</p>
@@ -55,30 +55,26 @@ const IndividualBlogPost = ({
         </>
       ) : (
         // Regular article layout
-        <div className="font-[Karla] py-25">
-          <div>
-            <Link href={`/blog/${slug}`} className="block">
-              <Image
-                style={{ objectFit: "cover" }}
-                alt={title}
-                src={image}
-                width={500}
-                height={300}
-                className="w-full mb-4 hover:opacity-90 transition-opacity"
-              />
-            </Link>
-            <Link href={`/ blog /${slug}`}>
-              <div>
-                <p className="font-[Karla] text-lg m-0 text-black">{date}</p>
-                <h2 className="text-black text-3xl hover:text-[#dc143c] transition-colors">{title}</h2>
-                <h4 className="my-2 font-[Lora] font-normal text-base text-black p-0 w-fit">{description}</h4>
-                <h5 className="text-xl text-right">
-                  <span className="font-normal">por </span>
-                  {author}
-                </h5>
-              </div>
-            </Link>
-          </div>
+        <div className="font-[Karla] mx-auto py-25 w-lg">
+          <Link href={`/blog/${slug}`} className="block">
+            <Image
+              style={{ objectFit: "cover" }}
+              alt={title}
+              src={image}
+              width={500}
+              height={300}
+              className="w-full mb-4 hover:opacity-50 transition-opacity"
+            />
+            <div>
+              <p className="font-[Karla] text-lg m-0 text-black">{date}</p>
+              <h2 className="text-black text-3xl hover:text-[#dc143c] transition-colors">{title}</h2>
+              <h4 className="my-2 font-[Lora] font-normal text-base text-black p-0 w-fit">{description}</h4>
+              <h5 className="text-xl text-right">
+                <span className="font-normal">por </span>
+                {author}
+              </h5>
+            </div>
+          </Link>
         </div>
       )}
     </div>

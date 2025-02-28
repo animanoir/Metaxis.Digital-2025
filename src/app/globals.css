@@ -15,12 +15,7 @@
 }
 
 body {
-  /* color: var(--background); */
   font-family: Arial, Helvetica, sans-serif;
-}
-
-aside {
-  /* font-family: var(--font-courier-prime) */
 }
 
 @layer components {
