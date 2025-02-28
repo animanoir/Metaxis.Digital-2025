@@ -9,11 +9,12 @@ type IndividualBlogPost = {
   date: string,
   description: string,
   author: string
-  featuredArticle: boolean
+  featuredArticle: boolean,
+  concepts: string[]
 }
 
 const IndividualBlogPost = ({
-  slug, title, image, date, description, author, featuredArticle
+  slug, title, image, date, description, author, featuredArticle, concepts
 }: IndividualBlogPost) => {
   return (
     <div className={`${featuredArticle
@@ -65,16 +66,23 @@ const IndividualBlogPost = ({
               height={300}
               className="w-full mb-4 hover:opacity-50 transition-opacity"
             />
-            <div>
-              <p className="font-[Karla] text-lg m-0 text-black">{date}</p>
-              <h2 className="text-black text-3xl hover:text-[#dc143c] transition-colors">{title}</h2>
-              <h4 className="my-2 font-[Lora] font-normal text-base text-black p-0 w-fit">{description}</h4>
-              <h5 className="text-xl text-right">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <p className="font-[Karla] text-lg m-0 mb-2 bg-black text-white px-3 py-1 rounded inline-block">{date}</p>
+              <h2 className="text-black text-3xl hover:text-[#dc143c] transition-colors bg-gray-100 px-3 py-2 rounded w-fit">{title}</h2>
+              <h4 className="my-2 font-[Lora] font-normal text-base text-black bg-gray-100 px-3 py-2 rounded w-fit">{description}</h4>
+              <h5 className="text-xl bg-black text-white px-3 py-1 rounded inline-block mt-2">
                 <span className="font-normal">por </span>
                 {author}
               </h5>
             </div>
           </Link>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {concepts.map((concept) => (
+              <Link key={concept} href={`/conceptos/${concept.toLowerCase()}`} className="bg-gray-200 hover:bg-black hover:text-white px-3 py-1 rounded text-sm transition-colors">
+                {concept}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

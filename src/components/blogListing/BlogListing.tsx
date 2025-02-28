@@ -19,6 +19,7 @@ const BlogListing = () => {
         date={post.date}
         description={post.description}
         author={post.author}
+        concepts={post.concepts}
       />
     );
 
