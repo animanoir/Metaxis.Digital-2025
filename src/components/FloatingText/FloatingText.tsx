@@ -56,7 +56,7 @@ export default function FloatingText({ text }: FloatingTextProps) {
 
   return (
     <div
-      className='text-black'
+      className='text-black z-1000'
       style={{
         position: 'fixed',
         left: position.x,
@@ -64,7 +64,7 @@ export default function FloatingText({ text }: FloatingTextProps) {
         opacity: mounted ? opacity : 0,
         transition: `opacity ${duration}s cubic-bezier(0.4, 0, 0.2, 1), transform ${duration}s cubic-bezier(0.4, 0, 0.2, 1), font-size ${duration}s cubic-bezier(0.4, 0, 0.2, 1)`,
         pointerEvents: 'none',
-        zIndex: 50,
+        zIndex: 1000,
         fontFamily: 'karla',
         ...styles,
       }}

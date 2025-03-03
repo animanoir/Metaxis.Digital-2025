@@ -70,9 +70,9 @@ export default function RootLayout({
             transform: "translateY(-20px)"
           }}>
             {children}
-            <NewsletterForm />
-            <Footer />
           </main>
+          <NewsletterForm />
+          <Footer />
         </ReactLenis>
       </body>
     </html >
