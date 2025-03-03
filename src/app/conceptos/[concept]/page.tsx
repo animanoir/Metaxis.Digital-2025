@@ -15,16 +15,16 @@ interface BookPost {
 }
 
 // Adding interface for blog posts
-interface BlogPost {
-  id: string;
-  title: string;
-  author: string;
-  date: string;
-  description: string;
-  image: string;
-  slug: string;
-  concepts: string[];
-}
+// interface BlogPost {
+//   id: string;
+//   title: string;
+//   author: string;
+//   date: string;
+//   description: string;
+//   image: string;
+//   slug: string;
+//   concepts: string[];
+// }
 
 type Props = {
   params: Promise<{ concept: string }>;
