@@ -97,19 +97,19 @@ export default async function ConceptPage({ params }: Props) {
   await getAllFiles(postsDirectory);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-bold mb-8">
-        Libros que tengan que ver con <b>{decodedConcept}</b>:
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <h1 className="text-4xl font-bold mb-12  text-center">
+        Artículos que tengan que ver con <b>{decodedConcept}</b>:
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {relatedPosts.map((post) => (
           <Link
             href={`/biblioteca/${post.slug}`}
             key={post.slug}
             className="group hover:transform hover:scale-105 transition-all duration-200"
           >
-            <div className="bg-white/5 rounded-lg overflow-hidden shadow-lg backdrop-blur-sm">
-              <div className="relative h-48">
+            <div className="bg-white/5 rounded-lg overflow-hidden shadow-lg backdrop-blur-sm border border-white/10">
+              <div className="relative h-56 md:h-64">
                 <Image
                   src={`/bookposts/${post.image.replace('.jpg', '')}/${post.image}`}
                   alt={post.title}
@@ -117,9 +117,9 @@ export default async function ConceptPage({ params }: Props) {
                   className="object-cover"
                 />
               </div>
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-                <p className="text-gray-400 text-sm line-clamp-2">
+              <div className="p-6 md:p-7">
+                <h2 className="text-xl font-semibold mb-3">{post.title}</h2>
+                <p className="text-gray-400 text-sm line-clamp-2 mb-2">
                   {post.description}
                 </p>
               </div>

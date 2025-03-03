@@ -11,14 +11,14 @@ const BlogList = () => {
         {blogPosts.map((post) => post && (
           <Link href={`/blog/${post.slug}`} key={post.slug}>
             <article className="group relative overflow-hidden rounded-lg bg-800/50 p-4 backdrop-blur-xs transition-all duration-300 hover:bg-800/70 hover:translate-y-[-4px] shadow-md cursor-pointer hover:shadow-xl">
-              <div className="aspect-2/3 overflow-hidden rounded-lg mb-4">
+              <div className="h-80 overflow-hidden rounded-lg mb-4">
                 {post.image && (
                   <Image
                     src={post.image}
                     alt={`Post: ${post.title}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     width={600}
-                    height={400}
+                    height={800}
                     className="object-cover w-full h-full transition-all duration-500 group-hover:scale-105"
                     loading="lazy"
                     quality={75}
