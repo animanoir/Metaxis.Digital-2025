@@ -1,5 +1,6 @@
 import BookList from "@/components/bookPosts/BookList";
 import { Metadata } from 'next';
+import styles from "./biblioteca.module.css"
 
 
 export const metadata: Metadata = {
@@ -26,8 +27,15 @@ export const metadata: Metadata = {
 
 export default function Library() {
   return (
-    <>
-      <BookList />
-    </>
+    <div className={styles.container}>
+      <div className={styles.contentContainer}>
+        <h1 className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Biblioteca</h1>
+        <p className={styles.text}>
+          La <b>Gran Biblioteca</b> de <b>metaxis.digital</b> (en constante actualización)
+          <span className={styles.typingDots}></span>
+        </p>
+        <BookList />
+      </div>
+    </div>
   )
 }

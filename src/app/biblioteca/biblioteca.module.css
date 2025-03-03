@@ -1,0 +1,73 @@
+.container {
+  margin: 10vh auto 20vh;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Karla', sans-serif;
+  font-size: 5rem;
+  margin: 0 auto;
+  line-height: 1;
+  word-break: break-all;
+}
+
+.text {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.4rem;
+  align-self: center;
+  text-align: justify;
+}
+
+.typingDots::after {
+  display: inline-block;
+  content: '';
+  width: 2ch;
+  animation: typing 1.5s steps(3, end) infinite;
+}
+
+@keyframes typing {
+  0% {
+    content: '';
+  }
+
+  25% {
+    content: '.';
+  }
+
+  50% {
+    content: '..';
+  }
+
+  75% {
+    content: '...';
+  }
+
+  100% {
+    content: '';
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .container,
+  .contentContainer {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .title {
+    font-size: 4.5rem;
+  }
+
+  .text {
+    font-size: 1.3rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
