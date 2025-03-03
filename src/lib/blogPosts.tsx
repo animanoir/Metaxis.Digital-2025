@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+// import { remark } from 'remark';
+// import html from 'remark-html';
 
 interface BlogPost {
   id: string;
@@ -115,9 +115,9 @@ export async function getBlogPostData(slug: string) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
+  // const processedContent = await remark()
+  //   .use(html)
+  //   .process(matterResult.content);
 
   const { image, imageTwitter, ...otherData } = matterResult.data;
 
@@ -136,7 +136,10 @@ export async function getBlogPostData(slug: string) {
     description: otherData.description,
     image: processedImage,
     imageTwitter: processedImageTwitter,
-    contentHtml: processedContent.toString(),
+    // Return the raw content instead of HTML
+    content: matterResult.content,
+    // Keep contentHtml for backward compatibility if needed
+    contentHtml: matterResult.content,
     slug: otherData.slug,
     concepts: otherData.concepts,
     authorContact: otherData.authorContact,

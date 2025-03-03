@@ -2,7 +2,7 @@ import { getBlogPostData, getSortedBlogPostsData } from "@/lib/blogPosts";
 import Image from 'next/image';
 import { Metadata } from 'next';
 // import DisqusComments from '@/components/disqus/DisqusComments';
-
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 export function generateStaticParams() {
   const blogPosts = getSortedBlogPostsData();
@@ -23,6 +23,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const post = await getBlogPostData(params.slug);
+
 
   if (!post) {
     return {
@@ -90,8 +91,10 @@ export default async function BlogPost(props: Props) {
                 prose-ul:pl-5 prose-ol:pl-5
                 [&>*:first-child]:mt-0
             "
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
+          >
+            <MDXRemote source={post.content} />
+
+          </div>
         </article>
       </div>
     );
