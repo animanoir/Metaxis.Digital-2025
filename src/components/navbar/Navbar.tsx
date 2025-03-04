@@ -263,7 +263,7 @@ const Navbar = () => {
             Conceptos
           </Link>
         </li>
-        <li style={isDispersed ? {
+        {/* <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,
           left: `${Math.random() * dispartionRadius}vw`,
@@ -272,7 +272,7 @@ const Navbar = () => {
           <Link href="/eventos">
             Eventos
           </Link>
-        </li>
+        </li> */}
         <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,

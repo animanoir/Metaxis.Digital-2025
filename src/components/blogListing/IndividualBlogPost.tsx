@@ -40,13 +40,13 @@ const IndividualBlogPost = ({
             <div className="max-w-4xl p-4 md:p-8 rounded-lg text-left">
               <Link href={`/blog/${slug}`}>
                 <p className="font-[Karla] text-base md:text-xl m-0 mb-2 text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">{date}</p>
-                <h2 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl my-3 md:my-4 bg-black px-3 py-1 md:px-4 md:py-2 rounded hover:text-[#dc143c] transition-colors text-left w-fit">
+                <h2 className=" text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl my-3 md:my-4 bg-black px-3 py-1 md:px-4 md:py-2 rounded hover:text-[#dc143c] transition-colors text-left w-fit">
                   {title}
                 </h2>
                 <h4 className="my-2 font-[Lora] font-normal text-base md:text-xl text-white p-0 bg-black px-3 py-1 md:px-4 md:py-2 rounded text-left w-fit line-clamp-3 md:line-clamp-none">
                   {description}
                 </h4>
-                <h5 className="font-[Lora] text-sm md:text-base mt-3 md:mt-6 text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">
+                <h5 className="font-[Lora] text-sm md:text-base text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">
                   <span className="font-normal">por </span>
                   {author}
                 </h5>
@@ -77,7 +77,7 @@ const IndividualBlogPost = ({
               ))}
             </div>
             <Link href={`/blog/${slug}`} className="block">
-              <h2 className="text-black text-2xl md:text-3xl hover:text-[#dc143c] transition-colors bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-2">{title}</h2>
+              <h2 className="mt-5 text-black text-2xl md:text-3xl hover:text-[#dc143c] transition-colors bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-2">{title}</h2>
             </Link>
             <h4 className="my-2 font-[Lora] font-normal text-sm md:text-base text-black bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-3">{description}</h4>
             <h5 className="text-base md:text-xl bg-black text-white px-2 py-1 md:px-3 rounded inline-block mt-2 ml-auto float-right">
