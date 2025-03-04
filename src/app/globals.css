@@ -36,7 +36,7 @@ body {
 
 .mdx-prose {
   /* Base typography */
-  font-family: var(--font-lora), serif;
+  font-family: var(--font-karla), serif;
   font-size: 1.125rem;
   line-height: 1.8;
   color: #1a1a1a;
@@ -88,6 +88,10 @@ body {
   /* Paragraph spacing */
   & p {
     margin-bottom: 1.5rem;
+    font-family: var(--font-lora), serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+
   }
 
   /* Links with elegant hover */
@@ -133,30 +137,74 @@ body {
     border-radius: 3px;
   }
 
-  /* Beautiful blockquote with butterfly cursor */
   & blockquote {
     font-family: var(--font-lora), serif;
     font-style: italic;
     font-size: 1.1rem;
     margin: 2rem 0;
-    padding: 1.5rem 2rem;
-    border-left: 4px solid rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.02);
-    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1.5rem 2rem 1.5rem 2.5rem;
+    border-left: none;
     position: relative;
     cursor: url('/butterfly32.gif'), auto;
-    transition: all 0.3s ease;
-    color: black
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: black;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 245, 245, 0.8) 100%);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+  }
+
+  /* Animated left border */
+  & blockquote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 8px;
+    background: linear-gradient(to bottom, #ff3d00, #9c27b0, #2196f3, #00bcd4);
+    background-size: 400% 400%;
+    animation: borderGradient 8s ease infinite;
+  }
+
+  /* Decorative quote mark */
+  & blockquote::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: -30px;
+    font-size: 120px;
+    font-family: Georgia, serif;
+    opacity: 0.07;
+    color: #000;
+    line-height: 1;
   }
 
   & blockquote:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    transform: translateX(3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px) translateX(5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 245, 0.9) 100%);
+  }
+
+  /* Border animation */
+  @keyframes borderGradient {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    50% {
+      background-position: 100% 100%;
+    }
+
+    100% {
+      background-position: 0% 0%;
+    }
   }
 
   & blockquote p {
     margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 2;
   }
 
   & blockquote p:last-child {
@@ -215,66 +263,7 @@ body {
   }
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .mdx-prose {
-    color: #000000;
 
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-      color: #f0f0f000;
-    }
-
-    & h1 {
-      border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
-
-    & a {
-      color: #66b3ff;
-      border-bottom-color: rgba(102, 179, 255, 0.2);
-    }
-
-    & a:hover {
-      border-bottom-color: rgba(102, 179, 255, 0.6);
-      background-color: rgba(102, 179, 255, 0.05);
-    }
-
-    & pre {
-      background-color: #1a1a1a;
-      border-left-color: #66b3ff;
-    }
-
-    & code {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    & blockquote {
-      border-left-color: rgba(255, 255, 255, 0.1);
-      background-color: rgba(255, 255, 255, 0.03);
-    }
-
-    & blockquote:hover {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    & th {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-bottom-color: rgba(255, 255, 255, 0.1);
-    }
-
-    & td {
-      border-bottom-color: rgba(255, 255, 255, 0.05);
-    }
-
-    & tr:nth-child(even) {
-      background-color: rgba(255, 255, 255, 0.02);
-    }
-  }
-}
 
 .book-title {
   transform: skew(180deg, 5deg);

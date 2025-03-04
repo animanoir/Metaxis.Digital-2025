@@ -98,7 +98,7 @@ export default async function BookPost(props: Props) {
 
         <div className={`
                 w-full
-                prose prose-invert prose-lg max-w-none
+                prose prose-lg max-w-none
                 prose-headings:font-bold prose-headings:text-gray-100
                 prose-p:leading-relaxed mdx-prose
                 prose-a:text-gray-400 prose-a:no-underline hover:prose-a
