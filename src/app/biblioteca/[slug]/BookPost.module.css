@@ -49,8 +49,7 @@
 }
 
 .bookCover {
-  width: 40%;
-  max-width: 50%;
+
   object-fit: cover;
   margin: 0 auto;
   object-position: center;
@@ -62,7 +61,8 @@
 .description {
   font-family: var(--font-karla), sans-serif;
   font-weight: normal;
-  line-height: ;
+  line-height: 1.5;
+  /* Fix the missing value */
 }
 
 @media (max-width: 768px) {
@@ -84,10 +84,38 @@
   }
 
   .bookCover {
-    width: 100%;
+    width: 90%;
+    /* Increase from 80% */
+    max-width: 450px;
+    /* Increase from 350px */
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    /* Smaller font on mobile */
+    margin-bottom: 1rem;
   }
 
   .description {
     font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .downloadIcon {
+    font-size: 2.5rem;
+    /* Slightly smaller on mobile */
+  }
+}
+
+/* Add small screen adjustments */
+@media (max-width: 480px) {
+  .bookCover {
+    width: 85%;
+    /* Increase from 70% */
+  }
+
+  .title {
+    font-size: 1.8rem;
   }
 }

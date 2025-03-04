@@ -60,17 +60,19 @@ export default async function BookPost(props: Props) {
       : bookPost.image;
 
     return (
-      <article className="mx-auto w-4xl ">
-        <div className="min-h-screen flex items-center justify-center flex-col md:flex-row">
-          <Image
-            src={imageUrl}
-            alt={`Portada del libro ${bookPost.title}`}
-            width={500}
-            height={750}
-            priority
-            className={styles.bookCover}
-          />
-          <div className={styles.metaInfo}>
+      <article className="mx-auto w-full max-w-4xl px-4 md:px-6">
+        <div className="min-h-[80vh] md:min-h-screen flex items-center justify-center flex-col md:flex-row py-8 md:py-0">
+          <div className="w-full flex justify-center md:w-1/2 md:pr-4">
+            <Image
+              src={imageUrl}
+              alt={`Portada del libro ${bookPost.title}`}
+              width={600}
+              height={900}
+              priority
+              className={styles.bookCover}
+            />
+          </div>
+          <div className={`${styles.metaInfo} w-full md:w-1/2`}>
             <h1 className={styles.title}>
               <b>{bookPost.title}</b>
               <span style={{ fontWeight: 'normal' }}>, {bookPost.author}</span>
@@ -84,7 +86,7 @@ export default async function BookPost(props: Props) {
             <div className={styles.downloadWrapper}>
               <a
                 href="https://t.me/+DULTIj9jMLgzNTUx"
-                className="px-4 py-2 hover:scale-150 transition-all duration-200 text-lg"
+                className="px-4 py-2 hover:scale-150 transition-all duration-200 text-lg touch-manipulation"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -95,16 +97,17 @@ export default async function BookPost(props: Props) {
         </div>
 
         <div className={`
-                w-3xl
+                w-full
                 prose prose-invert prose-lg max-w-none
                 prose-headings:font-bold prose-headings:text-gray-100
-                prose-p:prose-p:leading-relaxed mdx-prose
+                prose-p:leading-relaxed mdx-prose
                 prose-a:text-gray-400 prose-a:no-underline hover:prose-a
                 prose-blockquote:border-l-gray-500 
                 prose-blockquote:rounded-lg
                 prose-strong:text-gray-200
                 prose-code:text-gray-300 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded
                 [&>*:first-child]:mt-0
+                px-4 md:px-8 pb-16
               `}
           dangerouslySetInnerHTML={{ __html: bookPost.contentHtml }}
         />
