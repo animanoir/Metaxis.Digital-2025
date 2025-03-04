@@ -66,22 +66,24 @@ const IndividualBlogPost = ({
               height={300}
               className="w-full h-48 sm:h-64 object-cover mb-4 hover:opacity-50 transition-opacity rounded-t-lg"
             />
-            <div className="bg-gray-50 p-3 md:p-4 rounded-b-lg">
-              <p className="font-[Karla] text-base md:text-lg m-0 mb-2 bg-black text-white px-2 py-1 md:px-3 rounded inline-block">{date}</p>
-              <h2 className="text-black text-2xl md:text-3xl hover:text-[#dc143c] transition-colors bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-2">{title}</h2>
-              <h4 className="my-2 font-[Lora] font-normal text-sm md:text-base text-black bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-3">{description}</h4>
-              <h5 className="text-base md:text-xl bg-black text-white px-2 py-1 md:px-3 rounded inline-block mt-2">
-                <span className="font-normal">por </span>
-                {author}
-              </h5>
-            </div>
           </Link>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {concepts.map((concept) => (
-              <Link key={concept} href={`/conceptos/${concept.toLowerCase()}`} className="bg-gray-200 hover:bg-black hover:text-white px-2 py-1 md:px-3 rounded text-xs md:text-sm transition-colors">
-                {concept}
-              </Link>
-            ))}
+          <div className="bg-gray-50 p-3 md:p-4 rounded-b-lg">
+            <p className="font-[Karla] text-base md:text-lg m-0 mb-2 bg-black text-white px-2 py-1 md:px-3 rounded inline-block">{date}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {concepts.map((concept) => (
+                <Link key={concept} href={`/conceptos/${concept.toLowerCase()}`} className="bg-gray-200 hover:bg-black hover:text-white px-2 py-1 md:px-3 rounded text-xs md:text-sm transition-colors">
+                  {concept}
+                </Link>
+              ))}
+            </div>
+            <Link href={`/blog/${slug}`} className="block">
+              <h2 className="text-black text-2xl md:text-3xl hover:text-[#dc143c] transition-colors bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-2">{title}</h2>
+            </Link>
+            <h4 className="my-2 font-[Lora] font-normal text-sm md:text-base text-black bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-3">{description}</h4>
+            <h5 className="text-base md:text-xl bg-black text-white px-2 py-1 md:px-3 rounded inline-block mt-2 ml-auto float-right">
+              <span className="font-normal">por </span>
+              {author}
+            </h5>
           </div>
         </div>
       )}
