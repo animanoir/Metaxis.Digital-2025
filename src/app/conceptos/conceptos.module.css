@@ -9,7 +9,6 @@
   /* grid-auto-rows: minmax(75px, auto); */
   grid-auto-flow: dense;
   gap: 1rem;
-  width: 50%;
   margin: 0 auto;
   justify-content: center;
   align-items: start;

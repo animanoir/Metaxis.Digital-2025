@@ -6,6 +6,7 @@ import Footer from "@/components/footer/Footer";
 import NewsletterForm from "@/components/newsletterForm/NewsletterForm";
 import { ReactLenis } from "lenis/react";
 import amalgalmasImg from '@/app/assets/images/amalgalmas.jpg';
+import AdSense from "@/components/adSenseScript/AdSenseScript";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -60,6 +61,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      {process.env.NEXT_PUBLIC_ADSENSE_PID && (
+        <AdSense pId={process.env.NEXT_PUBLIC_ADSENSE_PID} />
+      )}
       <body
         className={`${montserrat.variable} ${courierPrime.variable} ${lora.variable} ${karla.variable}  antialiased  bg-gray-50`}>
         <Navbar />

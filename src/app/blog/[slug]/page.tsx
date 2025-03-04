@@ -70,7 +70,7 @@ export default async function BlogPost(props: Props) {
               />
             </div>
           )}
-          <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 leading-tight">{post.title}</h1>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-3 md:mb-4 leading-tight">{post.title}</h1>
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 md:mb-8 text-gray-600 text-sm sm:text-base justify-end">
             <span>{post.author}</span>
             <span className="hidden sm:inline">•</span>
@@ -78,19 +78,19 @@ export default async function BlogPost(props: Props) {
           </div>
           <div
             className="
-prose prose-sm sm:prose-base lg:prose-lg max-w-none text-black
-prose-headings:font-bold prose-headings:text-black prose-headings:mb-4 prose-headings:mt-8
-prose-h1:text-2xl sm:prose-h1:text-3xl prose-h2:text-xl sm:prose-h2:text-2xl
-prose-p:leading-relaxed prose-p:my-4 prose-p:text-black mdx-prose
-prose-a:text-gray-700 prose-a:no-underline hover:prose-a:text-black
-prose-blockquote:border-l-gray-700 prose-blockquote:pl-4 
-prose-blockquote:rounded-lg prose-blockquote:py-1
-prose-strong:text-black
-prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded prose-code:text-sm
-prose-img:rounded-lg prose-img:mx-auto prose-img:my-6
-prose-ul:pl-5 prose-ol:pl-5 prose-li:text-black
-[&>*:first-child]:mt-0
-"
+              prose prose-sm sm:prose-base lg:prose-lg max-w-none text-black
+              prose-headings:font-bold prose-headings:text-black prose-headings:mb-4 prose-headings:mt-8
+              prose-h1:text-2xl sm:prose-h1:text-3xl prose-h2:text-xl sm:prose-h2:text-2xl
+              prose-p:leading-relaxed prose-p:my-4 prose-p:text-black mdx-prose
+              prose-a:text-gray-700 prose-a:no-underline hover:prose-a:text-black
+              prose-blockquote:border-l-gray-700 prose-blockquote:pl-4 
+              prose-blockquote:rounded-lg prose-blockquote:py-1
+              prose-strong:text-black
+              prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded prose-code:text-sm
+              prose-img:rounded-lg prose-img:mx-auto prose-img:my-6
+              prose-ul:pl-5 prose-ol:pl-5 prose-li:text-black
+              [&>*:first-child]:mt-0
+              "
           >
             <MDXRemote source={post.content} />
 
