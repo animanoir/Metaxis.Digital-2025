@@ -29,9 +29,9 @@ export default function Library() {
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
-        <h1 className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Biblioteca</h1>
-        <p className={styles.text}>
-          La <b>Gran Biblioteca</b> de <b>metaxis.digital</b> (en constante actualización)
+
+        <p className={`${styles.text} font-[Karla] text-gray-800 font-bold`}>
+          La <b>Gran <span className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Biblioteca</span></b> de <b>metaxis.digital</b> (en constante actualización)
           <span className={styles.typingDots}></span>
         </p>
         <BookList />

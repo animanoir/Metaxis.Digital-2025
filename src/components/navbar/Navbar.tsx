@@ -211,7 +211,7 @@ const Navbar = () => {
               {tesisAntitesis.tesis} — {tesisAntitesis.antitesis} |{' '}
             </span>
             <span>
-              <b>metaxis.digital (wip)</b>
+              <b>metaxis.digital</b>
             </span>{' '}
           </h1>
         </Link>
