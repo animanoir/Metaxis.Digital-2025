@@ -25,7 +25,7 @@ const NewsletterFormInPage = ({
     return (
       <div className={`p-6 bg-green-50 rounded-xl border border-green-200 my-12 ${halfWidth ? 'w-1/2 mx-auto' : 'w-full'} ${compactWidth ? 'max-w-md mx-auto' : ''}`}>
         <p className="text-green-800 text-center font-medium">
-          Thank you for your subscription! We'll be in touch soon.
+          Thank you for your subscription! We&apos;ll be in touch soon.
         </p>
       </div>
     );
