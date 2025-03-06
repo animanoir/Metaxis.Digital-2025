@@ -70,6 +70,11 @@ const nextConfig: NextConfig = {
         source: '/conceptos',
         destination: '/concepts',
         permanent: true,
+      },
+      {
+        source: '/conceptos/:slug',
+        destination: '/concepts/:slug',
+        permanent: true,
       }
     ]
   },
