@@ -62,6 +62,11 @@ const nextConfig: NextConfig = {
         permanent: true
       },
       {
+        source: '/libro/:slug',
+        destination: '/library/:slug',
+        permanent: true
+      },
+      {
         source: '/conceptos',
         destination: '/concepts',
         permanent: true,
