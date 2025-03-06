@@ -133,6 +133,7 @@ const ArenaContent = () => {
                   src={content.image.square.url}
                   alt={content.title}
                   loading="lazy"
+                  quality={90}
                 />
               </a>
             ) : (
