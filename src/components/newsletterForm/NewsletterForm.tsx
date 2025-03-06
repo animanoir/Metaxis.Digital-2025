@@ -32,7 +32,7 @@ export default function NewsletterForm() {
     return (
       <div className="p-6 bg-green-50 rounded-xl border border-green-200">
         <p className="text-green-800 text-center font-medium">
-          ¡Gracias por tu suscripción! Estaremos en contacto pronto.
+          Thank you for your subscription! We'll be in touch soon.
         </p>
       </div>
     );
@@ -44,9 +44,9 @@ export default function NewsletterForm() {
         <FloatingText key={`${text}-${index}`} text={text} />
       ))}
       <form
-        onSubmit={handleSubmit} className="space-y-4 mx-auto w-90 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
+        onSubmit={handleSubmit} className="space-y-4 mx-auto w-100 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
         <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
-          Suscríbete al boletín:
+          Subscribe to the newsletter:
         </h2>
         <div className="space-y-2">
           <input
@@ -75,7 +75,7 @@ export default function NewsletterForm() {
                 duration-200 
                 font-lora
               "
-            placeholder="Tu correo electrónico"
+            placeholder="Your email"
           />
           <ValidationError
             prefix="Email"
@@ -84,28 +84,6 @@ export default function NewsletterForm() {
             className="text-red-400 text-sm mt-1"
           />
         </div>
-
-        {/* <div className="space-y-2">
-          <label
-            htmlFor="message"
-            className="block text-sm font-medium text-gray-200"
-          >
-            Mensaje
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-white placeholder-gray-400 transition-all duration-200"
-            placeholder="Your message..."
-          />
-          <ValidationError
-            prefix="Message"
-            field="message"
-            errors={state.errors}
-            className="text-red-400 text-sm mt-1"
-          />
-        </div> */}
 
         <button
           type="submit"
@@ -123,7 +101,7 @@ export default function NewsletterForm() {
             ${state.submitting ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           `}
         >
-          {state.submitting ? 'Enviando...' : 'Suscribirse'}
+          {state.submitting ? 'Sending...' : 'Subscribe'}
         </button>
 
         <ValidationError

@@ -10,7 +10,7 @@ const BookList = () => {
     <div className="mt-4 min-h-screen bg-900 text-100 p-8 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
         {bookPosts.map((bookPost) => bookPost && (
-          <Link href={`/biblioteca/${bookPost.slug}`} key={bookPost.slug}>
+          <Link href={`/library/${bookPost.slug}`} key={bookPost.slug}>
             <article
               key={bookPost.slug}
               className="group relative overflow-hidden rounded-lg bg-800/50 p-4 backdrop-blur-xs transition-all duration-300 hover:bg-800/70 hover:translate-y-[-4px] shadow-md cursor-pointer hover:shadow-xl"

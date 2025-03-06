@@ -12,7 +12,7 @@ const Footer = () => {
                 width={18}
                 height={18}
                 src="/telegram.svg"
-                alt="Únete a nuestro canal de Telegram." />
+                alt="Join our Telegram channel." />
             </a>
           </span>
           <span className={styles.svgIcon}>
@@ -24,7 +24,19 @@ const Footer = () => {
               <Image
                 width={18}
                 height={18}
-                src="/youtube.svg" alt="Suscríbete a nuestro canal en YouTube." />
+                src="/youtube.svg" alt="Subscribe to our YouTube channel." />
+            </a>
+          </span>
+          <span className={styles.svgIcon}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://discord.gg/FYMXSx3a"
+            >
+              <Image
+                width={18}
+                height={18}
+                src="/discord.svg" alt="Enter our Discord channel." />
             </a>
           </span>
         </div>
@@ -40,7 +52,7 @@ const Footer = () => {
           </a>
           <div className={styles.fantasmacontainer}>
             <p>
-              Un proyecto de{' '}
+              A project by{' '}
               <a className={styles.fantasma} href="https://fantasma.rip/">
                 <b>fantasma</b>
               </a>

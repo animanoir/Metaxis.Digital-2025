@@ -8,13 +8,13 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
   title: {
-    default: 'Biblioteca | metaxis.digital',
+    default: 'Library | metaxis.digital',
     template: '%s | metaxis.digital',
   },
-  description: 'Biblioteca digital de libros',
+  description: 'Digital book library',
   openGraph: {
     type: 'website',
-    locale: 'es_ES',
+    locale: 'en_US',
     url: '/',
     siteName: 'metaxis.digital',
   },
@@ -31,7 +31,7 @@ export default function Library() {
       <div className={styles.contentContainer}>
 
         <p className={`${styles.text} font-[Karla] text-gray-800 font-bold`}>
-          La <b>Gran <span className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Biblioteca</span></b> de <b>metaxis.digital</b> (en constante actualización)
+          The <b>Great <span className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Library</span></b> of <b>metaxis.digital</b> (constantly updated)
           <span className={styles.typingDots}></span>
         </p>
         <BookList />

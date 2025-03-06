@@ -33,6 +33,41 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Add redirects configuration
+  async redirects() {
+    return [
+      {
+        source: '/colaborar',
+        destination: '/collaborate',
+        permanent: true, // This is a 301 (permanent) redirect, good for SEO
+      },
+      {
+        source: '/colaborar/',
+        destination: '/collaborate',
+        permanent: true,
+      },
+      {
+        source: '/eventos',
+        destination: '/events',
+        permanent: true,
+      },
+      {
+        source: '/biblioteca',
+        destination: '/library',
+        permanent: true,
+      },
+      {
+        source: '/biblioteca/:slug',
+        destination: '/library/:slug',
+        permanent: true
+      },
+      {
+        source: '/conceptos',
+        destination: '/concepts',
+        permanent: true,
+      }
+    ]
+  },
 };
 
 const withMDX = createMDX({

@@ -38,14 +38,13 @@ export const metadata: Metadata = {
     default: 'metaxis.digital',
     template: '%s | metaxis.digital',
   },
-  description: 'Biblioteca de pdfs/epubs sobre artes, ciencias y filosofías y blog enfocado en lo meta(moderno), futurista y el qualiadigma.',
+  description: 'Curated digital library and thought-provoking journal exploring the intersection of arts, sciences, and philosophy with a forward-thinking perspective on modern consciousness and future possibilities.',
   openGraph: {
     type: 'website',
-    locale: 'es_ES',
+    locale: 'en_US',
     url: '/',
     siteName: 'metaxis.digital',
     images: [{ url: amalgalmasImg.src }]
-
   },
   twitter: {
     card: 'summary_large_image',
@@ -60,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="en">
       {process.env.NEXT_PUBLIC_ADSENSE_PID && (
         <AdSense pId={process.env.NEXT_PUBLIC_ADSENSE_PID} />
       )}

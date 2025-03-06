@@ -25,7 +25,7 @@ const NewsletterFormInPage = ({
     return (
       <div className={`p-6 bg-green-50 rounded-xl border border-green-200 my-12 ${halfWidth ? 'w-1/2 mx-auto' : 'w-full'} ${compactWidth ? 'max-w-md mx-auto' : ''}`}>
         <p className="text-green-800 text-center font-medium">
-          ¡Gracias por tu suscripción! Estaremos en contacto pronto.
+          Thank you for your subscription! We'll be in touch soon.
         </p>
       </div>
     );
@@ -39,7 +39,7 @@ const NewsletterFormInPage = ({
       >
         {hasTitle && (
           <h2 className="font-karla text-2xl text-gray-800 mb-4 font-bold">
-            Suscríbete al boletín:
+            Subscribe to the newsletter:
           </h2>
         )}
 
@@ -68,7 +68,7 @@ const NewsletterFormInPage = ({
               duration-200 
               font-lora
             "
-            placeholder="Tu correo electrónico"
+            placeholder="Your email"
             required
           />
 
@@ -89,7 +89,7 @@ const NewsletterFormInPage = ({
               whitespace-nowrap
             `}
           >
-            {state.submitting ? 'Enviando...' : 'Suscribirse'}
+            {state.submitting ? 'Sending...' : 'Subscribe'}
           </button>
         </div>
 
