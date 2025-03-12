@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl';
 
 type IndividualBlogPost = {
   slug: string,
@@ -16,6 +17,8 @@ type IndividualBlogPost = {
 const IndividualBlogPost = ({
   slug, title, image, date, description, author, featuredArticle, concepts
 }: IndividualBlogPost) => {
+  const t = useTranslations('individualblogpost');
+
   return (
     <div className={`${featuredArticle
       ? `relative h-screen transform-none`
@@ -47,7 +50,7 @@ const IndividualBlogPost = ({
                   {description}
                 </h4>
                 <h5 className="font-[Lora] text-sm md:text-base text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">
-                  <span className="font-normal">por </span>
+                  <span className="font-normal">{t("by")} </span>
                   {author}
                 </h5>
               </Link>
@@ -81,7 +84,7 @@ const IndividualBlogPost = ({
             </Link>
             <h4 className="my-2 font-[Lora] font-normal text-sm md:text-base text-black bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-3">{description}</h4>
             <h5 className="text-base md:text-xl bg-black text-white px-2 py-1 md:px-3 rounded inline-block mt-2 ml-auto float-right">
-              <span className="font-normal">por </span>
+              <span className="font-normal">{t("by")} </span>
               {author}
             </h5>
           </div>

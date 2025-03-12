@@ -5,8 +5,16 @@ import styles from './Navbar.module.css'
 import Link from "next/link";
 import { throttle } from 'lodash'
 import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
 
 const Navbar = () => {
+  // Update to use the 'navbar' namespace
+  const t = useTranslations('navbar');
+
+  // For thesis/antithesis we'll use a separate namespace
+  const tThesis = useTranslations('thesis');
+  const tAntithesis = useTranslations('antithesis');
+
   const tesisWords: string[] = [
     'philosophy',
     'art',
@@ -170,6 +178,7 @@ const Navbar = () => {
     }
   }, [updateScrollPosition, handleKeydown])
 
+  // Update the useEffect that handles thesis/antithesis to use translations
   useEffect(() => {
     const generateUniqueAntitesis = (tesis: string) => {
       let antitesis = getRandomWord(antitesisWords);
@@ -182,7 +191,10 @@ const Navbar = () => {
     const selectedTesis = getRandomWord(tesisWords);
     const selectedAntitesis = generateUniqueAntitesis(selectedTesis);
 
-    setTesisAntitesis({ tesis: selectedTesis, antitesis: selectedAntitesis });
+    setTesisAntitesis({
+      tesis: tThesis(selectedTesis),
+      antitesis: tAntithesis(selectedAntitesis)
+    });
   }, [scrollY]);
 
   return (
@@ -230,7 +242,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/about">
-            About
+            {t('about')}
           </Link>
         </li>
         <li style={isDispersed ? {
@@ -240,7 +252,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/collaborate">
-            <b>Collaborate!</b>
+            <b>{t('collaborate')}</b>
           </Link>
         </li>
         <li style={isDispersed ? {
@@ -250,7 +262,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/library">
-            <b>Library</b>
+            <b>{t('library')}</b>
           </Link>
         </li>
         <li style={isDispersed ? {
@@ -260,7 +272,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/concepts">
-            Concepts
+            {t('concepts')}
           </Link>
         </li>
         {/* <li style={isDispersed ? {
@@ -270,7 +282,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/eventos">
-            Events
+            {t('events')}
           </Link>
         </li> */}
         <li style={isDispersed ? {
@@ -280,7 +292,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/blog">
-            <b>Blog</b>
+            <b>{t('blog')}</b>
           </Link>
         </li>
         <li style={isDispersed ? {
@@ -299,7 +311,7 @@ const Navbar = () => {
               });
             }
           }}>
-            <span className={styles.glowText}><b>Subscribe to the Newsletter!</b></span>
+            <span className={styles.glowText}><b>{t('subscribe')}</b></span>
           </Link>
         </li>
       </ul>

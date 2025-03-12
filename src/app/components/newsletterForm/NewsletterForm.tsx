@@ -3,8 +3,9 @@
 import { useForm, ValidationError } from "@formspree/react";
 // import styles from './NewsletterForm.module.css';
 import { useState } from 'react';
-import FloatingText from '@/components/FloatingText/FloatingText';
-import NewsletterModal from '@/components/newsletterModal/NewsletterModal';
+import FloatingText from '@/app/components/FloatingText/FloatingText';
+import NewsletterModal from '@/app/components/newsletterModal/NewsletterModal';
+import { useTranslations } from 'next-intl';
 
 const FLOATING_TEXTS_COUNT = 20;
 
@@ -13,6 +14,7 @@ export default function NewsletterForm() {
   const [inputValue, setInputValue] = useState('');
   const [floatingTexts, setFloatingTexts] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const t = useTranslations('newsletterform');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -32,7 +34,7 @@ export default function NewsletterForm() {
     return (
       <div className="p-6 bg-green-50 rounded-xl border border-green-200">
         <p className="text-green-800 text-center font-medium">
-          Thank you for your subscription! We&apos;ll be in touch soon.
+          {t('subscribed')}
         </p>
       </div>
     );
@@ -46,7 +48,7 @@ export default function NewsletterForm() {
       <form
         onSubmit={handleSubmit} className="space-y-4 mx-auto w-100 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
         <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
-          <span className="rainbow">Subscribe to the newsletter:</span>
+          <span className="rainbow">{t("title")}</span>
         </h2>
         <div className="space-y-2">
           <input
@@ -75,7 +77,7 @@ export default function NewsletterForm() {
                 duration-200 
                 font-lora
               "
-            placeholder="Your email"
+            placeholder={t('emailPlaceholder')}
           />
           <ValidationError
             prefix="Email"
@@ -101,7 +103,7 @@ export default function NewsletterForm() {
             ${state.submitting ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           `}
         >
-          {state.submitting ? 'Sending...' : 'Subscribe'}
+          {state.submitting ? 'Sending...' : t('subscribe')}
         </button>
 
         <ValidationError

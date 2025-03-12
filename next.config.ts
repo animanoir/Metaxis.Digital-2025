@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from '@next/mdx'
+import createNextIntlPlugin from "next-intl/plugin";
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
@@ -80,9 +81,11 @@ const nextConfig: NextConfig = {
   },
 };
 
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/requests.ts');
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
 })
 
 
-export default withMDX(nextConfig);
+export default withNextIntl(withMDX(nextConfig));

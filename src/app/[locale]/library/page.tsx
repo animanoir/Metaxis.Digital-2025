@@ -1,4 +1,4 @@
-import BookList from "@/components/bookPosts/BookList";
+import BookList from "@/app/components/bookPosts/BookList";
 import { Metadata } from 'next';
 import styles from "./biblioteca.module.css"
 

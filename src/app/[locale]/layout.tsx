@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { Courier_Prime, Montserrat, Lora, Karla } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
-import NewsletterForm from "@/components/newsletterForm/NewsletterForm";
+import Navbar from "@/app/components/navbar/Navbar";
+import Footer from "@/app/components/footer/Footer";
+import NewsletterForm from "@/app/components/newsletterForm/NewsletterForm";
 import { ReactLenis } from "lenis/react";
 import amalgalmasImg from '@/app/assets/images/amalgalmas.jpg';
-import AdSense from "@/components/adSenseScript/AdSenseScript";
+import AdSense from "@/app/components/adSenseScript/AdSenseScript";
+import { NextIntlClientProvider, Locale, hasLocale } from 'next-intl';
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import { getTranslations, getMessages } from 'next-intl/server';
 
 const karla = Karla({
   variable: "--font-karla",
@@ -53,30 +57,42 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
+export default async function RootLayout({
+  children, params
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  // Get the messages for the client
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       {process.env.NEXT_PUBLIC_ADSENSE_PID && (
         <AdSense pId={process.env.NEXT_PUBLIC_ADSENSE_PID} />
       )}
+
       <body
         className={`${montserrat.variable} ${courierPrime.variable} ${lora.variable} ${karla.variable}  antialiased  bg-gray-50`}>
-        <Navbar />
-        <ReactLenis root >
-          <div className="vertical-line-left border-black" />
-          <div className="vertical-line-right border-black" />
-          <main style={{
-            transform: "translateY(-20px)"
-          }}>
-            {children}
-          </main>
-          <NewsletterForm />
-          <Footer />
-        </ReactLenis>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
+          <ReactLenis root >
+            <div className="vertical-line-left border-black" />
+            <div className="vertical-line-right border-black" />
+            <main style={{
+              transform: "translateY(-20px)"
+            }}>
+              {children}
+            </main>
+            <NewsletterForm />
+            <Footer />
+          </ReactLenis>
+        </NextIntlClientProvider>
       </body>
     </html >
   );
