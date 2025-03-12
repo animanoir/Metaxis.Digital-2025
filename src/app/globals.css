@@ -284,3 +284,25 @@ body {
   transform: skew(180deg, 5deg);
   line-height: 1;
 }
+
+/* Rainbow text effect */
+.rainbow {
+  background-image: linear-gradient(to right,
+      #f0f9ff, #4c6ef5, #9c36b5, #f06595, #ffe5f1, #867bff, #0078e7, #f0f9ff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: rainbow-flow 6s linear infinite;
+}
+
+@keyframes rainbow-flow {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}

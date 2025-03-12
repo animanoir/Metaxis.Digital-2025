@@ -156,7 +156,7 @@ const Navbar = () => {
   )
 
   const handleKeydown = useCallback((event: KeyboardEvent) => {
-    if (event.key === 'º') {
+    if (event.key === '<') {
       setIsDispersed((prev) => !prev)
     }
   }, [])
@@ -281,6 +281,25 @@ const Navbar = () => {
         } : {}}>
           <Link href="/blog">
             <b>Blog</b>
+          </Link>
+        </li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
+          <Link href="#newsletter" onClick={(e) => {
+            e.preventDefault();
+            const newsletterSection = document.getElementById('newsletter');
+            if (newsletterSection) {
+              newsletterSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }}>
+            <span className={styles.glowText}><b>Subscribe to the Newsletter!</b></span>
           </Link>
         </li>
       </ul>

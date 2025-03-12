@@ -39,14 +39,14 @@ export default function NewsletterForm() {
   }
 
   return (
-    <div className="py-40 text-end md:p-20 sm:p-2 sm:pb-12 sm:flex sm:flex-col sm:text-left">
+    <div id="newsletter" className="py-40 text-end md:p-20 sm:p-2 sm:pb-12 sm:flex sm:flex-col sm:text-left">
       {floatingTexts.map((text, index) => (
         <FloatingText key={`${text}-${index}`} text={text} />
       ))}
       <form
         onSubmit={handleSubmit} className="space-y-4 mx-auto w-100 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
         <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
-          Subscribe to the newsletter:
+          <span className="rainbow">Subscribe to the newsletter:</span>
         </h2>
         <div className="space-y-2">
           <input
