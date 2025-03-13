@@ -177,7 +177,7 @@ body {
     top: 0;
     height: 100%;
     width: 8px;
-    background: linear-gradient(to bottom, #ff3d00, #9c27b0, #2196f3, #00bcd4);
+    background: linear-gradient(to bottom, #f0f9ff, #4c6ef5, #9c36b5, #f06595, #ffe5f1, #867bff, #0078e7, #f0f9ff);
     background-size: 400% 400%;
     animation: borderGradient 8s ease infinite;
   }
