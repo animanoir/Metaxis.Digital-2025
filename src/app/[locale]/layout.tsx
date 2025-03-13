@@ -7,10 +7,10 @@ import NewsletterForm from "@/app/components/newsletterForm/NewsletterForm";
 import { ReactLenis } from "lenis/react";
 import amalgalmasImg from '@/app/assets/images/amalgalmas.jpg';
 import AdSense from "@/app/components/adSenseScript/AdSenseScript";
-import { NextIntlClientProvider, Locale, hasLocale } from 'next-intl';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { getTranslations, getMessages } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 
 const karla = Karla({
   variable: "--font-karla",
