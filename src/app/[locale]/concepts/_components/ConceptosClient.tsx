@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import styles from '../conceptos.module.css';
 
 interface Concept {
@@ -33,6 +34,7 @@ const COLORS = [
 ];
 
 export default function ConceptosClient({ group }: ConceptosClientProps) {
+  const t = useTranslations('concepts');
   const [searchTerm, setSearchTerm] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -63,7 +65,7 @@ export default function ConceptosClient({ group }: ConceptosClientProps) {
       <input
         ref={searchInputRef}
         type="text"
-        placeholder="Buscar concepto..."
+        placeholder={t('searchPlaceholder')}
         value={searchTerm}
         onChange={handleSearchChange}
         className={styles.searchbar}

@@ -1,7 +1,10 @@
 import styles from './Footer.module.css'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl';
 
 const Footer = () => {
+  const t = useTranslations('footer');
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -52,7 +55,7 @@ const Footer = () => {
           </a>
           <div className={styles.fantasmacontainer}>
             <p>
-              A project by{' '}
+              {t('projectBy')}{' '}
               <a className={styles.fantasma} href="https://fantasma.rip/">
                 <b>fantasma</b>
               </a>

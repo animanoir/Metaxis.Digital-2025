@@ -140,5 +140,37 @@
     "temporality": "temporalidad",
     "dispersion": "dispersión",
     "1": "1"
+  },
+  "library": {
+    "intro": "La",
+    "great": "Gran",
+    "title": "Biblioteca",
+    "of": "de",
+    "brand": "metaxis.digital",
+    "updating": "actualizada constantemente"
+  },
+  "concepts": {
+    "searchPlaceholder": "Buscar concepto..."
+  },
+  "about": {
+    "title": "Acerca de",
+    "brandName": "metaxis.digital",
+    "portalTitle": "Portal al Pensamiento Metamoderno:",
+    "portalDescription": "El espacio de metaxis.digital se erige como un portal al pensamiento metamoderno, combinando elementos del futurismo, la filosofía, las matemáticas y la espiritualidad oriental.",
+    "missionTitle": "Nuestra Misión:",
+    "missionDescription": "Difundir ideas que expandan los horizontes de la conciencia y promover diálogos que desafíen las normas establecidas.",
+    "collaborateText": "Para colaborar, únete a nuestro grupo de Telegram o envía un correo electrónico a",
+    "emailAddress": "etherealflux94@gmail.com"
+  },
+  "footer": {
+    "projectBy": "Un proyecto de "
+  },
+  "collaborate": {
+    "heading": "¡Colabora con nosotros!",
+    "artisticTitle": "Expresiones Artísticas y Literarias:",
+    "artisticDescription": "Si tienes la capacidad de capturar pensamientos en palabras a través de ensayos, artículos y poemas, o expresar emociones y visiones en medios visuales, ya sea pintura, dibujo, arte generativo o incluso música, escultura, etc. te invitamos a ser parte de nuestro espacio.",
+    "technicalTitle": "Colaboración Técnica:",
+    "technicalDescription": "Si tus habilidades se encuentran en el mundo del código, te invitamos a colaborar en el núcleo de metaxis.digital. Nuestro sitio está construido con Next.js y React, y buscamos mentes hábiles que nos ayuden a mejorar, innovar y evolucionar nuestra plataforma.",
+    "contactInfo": "Para colaborar, únete a nuestro grupo de Telegram o envía un correo electrónico a"
   }
 }

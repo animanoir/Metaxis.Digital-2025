@@ -1,7 +1,7 @@
 import BookList from "@/app/components/bookPosts/BookList";
 import { Metadata } from 'next';
 import styles from "./biblioteca.module.css"
-
+import { useTranslations } from 'next-intl';
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -24,14 +24,16 @@ export const metadata: Metadata = {
   },
 }
 
-
 export default function Library() {
+  const t = useTranslations('library');
+
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
 
         <p className={`${styles.text} font-[Karla] text-gray-800 font-bold`}>
-          The <b>Great <span className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Library</span></b> of <b>metaxis.digital</b> (constantly updated)
+          {t('intro')} <b>{t('great')} <span className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>{t('title')}</span></b> {t('of')} <b>{t('brand')}</b>
+          ({t('updating')})
           <span className={styles.typingDots}></span>
         </p>
         <BookList />
