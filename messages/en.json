@@ -15,7 +15,8 @@
     "title": "Subscribe to the Newsletter!",
     "emailPlaceholder": "Write your email here :)",
     "subscribe": "Subscribe",
-    "subscribed": "Thank you for your subscription! We&apos;ll be in touch soon."
+    "subscribed": "Thank you for your subscription! We&apos;ll be in touch soon.",
+    "sending": "Sending..."
   },
   "thesis": {
     "philosophy": "philosophy",

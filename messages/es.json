@@ -15,7 +15,8 @@
     "title": "¡Suscríbete al Boletín!",
     "emailPlaceholder": "Escribe tu email aquí :)",
     "subscribe": "Suscribirse",
-    "subscribed": "¡Gracias por tu suscripción! Nos pondremos en contacto pronto."
+    "subscribed": "¡Gracias por tu suscripción! Nos pondremos en contacto pronto.",
+    "sending": "Enviando..."
   },
   "thesis": {
     "philosophy": "filosofía",
