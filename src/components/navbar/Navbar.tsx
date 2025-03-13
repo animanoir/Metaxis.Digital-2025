@@ -145,6 +145,7 @@ const Navbar = () => {
   })
   const [scrollY, setScrollY] = useState(0)
   const [isDispersed, setIsDispersed] = useState(false) // New state variable
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navRef = useRef(null);
   const dispartionRadius = 50;
 
@@ -160,6 +161,17 @@ const Navbar = () => {
       setIsDispersed((prev) => !prev)
     }
   }, [])
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(prev => !prev);
+  }
+
+  // Close mobile menu when clicking a link
+  const handleLinkClick = () => {
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', updateScrollPosition)
@@ -198,7 +210,13 @@ const Navbar = () => {
       width: '100%',
       padding: '2rem',
     } : {}}>
-      <div style={isDispersed ? {
+      <div className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
+        <div className={`${styles.hamburgerLine} ${mobileMenuOpen ? styles.active : ''}`}></div>
+        <div className={`${styles.hamburgerLine} ${mobileMenuOpen ? styles.active : ''}`}></div>
+        <div className={`${styles.hamburgerLine} ${mobileMenuOpen ? styles.active : ''}`}></div>
+      </div>
+
+      <div className={styles.logoContainer} style={isDispersed ? {
         position: 'absolute',
         top: `${Math.random() * dispartionRadius}vh`,
         left: `${Math.random() * dispartionRadius}vw`,
@@ -216,7 +234,8 @@ const Navbar = () => {
           </h1>
         </Link>
       </div>
-      <ul className={styles.menulist} style={isDispersed ? {
+
+      <ul className={`${styles.menulist} ${mobileMenuOpen ? styles.menuOpen : ''}`} style={isDispersed ? {
         position: 'absolute',
         top: `${Math.random() * dispartionRadius}vh`,
         left: `${Math.random() * dispartionRadius}vw`,
@@ -229,7 +248,7 @@ const Navbar = () => {
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/about">
+          <Link href="/about" onClick={handleLinkClick}>
             About
           </Link>
         </li>
@@ -239,7 +258,7 @@ const Navbar = () => {
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/collaborate">
+          <Link href="/collaborate" onClick={handleLinkClick}>
             <b>Collaborate!</b>
           </Link>
         </li>
@@ -249,7 +268,7 @@ const Navbar = () => {
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/library">
+          <Link href="/library" onClick={handleLinkClick}>
             <b>Library</b>
           </Link>
         </li>
@@ -259,27 +278,17 @@ const Navbar = () => {
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/concepts">
+          <Link href="/concepts" onClick={handleLinkClick}>
             Concepts
           </Link>
         </li>
-        {/* <li style={isDispersed ? {
-          position: 'absolute',
-          top: `${Math.random() * dispartionRadius}vh`,
-          left: `${Math.random() * dispartionRadius}vw`,
-          transform: `rotate(${Math.random() * 360}deg)`,
-        } : {}}>
-          <Link href="/eventos">
-            Events
-          </Link>
-        </li> */}
         <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/blog">
+          <Link href="/blog" onClick={handleLinkClick}>
             <b>Blog</b>
           </Link>
         </li>
@@ -291,6 +300,7 @@ const Navbar = () => {
         } : {}}>
           <Link href="#newsletter" onClick={(e) => {
             e.preventDefault();
+            handleLinkClick();
             const newsletterSection = document.getElementById('newsletter');
             if (newsletterSection) {
               newsletterSection.scrollIntoView({
