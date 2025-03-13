@@ -75,10 +75,48 @@
   }
 }
 
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 51;
+}
+
+.hamburgerLine {
+  width: 2rem;
+  height: 0.25rem;
+  background-color: #000;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+}
+
+.hamburgerLine.active:nth-child(1) {
+  transform: rotate(45deg) translate(0.5rem, 0.5rem);
+}
+
+.hamburgerLine.active:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerLine.active:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+}
+
+.logoContainer {
+  transition: all 0.3s ease;
+}
+
 /* Media Queries */
 @media only screen and (max-width: 800px) {
   .container {
-    padding: 1rem 0rem;
+    padding: 1rem 2rem;
   }
 
   .antitesis {
@@ -86,30 +124,49 @@
   }
 
   .menulist {
-    width: 80%;
+    width: auto;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .container {
-    position: relative;
-    flex-direction: column;
+    position: fixed;
+    /* flex-direction: row; */
     align-items: center;
-    padding: 0rem;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+
+  .mobileMenuButton {
+    display: flex;
+    margin-left: auto;
   }
 
   .title {
-    text-align: center;
+    font-size: 1rem;
   }
 
   .menulist {
-    justify-content: space-around;
-    margin: 0 auto;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5rem 2rem 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+
+  .menulist.menuOpen {
+    right: 0;
   }
 
   .menulist li {
-    margin-left: 0;
+    margin: 1.5rem 0;
   }
 
   .svgIcons,
@@ -120,8 +177,11 @@
 
 @media only screen and (max-width: 376px) {
   .container {
-    justify-content: space-around;
-    padding: 0;
+    padding: 0.75rem 1rem;
+  }
+
+  .title {
+    font-size: 0.9rem;
   }
 }
 
