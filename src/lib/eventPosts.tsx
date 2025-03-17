@@ -132,23 +132,21 @@ export async function getEventPostData(slug: string) {
 
   return {
     id: dirName,
-    eventName: otherData.title,
+    eventName: otherData.eventName, // Changed from otherData.title to otherData.eventName
     pubDate: new Date(otherData.pubDate).toISOString().split('T')[0],
     description: otherData.description,
     image: processedImage,
     imageTwitter: processedImageTwitter,
-    // Return the raw content instead of HTML
     content: matterResult.content,
-    // Keep contentHtml for backward compatibility if needed
     contentHtml: matterResult.content,
     slug: otherData.slug,
     concepts: otherData.concepts,
     featuredArticle: otherData.featuredArticle,
     startDate: new Date(otherData.startDate).toLocaleDateString('en-US', {
-      weekday: 'long',  // Monday, Tuesday, etc.
-      month: 'long',    // January, February, etc.
-      day: 'numeric',   // 1, 2, etc.
-      year: 'numeric',   // 2025,
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
       timeZone: 'UTC'
     })
   };

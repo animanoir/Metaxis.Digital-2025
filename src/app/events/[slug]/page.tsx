@@ -39,6 +39,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     ? `/eventposts/${params.slug}/${post.imageTwitter.slice(2)}`
     : post.imageTwitter || imageUrl;
 
+  console.log(post.eventName)
+
   return {
     title: post.eventName,
     description: post.description,
@@ -69,7 +71,7 @@ export default async function EventPost(props: Props) {
               <a href={imageUrl} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={imageUrl}
-                  alt={"Study circle at metaxis.digital."}
+                  alt={`Study circle at metaxis.digital of ${post.eventName}`}
                   width={800}
                   height={1000}
                   className="w-full h-auto object-contain max-h-[700px] cursor-pointer hover:opacity-90 transition-opacity"
@@ -80,7 +82,7 @@ export default async function EventPost(props: Props) {
               </a>
             </div>
           )}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-3 md:mb-4 leading-tight">{post.eventName}</h1>
+          <h1 className="text-3xl sm:text-6xl lg:text-6xl font-bold mb-3 md:mb-4 text-gray-800">{post.eventName}</h1>
           {/* <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 md:mb-8 text-gray-600 text-sm sm:text-base justify-end">
             <time>{new Date(post.pubDate).toLocaleDateString()}</time>
           </div> */}
