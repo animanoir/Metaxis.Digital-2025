@@ -24,7 +24,8 @@ const Footer = () => {
               <Image
                 width={18}
                 height={18}
-                src="/youtube.svg" alt="Subscribe to our YouTube channel." />
+                src="/youtube.svg"
+                alt="Subscribe to metaxis.digital YouTube channel." />
             </a>
           </span>
           <span className={styles.svgIcon}>
@@ -36,7 +37,9 @@ const Footer = () => {
               <Image
                 width={18}
                 height={18}
-                src="/discord.svg" alt="Enter our Discord channel." />
+                src="/discord.svg"
+                alt="Enter metaxis.digital. Discord channel."
+              />
             </a>
           </span>
         </div>
@@ -50,7 +53,7 @@ const Footer = () => {
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
             />
           </a>
-          <div className={styles.fantasmacontainer}>
+          <div className={`${styles.fantasmacontainer} text-gray-800`} >
             <p>
               A project by{' '}
               <a className={styles.fantasma} href="https://fantasma.rip/">

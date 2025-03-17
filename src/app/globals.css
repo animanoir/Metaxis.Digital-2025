@@ -133,6 +133,73 @@ body {
     margin-bottom: 0.5rem;
   }
 
+  /* Enhanced list styling */
+  & ul {
+    list-style-type: none;
+  }
+
+  & ul li {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  & ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0066cc;
+    font-weight: bold;
+    font-size: 1.2em;
+    transform: translateY(-0.1em);
+  }
+
+  & ul ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  & ul ul li::before {
+    content: "◦";
+    font-size: 1.1em;
+  }
+
+  & ul ul ul li::before {
+    content: "▪";
+    font-size: 0.8em;
+  }
+
+  & ol {
+    counter-reset: item;
+    list-style-type: none;
+  }
+
+  & ol li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  & ol li::before {
+    counter-increment: item;
+    content: counter(item) ".";
+    position: absolute;
+    left: 0;
+    color: #0066cc;
+    font-weight: 600;
+    font-family: var(--font-montserrat), sans-serif;
+  }
+
+  & ol ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    counter-reset: subitem;
+  }
+
+  & ol ol li::before {
+    counter-increment: subitem;
+    content: counter(item) "." counter(subitem);
+    font-size: 0.9em;
+  }
+
   /* Code blocks */
   & pre {
     font-family: var(--font-courier-prime), monospace;

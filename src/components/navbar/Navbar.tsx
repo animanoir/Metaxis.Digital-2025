@@ -198,7 +198,7 @@ const Navbar = () => {
   }, [scrollY]);
 
   return (
-    <nav className={styles.container} ref={navRef} style={isDispersed ? {
+    <nav className={`${styles.container} text-gray-800`} ref={navRef} style={isDispersed ? {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
@@ -234,7 +234,6 @@ const Navbar = () => {
           </h1>
         </Link>
       </div>
-
       <ul className={`${styles.menulist} ${mobileMenuOpen ? styles.menuOpen : ''}`} style={isDispersed ? {
         position: 'absolute',
         top: `${Math.random() * dispartionRadius}vh`,
@@ -252,16 +251,16 @@ const Navbar = () => {
             About
           </Link>
         </li>
-        <li style={isDispersed ? {
+        {/* <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/collaborate" onClick={handleLinkClick}>
-            <b>Collaborate!</b>
+            Collaborate!
           </Link>
-        </li>
+        </li> */}
         <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,
@@ -290,6 +289,16 @@ const Navbar = () => {
         } : {}}>
           <Link href="/blog" onClick={handleLinkClick}>
             <b>Blog</b>
+          </Link>
+        </li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
+          <Link href="/events" onClick={handleLinkClick}>
+            <b>Events</b>
           </Link>
         </li>
         <li style={isDispersed ? {
