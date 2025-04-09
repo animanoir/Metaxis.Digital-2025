@@ -32,7 +32,7 @@ const Footer = () => {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://discord.gg/FYMXSx3a"
+              href="https://discord.gg/cSfuHzG8BT"
             >
               <Image
                 width={18}
