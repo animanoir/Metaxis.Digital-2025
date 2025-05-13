@@ -328,14 +328,3 @@ const Navbar = () => {
 
 export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
 
-/* <li id={styles.suscribirseBoletin} style={isDispersed ? {
-  position: 'absolute',
-  top: `${Math.random() * dispartionRadius}vh`,
-  left: `${Math.random() * dispartionRadius}vw`,
-  transform: `rotate(${Math.random() * 360}deg)`,
-} : {}}>
-  <Link href="/SuscribirseBoletin">
-    {/* <img src={boletinSvg} alt="Subscribe to our newsletter." /> 
-    <span className={styles.glowText}>Subscribe to the newsletter!</span>
-  </Link>
-</li> */

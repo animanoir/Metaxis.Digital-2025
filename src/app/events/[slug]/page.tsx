@@ -82,7 +82,7 @@ export default async function EventPost(props: Props) {
               </a>
             </div>
           )}
-          <h1 className="text-3xl sm:text-6xl lg:text-6xl font-bold mb-3 md:mb-4 text-gray-800">{post.eventName}</h1>
+          <h1 className="text-3xl sm:text-2xl lg:text-6xl font-bold mb-3 md:mb-4 text-gray-800 leading-18">{post.eventName}</h1>
           {/* <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 md:mb-8 text-gray-600 text-sm sm:text-base justify-end">
             <time>{new Date(post.pubDate).toLocaleDateString()}</time>
           </div> */}
