@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { cache } from 'react';
 
 interface BookPost {
   id: string;
@@ -18,12 +19,10 @@ interface BookPost {
   slug: string
 }
 
-let slugToPathMap: Map<string, string> | null = null;
+const bookPostsDirectory = path.join(process.cwd(), 'public', 'bookposts');
 
-function buildSlugPathMap() {
-  if (slugToPathMap) return slugToPathMap;
-
-  slugToPathMap = new Map();
+const buildSlugPathMap = cache(() => {
+  const map = new Map<string, string>();
   const directories = fs.readdirSync(bookPostsDirectory);
 
   directories.forEach(dir => {
@@ -39,18 +38,14 @@ function buildSlugPathMap() {
     const { data } = matter(fileContents);
 
     if (data.slug) {
-      if (slugToPathMap) {
-        slugToPathMap.set(data.slug, fullPath);
-      }
+      map.set(data.slug, fullPath);
     }
   });
 
-  return slugToPathMap;
-}
+  return map;
+});
 
-const bookPostsDirectory = path.join(process.cwd(), 'public', 'bookposts');
-
-export function getSortedBookPostData(): BookPost[] {
+export const getSortedBookPostData = cache((): BookPost[] => {
   // Get directories under /bookposts
   const directories = fs.readdirSync(bookPostsDirectory);
 
@@ -96,7 +91,7 @@ export function getSortedBookPostData(): BookPost[] {
       date: new Date(matterResult.data.date).toISOString().split('T')[0],
       publishedYear: matterResult.data.publishedYear,
       description: matterResult.data.description,
-      concepts: matterResult.data.conceptos,
+      concepts: matterResult.data.concepts ?? matterResult.data.conceptos ?? [],
       image: image ? getImagePath(directory, image) : '',
       twitterImage: twitterImage ? getImagePath(directory, twitterImage) : '',
       content: matterResult.content,
@@ -112,11 +107,11 @@ export function getSortedBookPostData(): BookPost[] {
     const dateB = new Date(b.date).getTime();
     return dateB - dateA;  // Sort in descending order (newest first)
   });
-}
+});
 
 // ...existing code...
 
-export async function getBookPostData(slug: string) {
+export const getBookPostData = cache(async (slug: string) => {
   const pathMap = buildSlugPathMap();
   const fullPath = pathMap.get(slug);
 
@@ -133,6 +128,7 @@ export async function getBookPostData(slug: string) {
 
   // Process the image paths
   const { image, imageTwitter, title, description, author, date, publishedYear, concepts, ...otherData } = matterResult.data;
+  const resolvedConcepts = concepts ?? matterResult.data.conceptos ?? [];
 
   // Convert relative paths to absolute
   const processedImage = image && image.startsWith('./') ? `/bookposts/${dirName}/${image.slice(2)}` : image;
@@ -153,6 +149,6 @@ export async function getBookPostData(slug: string) {
     author,
     date,
     publishedYear,
-    concepts
+    concepts: resolvedConcepts
   };
-}
+});

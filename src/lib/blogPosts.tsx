@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { cache } from 'react';
 // import { remark } from 'remark';
 // import html from 'remark-html';
 
@@ -20,12 +21,9 @@ interface BlogPost {
 }
 
 const blogPostsDirectory = path.join(process.cwd(), 'public', 'blogposts');
-let slugToPathMap: Map<string, string> | null = null;
 
-function buildSlugPathMap() {
-  if (slugToPathMap) return slugToPathMap;
-
-  slugToPathMap = new Map();
+const buildSlugPathMap = cache(() => {
+  const map = new Map<string, string>();
   const directories = fs.readdirSync(blogPostsDirectory);
 
   directories.forEach(dir => {
@@ -41,14 +39,14 @@ function buildSlugPathMap() {
     const { data } = matter(fileContents);
 
     if (data.slug) {
-      slugToPathMap?.set(data.slug, fullPath);
+      map.set(data.slug, fullPath);
     }
   });
 
-  return slugToPathMap;
-}
+  return map;
+});
 
-export function getSortedBlogPostsData(): BlogPost[] {
+export const getSortedBlogPostsData = cache((): BlogPost[] => {
   const directories = fs.readdirSync(blogPostsDirectory);
 
   const allPostsData = directories.map(directory => {
@@ -99,9 +97,9 @@ export function getSortedBlogPostsData(): BlogPost[] {
   return allPostsData.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-}
+});
 
-export async function getBlogPostData(slug: string) {
+export const getBlogPostData = cache(async (slug: string) => {
   const pathMap = buildSlugPathMap();
   const fullPath = pathMap.get(slug);
 
@@ -145,4 +143,4 @@ export async function getBlogPostData(slug: string) {
     authorContact: otherData.authorContact,
     featuredArticle: otherData.featuredArticle
   };
-}
+});

@@ -3,138 +3,149 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import styles from './Navbar.module.css'
 import Link from "next/link";
-import { throttle } from 'lodash'
 import dynamic from 'next/dynamic';
 
-const Navbar = () => {
-  const tesisWords: string[] = [
-    'philosophy',
-    'art',
-    'ghosts',
-    'meta',
-    'thesis',
-    'sun',
-    'life',
-    'death',
-    'being',
-    'meditations',
-    'symbolism',
-    'surrealism',
-    'consciousness',
-    'antimatter',
-    'matter',
-    'capitalism',
-    'you',
-    'ying',
-    'posthumans',
-    'love',
-    'white',
-    'ones',
-    'existentialism',
-    'creativity',
-    'legends',
-    'otherworldly',
-    'research',
-    'stars',
-    'existence',
-    'rebirth',
-    'soul',
-    'contemplations',
-    'analogies',
-    'oneirism',
-    'perception',
-    'dark energy',
-    'essence',
-    'individualism',
-    'balance',
-    'transhumanism',
-    'passion',
-    'clarity',
-    'plurality',
-    'becoming',
-    'sublimation',
-    'catalyst',
-    'spirit',
-    'navigation',
-    'infinite',
-    'horizon',
-    'illumination',
-    'cell',
-    'ecosystem',
-    'spark',
-    'synesthesia',
-    'metaphor',
-    'renewal',
-    'bond',
-    'universality',
-    'concatenation',
-    'origin',
-    'transition',
-    'expansion',
-    'resilience',
-    'introspection',
-    'horizon',
-    '0',
-  ]
-  const antitesisWords: string[] = [
-    'computation',
-    'psychology',
-    'mathematics',
-    'antithesis',
-    'antimatter',
-    'machines',
-    'socialism',
-    'moon',
-    'antimatter',
-    'nothing',
-    'metamorphosis',
-    'I',
-    'yang',
-    'capitalism',
-    'love',
-    'black',
-    'zeros',
-    'cybernetics',
-    'neuroscience',
-    'logic',
-    'contraposition',
-    'particles',
-    'robots',
-    'communism',
-    'galaxies',
-    'void',
-    'transformation',
-    'ego',
-    'duality',
-    'technocracy',
-    'ontology',
-    'darkness',
-    'singularity',
-    'fragmentation',
-    'confinement',
-    'existential void',
-    'disconnection',
-    'finite',
-    'horizon',
-    'annulment',
-    'particle',
-    'isolation',
-    'darkness',
-    'disintegration',
-    'paradox',
-    'recession',
-    'analysis',
-    'restrictiveness',
-    'limitation',
-    'dissolution',
-    'saturation',
-    'contradiction',
-    'fusion',
-    'temporality',
-    'dispersion',
-    '1',
-  ]
+const tesisWords: string[] = [
+  'philosophy',
+  'art',
+  'ghosts',
+  'meta',
+  'thesis',
+  'sun',
+  'life',
+  'death',
+  'being',
+  'meditations',
+  'symbolism',
+  'surrealism',
+  'consciousness',
+  'antimatter',
+  'matter',
+  'capitalism',
+  'you',
+  'ying',
+  'posthumans',
+  'love',
+  'white',
+  'ones',
+  'existentialism',
+  'creativity',
+  'legends',
+  'otherworldly',
+  'research',
+  'stars',
+  'existence',
+  'rebirth',
+  'soul',
+  'contemplations',
+  'analogies',
+  'oneirism',
+  'perception',
+  'dark energy',
+  'essence',
+  'individualism',
+  'balance',
+  'transhumanism',
+  'passion',
+  'clarity',
+  'plurality',
+  'becoming',
+  'sublimation',
+  'catalyst',
+  'spirit',
+  'navigation',
+  'infinite',
+  'horizon',
+  'illumination',
+  'cell',
+  'ecosystem',
+  'spark',
+  'synesthesia',
+  'metaphor',
+  'renewal',
+  'bond',
+  'universality',
+  'concatenation',
+  'origin',
+  'transition',
+  'expansion',
+  'resilience',
+  'introspection',
+  'horizon',
+  '0',
+];
 
+const antitesisWords: string[] = [
+  'computation',
+  'psychology',
+  'mathematics',
+  'antithesis',
+  'antimatter',
+  'machines',
+  'socialism',
+  'moon',
+  'antimatter',
+  'nothing',
+  'metamorphosis',
+  'I',
+  'yang',
+  'capitalism',
+  'love',
+  'black',
+  'zeros',
+  'cybernetics',
+  'neuroscience',
+  'logic',
+  'contraposition',
+  'particles',
+  'robots',
+  'communism',
+  'galaxies',
+  'void',
+  'transformation',
+  'ego',
+  'duality',
+  'technocracy',
+  'ontology',
+  'darkness',
+  'singularity',
+  'fragmentation',
+  'confinement',
+  'existential void',
+  'disconnection',
+  'finite',
+  'horizon',
+  'annulment',
+  'particle',
+  'isolation',
+  'darkness',
+  'disintegration',
+  'paradox',
+  'recession',
+  'analysis',
+  'restrictiveness',
+  'limitation',
+  'dissolution',
+  'saturation',
+  'contradiction',
+  'fusion',
+  'temporality',
+  'dispersion',
+  '1',
+];
+
+const throttle = <T extends (...args: unknown[]) => void>(fn: T, wait: number) => {
+  let lastTime = 0;
+  return (...args: Parameters<T>) => {
+    const now = Date.now();
+    if (now - lastTime >= wait) {
+      lastTime = now;
+      fn(...args);
+    }
+  };
+};
+
+const Navbar = () => {
   const getRandomWord = (words: string[]) => {
     return words[Math.floor(Math.random() * words.length)]
   }
@@ -148,13 +159,6 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navRef = useRef(null);
   const dispartionRadius = 50;
-
-  const updateScrollPosition = useCallback(
-    throttle(() => {
-      setScrollY(window.pageYOffset)
-    }, 50),
-    []
-  )
 
   const handleKeydown = useCallback((event: KeyboardEvent) => {
     if (event.key === '<') {
@@ -174,13 +178,17 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', updateScrollPosition)
+    const handleScroll = throttle(() => {
+      setScrollY(window.pageYOffset)
+    }, 50)
+
+    window.addEventListener('scroll', handleScroll)
     window.addEventListener('keydown', handleKeydown) // Add event listener
     return () => {
-      window.removeEventListener('scroll', updateScrollPosition)
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('keydown', handleKeydown) // Remove event listener
     }
-  }, [updateScrollPosition, handleKeydown])
+  }, [handleKeydown])
 
   useEffect(() => {
     const generateUniqueAntitesis = (tesis: string) => {

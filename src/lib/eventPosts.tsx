@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { cache } from 'react';
 
 interface EventPost {
   id: string;
@@ -17,12 +18,9 @@ interface EventPost {
 }
 
 const eventPostsDirectory = path.join(process.cwd(), 'public', 'eventposts');
-let slugToPathMap: Map<string, string> | null = null;
 
-function buildSlugPathMap() {
-  if (slugToPathMap) return slugToPathMap;
-
-  slugToPathMap = new Map();
+const buildSlugPathMap = cache(() => {
+  const map = new Map<string, string>();
   const directories = fs.readdirSync(eventPostsDirectory);
 
   directories.forEach(dir => {
@@ -38,14 +36,14 @@ function buildSlugPathMap() {
     const { data } = matter(fileContents);
 
     if (data.slug) {
-      slugToPathMap?.set(data.slug, fullPath);
+      map.set(data.slug, fullPath);
     }
   });
 
-  return slugToPathMap;
-}
+  return map;
+});
 
-export function getSortedEventsPostsData(): EventPost[] {
+export const getSortedEventsPostsData = cache((): EventPost[] => {
   const directories = fs.readdirSync(eventPostsDirectory);
 
   const allPostsData = directories.map(directory => {
@@ -101,9 +99,9 @@ export function getSortedEventsPostsData(): EventPost[] {
   return allPostsData.sort((a, b) => {
     return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
   });
-}
+});
 
-export async function getEventPostData(slug: string) {
+export const getEventPostData = cache(async (slug: string) => {
   const pathMap = buildSlugPathMap();
   const fullPath = pathMap.get(slug);
 
@@ -150,5 +148,5 @@ export async function getEventPostData(slug: string) {
       timeZone: 'UTC'
     })
   };
-}
+});
 

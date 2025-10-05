@@ -2,7 +2,7 @@
 
 import { useForm, ValidationError } from "@formspree/react";
 // import styles from './NewsletterForm.module.css';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import FloatingText from '@/components/FloatingText/FloatingText';
 import NewsletterModal from '@/components/newsletterModal/NewsletterModal';
 
@@ -13,6 +13,7 @@ export default function NewsletterForm() {
   const [inputValue, setInputValue] = useState('');
   const [floatingTexts, setFloatingTexts] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const floatingTextTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -21,12 +22,26 @@ export default function NewsletterForm() {
     // Create new floating texts
     if (value) {
       setFloatingTexts(Array(FLOATING_TEXTS_COUNT).fill(value));
-      // Remove floating texts after 3 seconds (increased from 1.5s)
-      setTimeout(() => {
+      if (floatingTextTimeoutRef.current) {
+        clearTimeout(floatingTextTimeoutRef.current);
+      }
+      // Remove floating texts after extended time to allow for smooth fade out
+      floatingTextTimeoutRef.current = setTimeout(() => {
         setFloatingTexts([]);
-      }, 50000); // Increased timeout to allow for smooth fade out
+        floatingTextTimeoutRef.current = null;
+      }, 50000);
+    } else {
+      setFloatingTexts([]);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (floatingTextTimeoutRef.current) {
+        clearTimeout(floatingTextTimeoutRef.current);
+      }
+    };
+  }, []);
 
   if (state.succeeded) {
     return (
