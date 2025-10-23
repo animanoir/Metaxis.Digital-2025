@@ -23,7 +23,7 @@ const AcercaPage = () => {
 
             <div className="mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800">
               <p className="text-sm sm:text-base italic text-gray-600 dark:text-gray-400">
-                To collaborate, join our <a href="https://t.me/+0ViSuNGeQ-JmZTcx" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Telegram group</a> or send an email to <span className="font-mono bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded">etherealflux94@gmail.com</span>
+                To collaborate, join our <a href="https://t.me/+0ViSuNGeQ-JmZTcx" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Telegram group</a> or <a href="https://discord.com/invite/cSfuHzG8BT" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Discord server</a>.
               </p>
             </div>
           </div>

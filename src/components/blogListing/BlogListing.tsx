@@ -86,9 +86,6 @@ const BlogListing = () => {
           </div>
         </div>
       )}
-
-      {/* Remaining Posts with Newsletter Forms */}
-      <div>{postsWithNewsletter}</div>
     </>
   );
 };

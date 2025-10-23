@@ -39,7 +39,7 @@ export default async function ArenaContent() {
     if (!arenaContent.length) {
       return (
         <p className="flex justify-center items-center min-h-screen font-mono text-lg text-gray-600">
-          No hay inspiración disponible en este momento.
+          There's no inspiration to show at the moment.
         </p>
       );
     }
@@ -61,8 +61,8 @@ export default async function ArenaContent() {
                   aria-label="Enlace a inspiración"
                 >
                   <Image
-                    width={100}
-                    height={100}
+                    width={200}
+                    height={200}
                     className={styles.image}
                     src={content.image.square.url}
                     alt={content.title}
