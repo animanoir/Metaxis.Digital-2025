@@ -35,7 +35,6 @@ const IndividualBlogPost = ({
             />
           </div>
 
-          {/* Centered content */}
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 ">
             <div className="max-w-4xl p-4 md:p-8 rounded-lg text-left">
               <Link href={`/blog/${slug}`}>
@@ -47,7 +46,7 @@ const IndividualBlogPost = ({
                   {description}
                 </h4>
                 <h5 className="font-[Lora] text-sm md:text-base text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">
-                  <span className="font-normal">por </span>
+                  <span className="font-normal">by</span>
                   {author}
                 </h5>
               </Link>
@@ -56,35 +55,50 @@ const IndividualBlogPost = ({
         </>
       ) : (
         // Regular article layout
-        <div className="font-[Karla] mx-auto py-6 md:py-25 w-full">
-          <Link href={`/blog/${slug}`} className="block">
-            <Image
-              style={{ objectFit: "cover" }}
-              alt={title}
-              src={image}
-              width={500}
-              height={300}
-              className="w-full h-48 sm:h-64 object-cover mb-4 hover:opacity-50 transition-opacity rounded-t-lg"
-            />
-          </Link>
-          <div className="bg-gray-50 p-3 md:p-4 rounded-b-lg">
-            <p className="font-[Karla] text-base md:text-lg m-0 mb-2 bg-black text-white px-2 py-1 md:px-3 rounded inline-block">{date}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {concepts.map((concept) => (
-                <Link key={concept} href={`/conceptos/${concept.toLowerCase()}`} className="bg-gray-200 hover:bg-black hover:text-white px-2 py-1 md:px-3 rounded text-xs md:text-sm transition-colors">
-                  {concept}
-                </Link>
-              ))}
+        <div className="font-[Karla] mx-auto md:pt-25 w-full">
+          <Link href={`/blog/${slug}`} className="block group">
+            <div className="relative h-96 sm:h-[28rem] overflow-hidden rounded-lg">
+              <Image
+                style={{ objectFit: "cover" }}
+                alt={title}
+                src={image}
+                width={500}
+                height={300}
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+
+              {/* Content overlay */}
+              <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-6">
+                {/* Top section - Date and Concepts */}
+                <div className="flex flex-col gap-3">
+                  <p className="font-[Karla] text-sm md:text-base m-0 bg-black/70 text-white px-3 py-1 rounded inline-block w-fit backdrop-blur-sm">{date}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {concepts.map((concept) => (
+                      <span key={concept} className="bg-white/20 backdrop-blur-sm text-white px-2 py-1 md:px-3 rounded text-xs md:text-sm hover:bg-white/30 transition-colors">
+                        {concept}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom section - Title, Description, Author */}
+                <div className="space-y-2">
+                  <h2 className="text-white text-2xl md:text-3xl font-bold group-hover:text-[#dc143c] transition-colors line-clamp-2">
+                    {title}
+                  </h2>
+                  <h4 className="font-[Lora] font-normal text-sm md:text-base text-gray-200 line-clamp-2">
+                    {description}
+                  </h4>
+                  <h5 className="text-sm md:text-base bg-black/70 text-white px-3 py-1 rounded inline-block backdrop-blur-sm">
+                    <span className="font-normal">por </span>
+                    {author}
+                  </h5>
+                </div>
+              </div>
             </div>
-            <Link href={`/blog/${slug}`} className="block">
-              <h2 className="mt-5 text-black text-2xl md:text-3xl hover:text-[#dc143c] transition-colors bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-2">{title}</h2>
-            </Link>
-            <h4 className="my-2 font-[Lora] font-normal text-sm md:text-base text-black bg-gray-100 px-2 py-1 md:px-3 md:py-2 rounded w-fit line-clamp-3">{description}</h4>
-            <h5 className="text-base md:text-xl bg-black text-white px-2 py-1 md:px-3 rounded inline-block mt-2 ml-auto float-right">
-              <span className="font-normal">por </span>
-              {author}
-            </h5>
-          </div>
+          </Link>
         </div>
       )}
     </div>

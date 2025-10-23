@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
   title: {
-    default: 'Library | metaxis.digital',
+    default: 'Library',
     template: '%s | metaxis.digital',
   },
   description: 'Digital book library',
@@ -29,7 +29,6 @@ export default function Library() {
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
-
         <p className={`${styles.text} font-[Karla] text-gray-800 font-bold`}>
           The <b>Great <span className={`${styles.title} font-[Karla] text-gray-800 font-bold`}>Library</span></b> of <b>metaxis.digital</b> (constantly updated)
           <span className={styles.typingDots}></span>

@@ -14,8 +14,13 @@ type ArenaContentItem = {
 const ARENA_ENDPOINT = 'https://api.are.na/v2/channels/metaxis-digital/contents?per=19&sort=position&direction=desc';
 
 const getRandomOffset = () => {
-  const offsets = ['0rem', '1rem', '-1rem', '2rem', '-2rem'] as const;
+  const offsets = ['0rem', '2rem', '-2rem', '3rem', '-3rem', '4rem', '-4rem'] as const;
   return offsets[Math.floor(Math.random() * offsets.length)];
+};
+
+const getRandomRotation = () => {
+  const rotations = ['-2deg', '-1deg', '0deg', '1deg', '2deg'] as const;
+  return rotations[Math.floor(Math.random() * rotations.length)];
 };
 
 export default async function ArenaContent() {
@@ -43,7 +48,7 @@ export default async function ArenaContent() {
       <div id="inspiración" className={styles.container}>
         {arenaContent.map((content) => {
           const randomStyle = {
-            transform: `translateX(${getRandomOffset()}) translateY(${getRandomOffset()})`,
+            transform: `translateX(${getRandomOffset()}) translateY(${getRandomOffset()}) rotate(${getRandomRotation()})`,
           } as const;
 
           return (
@@ -77,7 +82,7 @@ export default async function ArenaContent() {
     const message = error instanceof Error ? error.message : 'An unknown error occurred';
     return (
       <p className="flex justify-center items-center min-h-screen font-mono text-lg text-gray-600">
-        Hubo un error al cargar la inspiración: {message}
+        There was an error loading the inspiration! ({message})
       </p>
     );
   }
