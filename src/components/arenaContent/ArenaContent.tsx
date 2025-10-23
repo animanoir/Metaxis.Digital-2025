@@ -39,7 +39,7 @@ export default async function ArenaContent() {
     if (!arenaContent.length) {
       return (
         <p className="flex justify-center items-center min-h-screen font-mono text-lg text-gray-600">
-          There's no inspiration to show at the moment.
+          There is no inspiration to show at the moment.
         </p>
       );
     }
