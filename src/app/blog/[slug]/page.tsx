@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 // import DisqusComments from '@/components/disqus/DisqusComments';
 import { MDXRemote } from "next-mdx-remote/rsc";
+import BooksSliderWrapper from '@/components/bookSlider/BooksSliderWrapper';
 
 export function generateStaticParams() {
   const blogPosts = getSortedBlogPostsData();
@@ -96,6 +97,11 @@ export default async function BlogPost(props: Props) {
 
           </div>
         </article>
+
+        {/* Books Slider */}
+        <div className="mt-12 md:mt-16">
+          <BooksSliderWrapper />
+        </div>
       </div>
     );
   } catch (err: unknown) {

@@ -11,15 +11,18 @@ type IndividualBlogPost = {
   author: string
   featuredArticle: boolean,
   concepts: string[]
+  isHeroPost?: boolean
 }
 
 const IndividualBlogPost = ({
-  slug, title, image, date, description, author, featuredArticle, concepts
+  slug, title, image, date, description, author, featuredArticle, concepts, isHeroPost = false
 }: IndividualBlogPost) => {
   return (
     <div className={`${featuredArticle
-      ? `relative h-screen transform-none`
-      : "w-full lg:w-2/5 md:w-3/5 mx-auto pb-10 md:pb-20 px-4 sm:px-6 md:px-0"}`}>
+      ? `relative h-full transform-none`
+      : isHeroPost
+        ? "w-full h-full"
+        : "w-full lg:w-2/5 md:w-3/5 mx-auto pb-10 md:pb-20 px-4 sm:px-6 md:px-0"}`}>
 
       {featuredArticle ? (
         // Featured article - full viewport with centered content
@@ -55,9 +58,9 @@ const IndividualBlogPost = ({
         </>
       ) : (
         // Regular article layout
-        <div className="font-[Karla] mx-auto md:pt-25 w-full">
-          <Link href={`/blog/${slug}`} className="block group">
-            <div className="relative h-96 sm:h-[28rem] overflow-hidden rounded-lg">
+        <div className={`font-[Karla] mx-auto w-full ${isHeroPost ? 'h-full' : 'md:pt-25'}`}>
+          <Link href={`/blog/${slug}`} className="block group h-full">
+            <div className={`relative overflow-hidden ${isHeroPost ? 'h-full' : 'h-96 sm:h-[28rem] rounded-lg'}`}>
               <Image
                 style={{ objectFit: "cover" }}
                 alt={title}
@@ -92,7 +95,7 @@ const IndividualBlogPost = ({
                     {description}
                   </h4>
                   <h5 className="text-sm md:text-base bg-black/70 text-white px-3 py-1 rounded inline-block backdrop-blur-sm">
-                    <span className="font-normal">por </span>
+                    <span className="font-normal">by{" "}</span>
                     {author}
                   </h5>
                 </div>

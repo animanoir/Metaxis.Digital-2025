@@ -231,7 +231,7 @@ const Navbar = () => {
         transform: `rotate(${Math.random() * 360}deg)`,
       } : {}}>
         <Link href="/">
-          <h1 className={`${styles.title} text-gray-800`}>
+          <h1 className={`${styles.title} text-[#dc143c]`}>
             <span className={styles.antitesis} style={{ fontWeight: 'normal' }}>
               {' '}
               {tesisAntitesis.tesis} — {tesisAntitesis.antitesis} |{' '}
@@ -275,16 +275,6 @@ const Navbar = () => {
           left: `${Math.random() * dispartionRadius}vw`,
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
-          <Link href="/library" onClick={handleLinkClick}>
-            <b>Library</b>
-          </Link>
-        </li>
-        <li style={isDispersed ? {
-          position: 'absolute',
-          top: `${Math.random() * dispartionRadius}vh`,
-          left: `${Math.random() * dispartionRadius}vw`,
-          transform: `rotate(${Math.random() * 360}deg)`,
-        } : {}}>
           <Link href="/concepts" onClick={handleLinkClick}>
             Concepts
           </Link>
@@ -296,7 +286,7 @@ const Navbar = () => {
           transform: `rotate(${Math.random() * 360}deg)`,
         } : {}}>
           <Link href="/blog" onClick={handleLinkClick}>
-            <b>Blog</b>
+            <b>Custom writing</b>
           </Link>
         </li>
         <li style={isDispersed ? {
@@ -307,6 +297,16 @@ const Navbar = () => {
         } : {}}>
           <Link href="/events" onClick={handleLinkClick}>
             <b>Events</b>
+          </Link>
+        </li>
+        <li style={isDispersed ? {
+          position: 'absolute',
+          top: `${Math.random() * dispartionRadius}vh`,
+          left: `${Math.random() * dispartionRadius}vw`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        } : {}}>
+          <Link href="/library" onClick={handleLinkClick}>
+            <b>Library</b>
           </Link>
         </li>
         <li style={isDispersed ? {

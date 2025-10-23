@@ -63,7 +63,7 @@ export default function ConceptosClient({ group }: ConceptosClientProps) {
       <input
         ref={searchInputRef}
         type="text"
-        placeholder="Buscar concepto..."
+        placeholder="Search for a concept..."
         value={searchTerm}
         onChange={handleSearchChange}
         className={styles.searchbar}
