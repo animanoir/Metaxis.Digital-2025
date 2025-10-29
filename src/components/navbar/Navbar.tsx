@@ -269,7 +269,7 @@ const Navbar = () => {
             Collaborate!
           </Link>
         </li> */}
-        <li style={isDispersed ? {
+        {/* <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,
           left: `${Math.random() * dispartionRadius}vw`,
@@ -278,7 +278,7 @@ const Navbar = () => {
           <Link href="/concepts" onClick={handleLinkClick}>
             Concepts
           </Link>
-        </li>
+        </li> */}
         <li style={isDispersed ? {
           position: 'absolute',
           top: `${Math.random() * dispartionRadius}vh`,
