@@ -60,7 +60,7 @@ export default function NewsletterForm() {
       ))}
       <form
         onSubmit={handleSubmit} className="space-y-4 mx-auto w-100 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 shadow-xl">
-        <h2 className={` font-karla text-2xl text-gray-800 mb-4 font-bold`}>
+        <h2 className={` font-karla text-xl text-gray-800 mb-4 font-bold`}>
           <span className="rainbow">Subscribe to the newsletter:</span>
         </h2>
         <div className="space-y-2">
@@ -106,7 +106,7 @@ export default function NewsletterForm() {
           className={`
             w-full md:w-auto sm:w-full px-10 py-3
             bg-black text-white
-            font-karla text-sm
+            font-karla text-xs
             border border-black rounded
             shadow-[4px_4px_0_0_#fff,_4px_4px_0_1px_#000]
             hover:shadow-[2px_2px_0_0_#fff,_2px_2px_0_1px_#000]
