@@ -47,7 +47,7 @@ const BlogListing = () => {
     <>
       {/* Hero Grid: Full viewport with Featured Post (left) + Latest 2 Posts (right) */}
       {(featuredPost || heroRightPosts.length > 0) && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-[80vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-[80vh] shadow-xl">
           {/* Featured Post - Left Side */}
           {featuredPost && (
             <div className="h-full">

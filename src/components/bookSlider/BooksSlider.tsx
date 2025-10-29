@@ -56,11 +56,11 @@ const BooksSlider = ({ books }: BooksSliderProps) => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-8">Latest books added to the library:</h2>
+      <h2 className="text-2xl font-bold mb-4">Latest books added to the <Link href="/library" className="hover:text-[#dc143c] transition-colors underline">Library</Link>:</h2>
 
       <div className="relative">
         {/* Main Slider */}
-        <div className="relative h-96 md:h-[500px] overflow-hidden rounded-lg bg-gray-900">
+        <div className="relative h-96 md:h-[500px] overflow-hidden rounded-lg bg-gray-900 shadow-xl">
           {books.map((book, index) => (
             <div
               key={book.slug}
