@@ -56,7 +56,7 @@ const BooksSlider = ({ books }: BooksSliderProps) => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-8 text-center">Latest books added to the library:</h2>
+      <h2 className="text-2xl font-bold mb-8">Latest books added to the library:</h2>
 
       <div className="relative">
         {/* Main Slider */}
@@ -64,9 +64,8 @@ const BooksSlider = ({ books }: BooksSliderProps) => {
           {books.map((book, index) => (
             <div
               key={book.slug}
-              className={`absolute inset-0 transition-opacity duration-700 ${
-                index === currentIndex ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-              }`}
+              className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
             >
               <Link href={`/library/${book.slug}`} className="block h-full">
                 <div className="relative h-full">
@@ -86,13 +85,13 @@ const BooksSlider = ({ books }: BooksSliderProps) => {
 
                   {/* Content Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 space-y-3">
-                    <h3 className="text-2xl md:text-4xl text-white font-bold line-clamp-2">
+                    <h3 className="text-xl md:text-2xl text-white font-bold line-clamp-2">
                       {book.title}
                     </h3>
-                    <p className="text-lg md:text-xl text-gray-300 font-medium">
+                    <p className="text-sm md:text-base text-gray-300 font-medium">
                       {book.author}
                     </p>
-                    <p className="text-sm md:text-base text-gray-200 line-clamp-3">
+                    <p className="text-xs md:text-sm text-gray-200 line-clamp-3">
                       {book.description}
                     </p>
                   </div>
@@ -129,8 +128,8 @@ const BooksSlider = ({ books }: BooksSliderProps) => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
-                  ? 'bg-white w-8'
-                  : 'bg-gray-500 hover:bg-gray-400'
+                ? 'bg-white w-8'
+                : 'bg-gray-500 hover:bg-gray-400'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />

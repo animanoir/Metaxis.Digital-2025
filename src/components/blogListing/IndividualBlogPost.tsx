@@ -41,14 +41,14 @@ const IndividualBlogPost = ({
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 ">
             <div className="max-w-4xl p-4 md:p-8 rounded-lg text-left">
               <Link href={`/blog/${slug}`}>
-                <p className="font-[Karla] text-base md:text-xl m-0 mb-2 text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">{date}</p>
-                <h2 className=" text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl my-3 md:my-4 bg-black px-3 py-1 md:px-4 md:py-2 rounded hover:text-[#dc143c] transition-colors text-left w-fit">
+                <p className="font-[Karla] text-sm md:text-base m-0 mb-2 text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">{date}</p>
+                <h2 className=" text-white font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl my-3 md:my-4 bg-black px-3 py-1 md:px-4 md:py-2 rounded hover:text-[#dc143c] transition-colors text-left w-fit">
                   {title}
                 </h2>
-                <h4 className="my-2 font-[Lora] font-normal text-base md:text-xl text-white p-0 bg-black px-3 py-1 md:px-4 md:py-2 rounded text-left w-fit line-clamp-3 md:line-clamp-none">
+                <h4 className="my-2 font-[Lora] font-normal text-sm md:text-base text-white p-0 bg-black px-3 py-1 md:px-4 md:py-2 rounded text-left w-fit line-clamp-3 md:line-clamp-none">
                   {description}
                 </h4>
-                <h5 className="font-[Lora] text-sm md:text-base text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">
+                <h5 className="font-[Lora] text-xs md:text-sm text-white bg-black px-3 py-1 md:px-4 md:py-2 rounded inline-block">
                   <span className="font-normal">by</span>
                   {author}
                 </h5>
@@ -76,10 +76,10 @@ const IndividualBlogPost = ({
               <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-6">
                 {/* Top section - Date and Concepts */}
                 <div className="flex flex-col gap-3">
-                  <p className="font-[Karla] text-sm md:text-base m-0 bg-black/70 text-white px-3 py-1 rounded inline-block w-fit backdrop-blur-sm">{date}</p>
+                  <p className="font-[Karla] text-xs md:text-sm m-0 bg-black/70 text-white px-3 py-1 rounded inline-block w-fit backdrop-blur-sm">{date}</p>
                   <div className="flex flex-wrap gap-2">
                     {concepts.map((concept) => (
-                      <span key={concept} className="bg-white/20 backdrop-blur-sm text-white px-2 py-1 md:px-3 rounded text-xs md:text-sm hover:bg-white/30 transition-colors">
+                      <span key={concept} className="bg-white/20 backdrop-blur-sm text-white px-2 py-1 md:px-3 rounded text-xs hover:bg-white/30 transition-colors">
                         {concept}
                       </span>
                     ))}
@@ -88,13 +88,13 @@ const IndividualBlogPost = ({
 
                 {/* Bottom section - Title, Description, Author */}
                 <div className="space-y-2">
-                  <h2 className="text-white text-2xl md:text-3xl font-bold group-hover:text-[#dc143c] transition-colors line-clamp-2">
+                  <h2 className="text-white text-xl md:text-2xl font-bold group-hover:text-[#dc143c] transition-colors line-clamp-2">
                     {title}
                   </h2>
-                  <h4 className="font-[Lora] font-normal text-sm md:text-base text-gray-200 line-clamp-2">
+                  <h4 className="font-[Lora] font-normal text-xs md:text-sm text-gray-200 line-clamp-2">
                     {description}
                   </h4>
-                  <h5 className="text-sm md:text-base bg-black/70 text-white px-3 py-1 rounded inline-block backdrop-blur-sm">
+                  <h5 className="text-xs md:text-sm bg-black/70 text-white px-3 py-1 rounded inline-block backdrop-blur-sm">
                     <span className="font-normal">by{" "}</span>
                     {author}
                   </h5>

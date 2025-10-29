@@ -4,7 +4,7 @@ import LatestEventsGrid from '@/components/latestEventsGrid/LatestEventsGrid';
 
 export default function Home() {
   return (
-    <div className="px-6 py-12 md:px-12 lg:px-24 xl:px-32 space-y-16 md:space-y-20 lg:space-y-24">
+    <div className="px-8 py-16 md:px-16 lg:px-32 xl:px-48 space-y-16 md:space-y-20 lg:space-y-24">
       <BlogListing />
       <BooksSliderWrapper />
       <LatestEventsGrid />
