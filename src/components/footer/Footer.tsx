@@ -42,6 +42,34 @@ const Footer = () => {
               />
             </a>
           </span>
+          <span className={styles.svgIcon}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.instagram.com/metaxisdigital/"
+            >
+              <Image
+                width={18}
+                height={18}
+                src="/instagram.svg"
+                alt="Follow metaxis.digital on Instagram."
+              />
+            </a>
+          </span>
+          <span className={styles.svgIcon}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://x.com/metaxis_digital"
+            >
+              <Image
+                width={18}
+                height={18}
+                src="/x-twitter.svg"
+                alt="Follow metaxis.digital on X/Twitter."
+              />
+            </a>
+          </span>
         </div>
         <div className={styles.ccommons}>
           <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
