@@ -7,6 +7,7 @@ import NewsletterForm from "@/components/newsletterForm/NewsletterForm";
 import { ReactLenis } from "lenis/react";
 import amalgalmasImg from '@/app/assets/images/amalgalmas.jpg';
 import AdSense from "@/components/adSenseScript/AdSenseScript";
+import AdUnit from "@/components/adUnit/AdUnit";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -74,6 +75,7 @@ export default function RootLayout({
           }}>
             {children}
           </main>
+          <AdUnit />
           <NewsletterForm />
           <Footer />
         </ReactLenis>
